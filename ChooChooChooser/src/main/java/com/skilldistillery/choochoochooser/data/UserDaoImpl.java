@@ -10,7 +10,7 @@ import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
-public class UserDaoImpl implements UserDAO{
+public class UserDaoImpl implements UserDAO {
 
 	//NO transaction begin/commit
 	//NO em.close()
