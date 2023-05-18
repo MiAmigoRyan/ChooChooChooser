@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="https://www.npr.org/templates/story/story.php?storyId=129628790">
-  <img src="thomas.jpg" alt="Thomas the Train">
-</a>
+<!-- <a href="https://www.npr.org/templates/story/story.php?storyId=129628790">
+  <img src="thomas.jpg" alt="Thomas the Train"> -->
+<!-- </a> -->
+  
+  ${SMOKETEST}
 </body>
 </html>
