@@ -1,7 +1,7 @@
 package com.skilldistillery.choochoochooser.entities;
 
 public class User {
- //ALL ABOARD!!! 
+//ALL ABOARD!!! 
 //	____
 //	|DD|____T_
 //	|_ |_____|<
