@@ -1,6 +1,8 @@
 package com.skilldistillery.choochoochooser.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -65,5 +67,11 @@ class TrainTest {
 	void test_Train_to_Amenity_ManyToMany_Mapping() {
 		assertNotNull(train);
 		assertNotNull (train.getAmenities());
+	}
+	@Test
+	void test_Train_to_User_ManyToMany_Mapping() {
+		assertNotNull(train);
+		assertNotNull(train.getUsers());
+		assertTrue(train.getUsers().size()>0);
 	}
 }

@@ -23,6 +23,13 @@ public class Train {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	
+	@ManyToMany
+	@JoinTable(name = "wishlist_train", 
+	joinColumns = @JoinColumn(name = "train_id"), 
+	inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
+
 	@ManyToMany
 	@JoinTable(name = "train_has_amenities", 
 	joinColumns = @JoinColumn(name = "train_id"), 
@@ -68,6 +75,14 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public List<Amenity> getAmenities() {
@@ -158,9 +173,22 @@ public class Train {
 		this.website = website;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	
+	public void addUser(User user) {
+		if (users == null) {
+			users = new ArrayList<>();
+		}
+		if (!users.contains(user)) {
+			users.add(user);
+			user.addWishList(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeWishList(this);
+		}
 	}
 
 	public void addAmenity(Amenity amenity) {
@@ -207,6 +235,11 @@ public class Train {
 		builder.append(website);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 	@Override

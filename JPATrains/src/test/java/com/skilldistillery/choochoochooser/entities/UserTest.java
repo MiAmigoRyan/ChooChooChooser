@@ -50,5 +50,10 @@ class UserTest {
 		assertNotNull(user);
 		assertTrue(user.getTrains().size() > 0);
 	}
+	@Test
+	void test_User_to_Train_wishList_ManyToMany_mappings() {
+		assertNotNull(user);
+		assertTrue(user.getWishList().size() > 0);
+	}
 
 }

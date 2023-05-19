@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,6 +26,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@ManyToMany(mappedBy="users")
+	private List<Train> wishList;
 	
 	@OneToMany(mappedBy="user")
 	private List<Train> trains;
@@ -57,6 +61,14 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Train> getWishList() {
+		return wishList;
+	}
+
+	public void setWishList(List<Train> wishList) {
+		this.wishList = wishList;
 	}
 
 	public List<Train> getTrains() {
@@ -130,6 +142,24 @@ public class User {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public void addWishList(Train train) {
+		if (wishList == null) {
+			wishList = new ArrayList<>();
+		}
+		if (!wishList.contains(train)) {
+			wishList.add(train);
+			train.addUser(this);
+		}
+	}
+	
+	public void removeWishList(Train train) {
+		if (wishList != null && wishList.contains(train)) {
+			wishList.remove(train);
+			train.removeUser(this);
+		}
+	}
+
 
 	public void addTrain(Train train) {
 		if (trains == null) {
