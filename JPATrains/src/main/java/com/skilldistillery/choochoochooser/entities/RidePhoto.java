@@ -20,7 +20,7 @@ public class RidePhoto {
 
 	@ManyToOne
 	@JoinColumn(name="train_ride_id")
-	public TrainRide ride;
+	private TrainRide ride;
 	
 	public RidePhoto() {
 	}

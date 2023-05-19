@@ -23,15 +23,15 @@ public class TrainRide {
 	private int id;
 
 	@OneToMany(mappedBy="ride")
-	public List<RidePhoto> photos;
+	private List<RidePhoto> photos;
 	
 	@OneToOne
 	@JoinColumn(name ="train_id")
-	public Train train;
+	private Train train;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	public User user;
+	private User user;
 	
 	public TrainRide() {
 	}
