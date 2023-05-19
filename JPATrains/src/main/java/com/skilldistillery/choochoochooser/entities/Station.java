@@ -18,10 +18,10 @@ public class Station {
 	private int id;
 	
 	@OneToMany (mappedBy="startStation")
-	public List<Route> startRoutes;
+	private List<Route> startRoutes;
 
 	@OneToMany (mappedBy="endStation")
-	public List<Route> endRoutes;
+	private List<Route> endRoutes;
 
 	private String name;
 	
