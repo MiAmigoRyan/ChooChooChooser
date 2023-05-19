@@ -42,7 +42,7 @@ class RouteTest {
 	@Test
 	void test_Route_entity_mapping() {
 		assertNotNull(route);
-	
+		
 	}
 
 }
