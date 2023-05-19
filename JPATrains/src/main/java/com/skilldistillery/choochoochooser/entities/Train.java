@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Train {
@@ -16,15 +18,26 @@ public class Train {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+
+	@OneToOne
+	@JoinColumn(name="rail_gauge_id")
+	private RailGauge railGauge;
+	
 	private String name;
+	
 	private String photo;
+	
 	@Column(name = "year_round")
 	private Boolean yearRound;
+	
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
+	
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
+	
 	private String description;
+	
 	private String website;
 
 	public Train() {
@@ -37,6 +50,13 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	public RailGauge getRailGauge() {
+		return railGauge;
+	}
+	
+	public void setRailGauge(RailGauge railGauge) {
+		this.railGauge = railGauge;
 	}
 
 	public String getName() {
@@ -100,6 +120,8 @@ public class Train {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Train [id=");
 		builder.append(id);
+		builder.append(", railGauge=");
+		builder.append(railGauge);
 		builder.append(", name=");
 		builder.append(name);
 		builder.append(", photo=");
