@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,6 +20,17 @@ public class Train {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	@ManyToOne
+	@JoinColumn(name="engine_id")
+	private Engine engine;
+	
+	public Engine getEngine() {
+		return engine;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
 
 	@OneToOne
 	@JoinColumn(name="rail_gauge_id")

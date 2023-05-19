@@ -46,4 +46,10 @@ class EngineTest {
 		assertEquals("Steam Locomotive", engine.getType());
 	}
 
+	@Test
+	void test_Engine_to_Train_OneToMany_mapping() {
+		assertNotNull(engine);
+		assertTrue(engine.getTrains().size() > 0);
+	}
+
 }

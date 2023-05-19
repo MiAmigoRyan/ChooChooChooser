@@ -44,10 +44,16 @@ class TrainTest {
 		assertNotNull(train);
 		assertEquals("Georgetown Loop Railroad", train.getName());
 	}
-	
+
 	@Test
 	void test_Train_to_RailGauge_OneToOne_Mapping() {
 		assertNotNull(train);
 		assertEquals("Narrow Gauge", train.getRailGauge().getType());
+	}
+
+	@Test
+	void test_Train_to_Engine_ManyToOne_Mapping() {
+		assertNotNull(train);
+		assertEquals("Steam Locomotive", train.getEngine().getType());
 	}
 }
