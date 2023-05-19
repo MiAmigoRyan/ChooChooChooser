@@ -10,14 +10,7 @@
 <link rel="style" type="text/css" href="css/style.css">
 
 </head>
-<body>
-<style>
-    body {
-        background-image: url("https://i.ibb.co/HBnGSwZ/your-image.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-</style>
+<body class="dark-mode">
 
 	<form action="login.do" method="GET">
 		<div class='col-5 offset-1'>

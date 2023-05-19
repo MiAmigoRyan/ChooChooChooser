@@ -3,3 +3,36 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .navbar {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode .btn {
+  background-color: #555;
+  color: #fff;
+}
+.inner-container{
+	border: 1px solid #fff;
+	padding: 3px;
+}
+
+img {
+	max-height: 300px;
+	max-width: 300px;
+}
+body.dark-mode table.table {
+  color: #fff; 
+}
+body.dark-mode table.table thead th {
+  color: #fff; 
+}
+
+body.dark-mode table.table tbody td {
+  color: #fff;
+}
