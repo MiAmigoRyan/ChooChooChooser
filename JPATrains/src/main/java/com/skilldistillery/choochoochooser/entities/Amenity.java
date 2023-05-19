@@ -1,11 +1,14 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Amenity {
@@ -15,6 +18,9 @@ public class Amenity {
 	private int id;
 	private String type;
 
+	@ManyToMany(mappedBy="amenities")
+	private List<Train>trains;
+	
 	public Amenity() {
 
 	}
@@ -27,12 +33,37 @@ public class Amenity {
 		this.id = id;
 	}
 
+	public List<Train> getTrains() {
+		return trains;
+	}
+
+	public void setTrains(List<Train> trains) {
+		this.trains = trains;
+	}
+
 	public String getType() {
 		return type;
 	}
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public void addTrain(Train train) {
+		if (trains == null) {
+			trains = new ArrayList<>();
+		}
+		if (!trains.contains(train)) {
+			trains.add(train);
+			train.addAmenity(this);
+		}
+	}
+
+	public void removeTrain(Train train) {
+		if (trains != null && trains.contains(train)) {
+			trains.remove(train);
+			train.removeAmenity(this);
+		}
 	}
 
 	@Override

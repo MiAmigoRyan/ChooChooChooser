@@ -1,6 +1,8 @@
 package com.skilldistillery.choochoochooser.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,45 +11,51 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Train {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@ManyToMany
+	@JoinTable(name = "train_has_amenities", 
+	joinColumns = @JoinColumn(name = "train_id"), 
+	inverseJoinColumns = @JoinColumn(name = "amenities_id"))
+	private List<Amenity> amenities;
+
 	@ManyToOne
-	@JoinColumn(name="created_by_user_id")
+	@JoinColumn(name = "created_by_user_id")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name="engine_id")
+	@JoinColumn(name = "engine_id")
 	private Engine engine;
-	
 
 	@OneToOne
-	@JoinColumn(name="rail_gauge_id")
+	@JoinColumn(name = "rail_gauge_id")
 	private RailGauge railGauge;
-	
+
 	private String name;
-	
+
 	private String photo;
-	
+
 	@Column(name = "year_round")
 	private Boolean yearRound;
-	
+
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
-	
+
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
-	
+
 	private String description;
-	
+
 	private String website;
 
 	public Train() {
@@ -60,6 +68,14 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Amenity> getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(List<Amenity> amenities) {
+		this.amenities = amenities;
 	}
 
 	public User getUser() {
@@ -81,7 +97,7 @@ public class Train {
 	public RailGauge getRailGauge() {
 		return railGauge;
 	}
-	
+
 	public void setRailGauge(RailGauge railGauge) {
 		this.railGauge = railGauge;
 	}
@@ -142,13 +158,28 @@ public class Train {
 		this.website = website;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
 
+	public void addAmenity(Amenity amenity) {
+		if (amenities == null) {
+			amenities = new ArrayList<>();
+		}
+		if (!amenities.contains(amenity)) {
+			amenities.add(amenity);
+			amenity.addTrain(this);
+		}
+	}
+
+	public void removeAmenity(Amenity amenity) {
+		if (amenities != null && amenities.contains(amenity)) {
+			amenities.remove(amenity);
+			amenity.removeTrain(this);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

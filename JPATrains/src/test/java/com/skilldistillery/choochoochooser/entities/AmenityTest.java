@@ -46,4 +46,10 @@ class AmenityTest {
 		assertEquals("Dining Car", amenity.getType());
 	}
 
+	@Test
+	void test_Amenity_to_Train_ManyToMany_mapping() {
+		assertNotNull(amenity);
+		assertNotNull(amenity.getTrains());
+	}
+
 }

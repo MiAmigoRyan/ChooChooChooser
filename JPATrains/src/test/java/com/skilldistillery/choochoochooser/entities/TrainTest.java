@@ -61,4 +61,9 @@ class TrainTest {
 		assertNotNull(train);
 		assertEquals("admin", train.getUser().getUsername());
 	}
+	@Test
+	void test_Train_to_Amenity_ManyToMany_Mapping() {
+		assertNotNull(train);
+		assertNotNull (train.getAmenities());
+	}
 }
