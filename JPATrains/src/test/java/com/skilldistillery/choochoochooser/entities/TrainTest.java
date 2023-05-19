@@ -56,4 +56,9 @@ class TrainTest {
 		assertNotNull(train);
 		assertEquals("Steam Locomotive", train.getEngine().getType());
 	}
+	@Test
+	void test_Train_to_User_ManyToOne_Mapping() {
+		assertNotNull(train);
+		assertEquals("admin", train.getUser().getUsername());
+	}
 }

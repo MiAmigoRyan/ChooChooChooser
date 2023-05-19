@@ -19,18 +19,15 @@ public class Train {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name="created_by_user_id")
+	private User user;
 
 	@ManyToOne
 	@JoinColumn(name="engine_id")
 	private Engine engine;
 	
-	public Engine getEngine() {
-		return engine;
-	}
-
-	public void setEngine(Engine engine) {
-		this.engine = engine;
-	}
 
 	@OneToOne
 	@JoinColumn(name="rail_gauge_id")
@@ -64,6 +61,23 @@ public class Train {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Engine getEngine() {
+		return engine;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+
 	public RailGauge getRailGauge() {
 		return railGauge;
 	}
@@ -128,11 +142,22 @@ public class Train {
 		this.website = website;
 	}
 
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Train [id=");
 		builder.append(id);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", engine=");
+		builder.append(engine);
 		builder.append(", railGauge=");
 		builder.append(railGauge);
 		builder.append(", name=");
@@ -151,11 +176,6 @@ public class Train {
 		builder.append(website);
 		builder.append("]");
 		return builder.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 
 	@Override

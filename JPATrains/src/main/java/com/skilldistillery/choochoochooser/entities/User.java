@@ -1,5 +1,7 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,27 +9,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	// ALL ABOARD!!!
-	// ____
-	// |DD|____T_
+	//     (. '  )
+	//       . ')
+    //        . '
+	// ____    ,
+	// |DD|____U_
 	// |_ |_____|<
-	// @-@-@-oo\
+	//  @--@-@-oo\
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
+	@OneToMany(mappedBy="user")
+	private List<Train> trains;
+	
 	private String username;
+	
 	private String password;
+	
 	private Boolean enabled;
+	
 	private String role;
+	
 	@Column(name="first_name")
 	private String firstName;
+	
 	@Column(name="last_name")
 	private String lastName;
+	
 	private String description;
+	
 	@Column(name="profile_photo")
 	private String profilePhoto;
 
@@ -40,6 +57,14 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Train> getTrains() {
+		return trains;
+	}
+
+	public void setTrains(List<Train> trains) {
+		this.trains = trains;
 	}
 
 	public String getProfilePhoto() {
@@ -106,23 +131,26 @@ public class User {
 		this.description = description;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public void addTrain(Train train) {
+		if (trains == null) {
+			trains = new ArrayList<>();
+		}
+		if (!trains.contains(train)) {
+			trains.add(train);
+			if (train.getUser() != null) {
+				train.getUser().removeTrain(train);
+			}
+			train.setUser(this);
+		}
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return id == other.id;
+	public void removeTrain(Train train) {
+		if (trains != null && trains.contains(train)) {
+			trains.remove(train);
+			train.setUser(null);
+		}
 	}
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -146,6 +174,22 @@ public class User {
 		builder.append(profilePhoto);
 		builder.append("]");
 		return builder.toString();
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return id == other.id;
 	}
 
 	

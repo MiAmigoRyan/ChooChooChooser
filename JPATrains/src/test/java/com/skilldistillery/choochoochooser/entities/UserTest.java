@@ -12,7 +12,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 class UserTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
@@ -44,6 +43,12 @@ class UserTest {
 	void test_User_basic_mappings() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
+	}
+
+	@Test
+	void test_User_to_Train_OneToMany_mappings() {
+		assertNotNull(user);
+		assertTrue(user.getTrains().size() > 0);
 	}
 
 }

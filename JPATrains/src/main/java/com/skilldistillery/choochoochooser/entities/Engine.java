@@ -20,8 +20,8 @@ public class Engine {
 
 	public Engine() {
 	}
-	
-	@OneToMany(mappedBy="engine")
+
+	@OneToMany(mappedBy = "engine")
 	private List<Train> trains;
 
 	public List<Train> getTrains() {
@@ -47,7 +47,7 @@ public class Engine {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public void addTrain(Train train) {
 		if (trains == null) {
 			trains = new ArrayList<>();
@@ -56,10 +56,8 @@ public class Engine {
 			trains.add(train);
 			if (train.getEngine() != null) {
 				train.getEngine().removeTrain(train);
-
-			} else {
-				train.setEngine(this);
 			}
+			train.setEngine(this);
 		}
 	}
 
@@ -97,9 +95,5 @@ public class Engine {
 		Engine other = (Engine) obj;
 		return id == other.id;
 	}
-	
-	
-	
-	
 
 }
