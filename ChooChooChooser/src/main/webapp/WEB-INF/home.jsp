@@ -6,8 +6,18 @@
 <meta charset="UTF-8">
 <title>HOME PAGE</title>
 <jsp:include page="BootstrapHead.jsp"></jsp:include>
+
+<link rel="style" type="text/css" href="css/style.css">
+
 </head>
 <body>
+<style>
+    body {
+        background-image: url("https://i.ibb.co/HBnGSwZ/your-image.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
 	<form action="login.do" method="GET">
 		<div class='col-5 offset-1'>
@@ -22,15 +32,10 @@
 	</form>
 
 	<button type="button" class="btn btn-outline-success"
-		data-bs-toggle='modal' data-bs-target='#exampleModal'>Create
-		an account</button>
+		data-bs-toggle='modal' data-bs-target='#exampleModal'>
+		Create an account
+		</button>
 
-	<a
-		href="https://upload.wikimedia.org/wikipedia/en/d/dc/Thomas_Tank_Engine_1.JPG">
-		<img
-		src="https://upload.wikimedia.org/wikipedia/en/d/dc/Thomas_Tank_Engine_1.JPG"
-		alt="Thomas the Train">
-	</a>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
