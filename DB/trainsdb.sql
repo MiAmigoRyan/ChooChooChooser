@@ -193,8 +193,8 @@ DROP TABLE IF EXISTS `train_ride` ;
 
 CREATE TABLE IF NOT EXISTS `train_ride` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(100) NOT NULL,
-  `content` TEXT NOT NULL,
+  `title` VARCHAR(100) NULL,
+  `content` TEXT NULL,
   `create_date` DATETIME NULL,
   `rating` SMALLINT(1) NULL,
   `photo` LONGTEXT NULL,
@@ -340,6 +340,36 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `rail_gauge`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `rail_gauge` (`id`, `type`, `description`) VALUES (1, 'Narrow Gauge', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `engine`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `engine` (`id`, `type`, `description`, `photo`) VALUES (1, 'Steam Locomotive', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `train`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `train` (`id`, `name`, `photo`, `rail_gauge_id`, `engine_id`, `year_round`, `created_by_user_id`, `create_date`, `last_update`, `description`, `website`) VALUES (1, 'Georgetown Loop Railroad', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/08/Shane-111-High-Bridge-East-Side.jpg', 1, 1, 0, 1, NULL, NULL, NULL, 'https://www.georgetownlooprr.com/');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `amenity`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -348,6 +378,76 @@ INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (1, 'Dining Car', NUL
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (2, 'Whistle Stops', NULL);
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (3, 'Narrator', NULL);
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (4, 'Open-Air', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `region`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `region` (`id`, `name`) VALUES (1, 'Rocky Mountains');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `station`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `station` (`id`, `amenities`, `photo`, `notable_features`, `name`, `city`, `state`, `street`, `zip_code`) VALUES (1, NULL, NULL, NULL, 'Georgetown Devil\'s Gate Station', NULL, NULL, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `route`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `route` (`id`, `description`, `region_id`, `start_station_id`, `end_station_id`, `photo`, `train_id`) VALUES (1, NULL, 1, 1, 1, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `train_ride`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `train_ride` (`id`, `title`, `content`, `create_date`, `rating`, `photo`, `user_id`, `train_id`, `last_update`, `ride_date`) VALUES (1, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `wishlist_train`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `ride_photo`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `ride_photo` (`id`, `photo`, `train_ride_id`) VALUES (1, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `train_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trainsdb`;
+INSERT INTO `train_comment` (`id`, `content`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`) VALUES (1, NULL, NULL, 1, 1, NULL);
 
 COMMIT;
 
