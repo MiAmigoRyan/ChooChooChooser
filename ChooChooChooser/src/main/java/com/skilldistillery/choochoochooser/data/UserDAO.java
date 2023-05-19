@@ -6,4 +6,5 @@ public interface UserDAO {
 
 	User findByUsernameAndPassword(String username, String password);
 	
+	User createUser(User user);
 }

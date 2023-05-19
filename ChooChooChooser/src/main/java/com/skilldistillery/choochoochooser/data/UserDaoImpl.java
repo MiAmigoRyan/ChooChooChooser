@@ -32,4 +32,14 @@ public class UserDaoImpl implements UserDAO {
 		return user;
 	}
 
+	@Override
+	public User createUser(User user) {
+		
+		em.persist(user);
+		if(em.contains(user)) {
+			return user;
+		}	
+		return null ;
+	}
+
 }
