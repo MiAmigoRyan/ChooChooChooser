@@ -48,7 +48,19 @@ class TrainRideTest {
 	@Test
 	void test_TrainRide_User_ManyToOne_mapping() {
 		assertNotNull(trainRide);
-		assertEquals(1,trainRide.getUser().getId());
+		assertEquals(1, trainRide.getUser().getId());
+	}
+
+	@Test
+	void test_TrainRide_Train_OneToOne_mapping() {
+		assertNotNull(trainRide);
+		assertEquals(1, trainRide.getTrain().getId());
+	}
+
+	@Test
+	void test_TrainRide_RidePhoto_OneToMany_mapping() {
+		assertNotNull(trainRide);
+		assertTrue(trainRide.getPhotos().size() > 0);
 	}
 
 }

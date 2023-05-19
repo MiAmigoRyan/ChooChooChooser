@@ -45,4 +45,11 @@ class RidePhotoTest {
 		assertNotNull(ridePhoto);
 	}
 
+	@Test
+	void test_RidePhoto_to_TrainRide_ManyToOne_mapping() {
+		assertNotNull(ridePhoto);
+		assertEquals(1,ridePhoto.getRide().getId());
+		assertEquals(1,ridePhoto.getRide().getTrain().getId());
+	}
+
 }

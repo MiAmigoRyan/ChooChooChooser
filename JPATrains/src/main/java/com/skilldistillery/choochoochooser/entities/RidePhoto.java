@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,10 @@ public class RidePhoto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ManyToOne
+	@JoinColumn(name="train_ride_id")
+	public TrainRide ride;
+	
 	public RidePhoto() {
 	}
 
@@ -25,6 +31,14 @@ public class RidePhoto {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public TrainRide getRide() {
+		return ride;
+	}
+
+	public void setRide(TrainRide ride) {
+		this.ride = ride;
 	}
 
 	@Override
