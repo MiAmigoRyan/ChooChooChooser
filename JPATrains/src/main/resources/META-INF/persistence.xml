@@ -7,6 +7,7 @@
 <class>com.skilldistillery.choochoochooser.entities.Amenity</class>
 <class>com.skilldistillery.choochoochooser.entities.Engine</class>
 <class>com.skilldistillery.choochoochooser.entities.Region</class>
+<class>com.skilldistillery.choochoochooser.entities.RidePhoto</class>
 <class>com.skilldistillery.choochoochooser.entities.Route</class>
 <class>com.skilldistillery.choochoochooser.entities.Station</class>
 <class>com.skilldistillery.choochoochooser.entities.Train</class>
