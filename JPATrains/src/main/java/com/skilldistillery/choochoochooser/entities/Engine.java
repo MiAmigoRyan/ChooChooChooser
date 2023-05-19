@@ -1,5 +1,6 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,6 +46,28 @@ public class Engine {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public void addTrain(Train train) {
+		if (trains == null) {
+			trains = new ArrayList<>();
+		}
+		if (!trains.contains(train)) {
+			trains.add(train);
+			if (train.getEngine() != null) {
+				train.getEngine().removeTrain(train);
+
+			} else {
+				train.setEngine(this);
+			}
+		}
+	}
+
+	public void removeTrain(Train train) {
+		if (trains != null && trains.contains(train)) {
+			trains.remove(train);
+			train.setEngine(null);
+		}
 	}
 
 	@Override
