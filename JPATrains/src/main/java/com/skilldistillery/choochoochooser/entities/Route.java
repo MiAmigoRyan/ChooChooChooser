@@ -17,14 +17,34 @@ public class Route {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	//foreign key!!!*****************
-//	@Column(name="region_id")
-//	private int regionId;
+	@ManyToOne
+	@JoinColumn(name="start_station_id")
+	private Station startStation;
+
+	@ManyToOne
+	@JoinColumn(name="end_station_id")
+	private Station endStation;
 	
 	@ManyToOne
 	@JoinColumn(name="train_id")
 	private Train train;
 	
+	public Station getStartStation() {
+		return startStation;
+	}
+
+	public void setStartStation(Station startStation) {
+		this.startStation = startStation;
+	}
+
+	public Station getEndStation() {
+		return endStation;
+	}
+
+	public void setEndStation(Station endStation) {
+		this.endStation = endStation;
+	}
+
 	private String description;
 	private String photo;
 	

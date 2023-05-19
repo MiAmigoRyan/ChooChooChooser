@@ -46,4 +46,16 @@ class StationTest {
 		assertEquals("Georgetown Devil's Gate Station", station.getName());
 	}
 
+	@Test
+	void test_Station_to_Route_Start_OneToMany_mapping() {
+		assertNotNull(station);
+		assertTrue(station.getStartRoutes().size() > 0);
+	}
+
+	@Test
+	void test_Station_to_Route_End_OneToMany_mapping() {
+		assertNotNull(station);
+		assertTrue(station.getEndRoutes().size() > 0);
+	}
+
 }

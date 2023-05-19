@@ -50,6 +50,19 @@ class RouteTest {
 		assertEquals(1, route.getTrain().getId());
 		assertEquals("Georgetown Loop Railroad", route.getTrain().getName());
 	}
+	@Test
+	void test_Route_to_StartStation_ManyToOne_mapping() {
+		assertNotNull(route);
+		assertEquals(1, route.getStartStation().getId());
+		assertEquals("Georgetown Devil's Gate Station", route.getStartStation().getName());
+	}
+	
+	@Test
+	void test_Route_to_EndStation_ManyToOne_mapping() {
+		assertNotNull(route);
+		assertEquals(1, route.getEndStation().getId());
+		assertEquals("Georgetown Devil's Gate Station", route.getEndStation().getName());
+	}
 	
 	
 
