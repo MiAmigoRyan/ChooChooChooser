@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Route {
@@ -18,6 +20,11 @@ public class Route {
 	//foreign key!!!*****************
 //	@Column(name="region_id")
 //	private int regionId;
+	
+	@ManyToOne
+	@JoinColumn(name="train_id")
+	private Train train;
+	
 	private String description;
 	private String photo;
 	
@@ -31,6 +38,14 @@ public class Route {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Train getTrain() {
+		return train;
+	}
+
+	public void setTrain(Train train) {
+		this.train = train;
 	}
 
 	public String getDescription() {

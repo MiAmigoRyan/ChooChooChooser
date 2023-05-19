@@ -25,6 +25,9 @@ public class Train {
 	private int id;
 
 	@OneToMany(mappedBy="train")
+	private List<Route> routes;
+	
+	@OneToMany(mappedBy="train")
 	private List<TrainComment> trainComments;
 	
 	@ManyToMany
@@ -78,6 +81,14 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Route> getRoutes() {
+		return routes;
+	}
+
+	public void setRoutes(List<Route> routes) {
+		this.routes = routes;
 	}
 
 	public List<TrainComment> getTrainComments() {

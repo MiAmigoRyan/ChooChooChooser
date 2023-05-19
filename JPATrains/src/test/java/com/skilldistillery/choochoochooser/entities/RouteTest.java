@@ -42,7 +42,15 @@ class RouteTest {
 	@Test
 	void test_Route_entity_mapping() {
 		assertNotNull(route);
-		
 	}
+
+	@Test
+	void test_Route_to_Train_ManyToOne_mapping() {
+		assertNotNull(route);
+		assertEquals(1, route.getTrain().getId());
+		assertEquals("Georgetown Loop Railroad", route.getTrain().getName());
+	}
+	
+	
 
 }

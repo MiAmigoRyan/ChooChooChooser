@@ -83,4 +83,9 @@ class TrainTest {
 		assertNotNull(train);
 		assertTrue(train.getTrainComments().size() > 0);
 	}
+	@Test
+	void test_Train_to_Route_OneToMany_Mapping() {
+		assertNotNull(train);
+		assertTrue(train.getRoutes().size() > 0);
+	}
 }
