@@ -191,13 +191,13 @@ public class Train {
 		if (!trainComments.contains(comment)) {
 			trainComments.add(comment);
 			if (comment.getTrain() != null) {
-				comment.getTrain().removeTrain(comment);
+				comment.getTrain().removeTrainComment(comment);
 			}
 			comment.setTrain(this);
 		}
 	}
 
-	public void removeTrain(TrainComment comment) {
+	public void removeTrainComment(TrainComment comment) {
 		if (trainComments != null && trainComments.contains(comment)) {
 			trainComments.remove(comment);
 			comment.setTrain(null);

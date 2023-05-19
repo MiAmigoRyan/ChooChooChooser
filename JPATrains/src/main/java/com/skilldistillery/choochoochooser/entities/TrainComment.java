@@ -1,5 +1,6 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +21,21 @@ public class TrainComment {
 	private int id;
 
 	@ManyToOne
+	@JoinColumn(name="reply_comment_id")
+	private TrainComment reply;
+
+	@OneToMany(mappedBy="reply")
+	private List<TrainComment> replies;
+
+	
+	@ManyToOne
 	@JoinColumn(name="train_id")
 	private Train train;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
 	
 	public TrainComment() {
 	}
@@ -31,6 +46,30 @@ public class TrainComment {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public TrainComment getReply() {
+		return reply;
+	}
+
+	public void setReply(TrainComment reply) {
+		this.reply = reply;
+	}
+
+	public List<TrainComment> getReplies() {
+		return replies;
+	}
+
+	public void setReplies(List<TrainComment> replies) {
+		this.replies = replies;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Train getTrain() {

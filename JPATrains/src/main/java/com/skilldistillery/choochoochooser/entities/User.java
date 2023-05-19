@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,6 +27,12 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToMany(mappedBy="user")
+	private List<TrainRide> rides;
+	
+	@OneToMany(mappedBy="user")
+	private List<TrainComment> trainComments;
 	
 	@ManyToMany(mappedBy="users")
 	private List<Train> wishList;
@@ -61,6 +68,22 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<TrainRide> getRides() {
+		return rides;
+	}
+
+	public void setRides(List<TrainRide> rides) {
+		this.rides = rides;
+	}
+
+	public List<TrainComment> getTrainComments() {
+		return trainComments;
+	}
+
+	public void setTrainComments(List<TrainComment> trainComments) {
+		this.trainComments = trainComments;
 	}
 
 	public List<Train> getWishList() {
@@ -141,6 +164,49 @@ public class User {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	
+	public void addTrainRide(TrainRide ride) {
+		if (rides == null) {
+			rides = new ArrayList<>();
+		}
+		if (!rides.contains(ride)) {
+			rides.add(ride);
+			if (ride.getUser() != null) {
+				ride.getUser().removeTrainRide(ride);
+			}
+			ride.setUser(null);
+		}
+	}
+
+	public void removeTrainRide(TrainRide ride) {
+		if (rides != null && rides.contains(ride)) {
+			rides.remove(ride);
+			ride.setUser(null);
+		}
+	}
+	
+	
+	
+	public void addTrainComment(TrainComment comment) {
+		if (trainComments == null) {
+			trainComments = new ArrayList<>();
+		}
+		if (!trainComments.contains(comment)) {
+			trainComments.add(comment);
+			if (comment.getUser() != null) {
+				comment.getUser().removeTrainComment(comment);
+			}
+			comment.setUser(null);
+		}
+	}
+
+	public void removeTrainComment(TrainComment comment) {
+		if (trainComments != null && trainComments.contains(comment)) {
+			trainComments.remove(comment);
+			comment.setUser(null);
+		}
 	}
 	
 	public void addWishList(Train train) {

@@ -45,4 +45,10 @@ class TrainRideTest {
 		assertNotNull(trainRide);
 	}
 
+	@Test
+	void test_TrainRide_User_ManyToOne_mapping() {
+		assertNotNull(trainRide);
+		assertEquals(1,trainRide.getUser().getId());
+	}
+
 }

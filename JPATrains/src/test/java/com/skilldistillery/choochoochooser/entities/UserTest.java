@@ -55,5 +55,15 @@ class UserTest {
 		assertNotNull(user);
 		assertTrue(user.getWishList().size() > 0);
 	}
+	@Test
+	void test_User_to_Comment_OneToMany_Mapping() {
+		assertNotNull(user);
+		assertTrue(user.getTrainComments().size() > 0);
+	}
+	@Test
+	void test_User_to_Ride_OneToMany_Mapping() {
+		assertNotNull(user);
+		assertTrue(user.getRides().size() > 0);
+	}
 
 }
