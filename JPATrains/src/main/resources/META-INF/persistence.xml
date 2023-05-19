@@ -10,6 +10,7 @@
 <class>com.skilldistillery.choochoochooser.entities.Route</class>
 <class>com.skilldistillery.choochoochooser.entities.Station</class>
 <class>com.skilldistillery.choochoochooser.entities.Train</class>
+<class>com.skilldistillery.choochoochooser.entities.TrainRide</class>
 <class>com.skilldistillery.choochoochooser.entities.User</class>
 
 
