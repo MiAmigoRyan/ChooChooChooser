@@ -6,6 +6,7 @@
 	<!--BEGIN ENTITIES  -->
 <class>com.skilldistillery.choochoochooser.entities.User</class>
 <class>com.skilldistillery.choochoochooser.entities.Train</class>
+<class>com.skilldistillery.choochoochooser.entities.Engine</class>
 
 
 	<!--END ENTITIES -->
