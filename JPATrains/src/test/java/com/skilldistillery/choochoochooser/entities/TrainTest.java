@@ -58,20 +58,29 @@ class TrainTest {
 		assertNotNull(train);
 		assertEquals("Steam Locomotive", train.getEngine().getType());
 	}
+
 	@Test
 	void test_Train_to_User_ManyToOne_Mapping() {
 		assertNotNull(train);
 		assertEquals("admin", train.getUser().getUsername());
 	}
+
 	@Test
 	void test_Train_to_Amenity_ManyToMany_Mapping() {
 		assertNotNull(train);
-		assertNotNull (train.getAmenities());
+		assertNotNull(train.getAmenities());
 	}
+
 	@Test
 	void test_Train_to_User_ManyToMany_Mapping() {
 		assertNotNull(train);
 		assertNotNull(train.getUsers());
-		assertTrue(train.getUsers().size()>0);
+		assertTrue(train.getUsers().size() > 0);
+	}
+
+	@Test
+	void test_Train_to_Comment_ManyToOne_Mapping() {
+		assertNotNull(train);
+		assertTrue(train.getTrainComments().size() > 0);
 	}
 }

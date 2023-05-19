@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,6 +24,8 @@ public class Train {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@OneToMany(mappedBy="train")
+	private List<TrainComment> trainComments;
 	
 	@ManyToMany
 	@JoinTable(name = "wishlist_train", 
@@ -75,6 +78,14 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<TrainComment> getTrainComments() {
+		return trainComments;
+	}
+
+	public void setTrainComments(List<TrainComment> trainComments) {
+		this.trainComments = trainComments;
 	}
 
 	public List<User> getUsers() {
@@ -173,6 +184,26 @@ public class Train {
 		this.website = website;
 	}
 
+	public void addTrainComment(TrainComment comment) {
+		if (trainComments == null) {
+			trainComments = new ArrayList<>();
+		}
+		if (!trainComments.contains(comment)) {
+			trainComments.add(comment);
+			if (comment.getTrain() != null) {
+				comment.getTrain().removeTrain(comment);
+			}
+			comment.setTrain(this);
+		}
+	}
+
+	public void removeTrain(TrainComment comment) {
+		if (trainComments != null && trainComments.contains(comment)) {
+			trainComments.remove(comment);
+			comment.setTrain(null);
+		}
+	}
+	
 	
 	public void addUser(User user) {
 		if (users == null) {

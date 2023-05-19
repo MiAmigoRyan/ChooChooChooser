@@ -1,6 +1,7 @@
 package com.skilldistillery.choochoochooser.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,6 +44,12 @@ class TrainCommentTest {
 	@Test
 	void test_TrainComment_mapping() {
 		assertNotNull(trainComment);
+	}
+
+	@Test
+	void test_TrainComment_to_Train_ManyToOne_mapping() {
+		assertNotNull(trainComment);
+		assertEquals(1, trainComment.getTrain().getId());
 	}
 
 }
