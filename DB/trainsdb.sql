@@ -24,12 +24,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `enabled` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `description` TEXT(500) NULL,
   `profile_photo` VARCHAR(2000) NULL,
+  `enabled` TINYINT NULL,
+  `role` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `engine` ;
 CREATE TABLE IF NOT EXISTS `engine` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(200) NULL,
+  `description` VARCHAR(500) NULL,
   `photo` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -70,15 +70,15 @@ DROP TABLE IF EXISTS `train` ;
 CREATE TABLE IF NOT EXISTS `train` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `photo` LONGTEXT NULL,
-  `rail_gauge_id` INT NOT NULL,
-  `engine_id` INT NOT NULL,
+  `description` TEXT NULL,
   `year_round` TINYINT NULL,
-  `created_by_user_id` INT NOT NULL,
+  `photo` LONGTEXT NULL,
+  `website` VARCHAR(2000) NULL,
   `create_date` DATETIME NULL,
   `last_update` DATETIME NULL,
-  `description` TEXT NULL,
-  `website` VARCHAR(2000) NULL,
+  `rail_gauge_id` INT NOT NULL,
+  `engine_id` INT NOT NULL,
+  `created_by_user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_train_rail_gauge_idx` (`rail_gauge_id` ASC),
   INDEX `fk_train_engine1_idx` (`engine_id` ASC),
@@ -133,10 +133,10 @@ DROP TABLE IF EXISTS `station` ;
 
 CREATE TABLE IF NOT EXISTS `station` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
   `amenities` VARCHAR(45) NULL,
   `photo` VARCHAR(2000) NULL,
   `notable_features` TEXT NULL,
-  `name` VARCHAR(45) NOT NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
   `street` VARCHAR(100) NULL,
@@ -153,11 +153,11 @@ DROP TABLE IF EXISTS `route` ;
 CREATE TABLE IF NOT EXISTS `route` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` TEXT NULL,
-  `region_id` INT NOT NULL,
+  `photo` VARCHAR(2000) NULL,
   `start_station_id` INT NOT NULL,
   `end_station_id` INT NOT NULL,
-  `photo` VARCHAR(2000) NULL,
   `train_id` INT NOT NULL,
+  `region_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_route_region1_idx` (`region_id` ASC),
   INDEX `fk_route_station1_idx` (`start_station_id` ASC),
@@ -194,14 +194,14 @@ DROP TABLE IF EXISTS `train_ride` ;
 CREATE TABLE IF NOT EXISTS `train_ride` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NULL,
-  `content` TEXT NULL,
-  `create_date` DATETIME NULL,
+  `ride_date` DATE NULL,
   `rating` SMALLINT(1) NULL,
+  `content` TEXT NULL,
   `photo` LONGTEXT NULL,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
   `user_id` INT NOT NULL,
   `train_id` INT NOT NULL,
-  `last_update` DATETIME NULL,
-  `ride_date` DATE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_review_user1_idx` (`user_id` ASC),
   INDEX `fk_review_train1_idx` (`train_id` ASC),
@@ -334,7 +334,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `description`, `profile_photo`) VALUES (1, 'admin', 'admin', 1, 'ADMIN', NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 'Yosemite', 'Sam', 'World renowned gunslinger | Don\'t mess with his trains.', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Yosemite_Sam.svg/360px-Yosemite_Sam.svg.png', 1, 'ADMIN');
 
 COMMIT;
 
@@ -344,7 +344,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `rail_gauge` (`id`, `type`, `description`) VALUES (1, 'Narrow Gauge', NULL);
+INSERT INTO `rail_gauge` (`id`, `type`, `description`) VALUES (1, 'Narrow Gauge', 'a railway with a track gauge narrower than standard 1,435 mm (4 ft 8+1⁄2 in). Most narrow-gauge railways are between 600 mm (1 ft 11+5⁄8 in) and 1,067 mm (3 ft 6 in).');
 
 COMMIT;
 
@@ -354,7 +354,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `engine` (`id`, `type`, `description`, `photo`) VALUES (1, 'Steam Locomotive', NULL, NULL);
+INSERT INTO `engine` (`id`, `type`, `description`, `photo`) VALUES (1, 'Steam Locomotive', 'A locomotive that provides the force to move itself and other vehicles by means of the expansion of steam.[1]: 80  It is fuelled by burning combustible material (usually coal, oil or, rarely, wood) to heat water in the locomotive\'s boiler to the point where it becomes gaseous and its volume increases 1,700 times.', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/10/3-Locomotive-Portrait-Hall-Tunnel-10.5.19.jpg-Pumped-Reduced-1200x800.jpg');
 
 COMMIT;
 
@@ -364,7 +364,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `train` (`id`, `name`, `photo`, `rail_gauge_id`, `engine_id`, `year_round`, `created_by_user_id`, `create_date`, `last_update`, `description`, `website`) VALUES (1, 'Georgetown Loop Railroad', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/08/Shane-111-High-Bridge-East-Side.jpg', 1, 1, 0, 1, NULL, NULL, NULL, 'https://www.georgetownlooprr.com/');
+INSERT INTO `train` (`id`, `name`, `description`, `year_round`, `photo`, `website`, `create_date`, `last_update`, `rail_gauge_id`, `engine_id`, `created_by_user_id`) VALUES (1, 'Georgetown Loop Railroad', 'History of Georgetown Completed in 1884, this spectacular stretch of three-foot narrow gauge railroad was considered an engineering marvel for its time. The Georgetown Loop Railroad® was one of Colorado’s first visitor attractions with seven trains a day running out of Denver at the height of its popularity, the Georgetown Loop became Colorado’s scenic “must-see.” Guidebooks, pamphlets, and postcards help send the images of the steep canyons and mountain peaks finally accessible by train across the nation.', 0, 'https://www.georgetownlooprr.com/wp-content/uploads/2019/08/Shane-111-High-Bridge-East-Side.jpg', 'https://www.georgetownlooprr.com/', NULL, NULL, 1, 1, 1);
 
 COMMIT;
 
@@ -374,7 +374,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (1, 'Dining Car', NULL);
+INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (1, 'Dining Car', 'A railroad passenger car that serves meals in the manner of a full-service, sit-down restaurant.');
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (2, 'Whistle Stops', NULL);
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (3, 'Narrator', NULL);
 INSERT INTO `amenity` (`id`, `type`, `description`) VALUES (4, 'Open-Air', NULL);
@@ -397,7 +397,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `station` (`id`, `amenities`, `photo`, `notable_features`, `name`, `city`, `state`, `street`, `zip_code`) VALUES (1, NULL, NULL, NULL, 'Georgetown Devil\'s Gate Station', NULL, NULL, NULL, NULL);
+INSERT INTO `station` (`id`, `name`, `amenities`, `photo`, `notable_features`, `city`, `state`, `street`, `zip_code`) VALUES (1, 'Georgetown Devil\'s Gate Station', NULL, 'https://www.georgetownlooprr.com/wp-content/uploads/2020/04/devilsgateair-0008-06-08-19.jpg', NULL, 'Georgetown', 'Colorado', '646 Loop Drive', '80444');
+INSERT INTO `station` (`id`, `name`, `amenities`, `photo`, `notable_features`, `city`, `state`, `street`, `zip_code`) VALUES (2, 'Silver Plume Station', NULL, 'https://www.georgetownlooprr.com/wp-content/uploads/2020/05/silverplume-0001.jpg', NULL, 'Silver Plume', 'Colorado', '825 Railroad Avenue', '80476');
 
 COMMIT;
 
@@ -407,7 +408,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `route` (`id`, `description`, `region_id`, `start_station_id`, `end_station_id`, `photo`, `train_id`) VALUES (1, NULL, 1, 1, 1, NULL, 1);
+INSERT INTO `route` (`id`, `description`, `photo`, `start_station_id`, `end_station_id`, `train_id`, `region_id`) VALUES (1, 'Georgetown Loop', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/09/Current-Rail-Map.jpeg', 1, 1, 1, 1);
+INSERT INTO `route` (`id`, `description`, `photo`, `start_station_id`, `end_station_id`, `train_id`, `region_id`) VALUES (2, 'Georgetown to Silver Plume', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/09/Current-Rail-Map.jpeg', 1, 2, 1, 1);
+INSERT INTO `route` (`id`, `description`, `photo`, `start_station_id`, `end_station_id`, `train_id`, `region_id`) VALUES (3, 'Silver Plume to Georgetown', 'https://www.georgetownlooprr.com/wp-content/uploads/2019/09/Current-Rail-Map.jpeg', 2, 1, 1, 1);
 
 COMMIT;
 
@@ -417,7 +420,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `train_ride` (`id`, `title`, `content`, `create_date`, `rating`, `photo`, `user_id`, `train_id`, `last_update`, `ride_date`) VALUES (1, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `photo`, `create_date`, `last_update`, `user_id`, `train_id`) VALUES (1, 'Risking it all at Devil\'s Gate', '2019-10-24', 5, NULL, 'https://www.georgetownlooprr.com/wp-content/uploads/2022/01/111-High-Bridge-6.22.19-For-Website-2048x1287.jpg', NULL, NULL, 1, 1);
 
 COMMIT;
 
@@ -437,7 +440,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `ride_photo` (`id`, `photo`, `train_ride_id`) VALUES (1, NULL, 1);
+INSERT INTO `ride_photo` (`id`, `photo`, `train_ride_id`) VALUES (1, 'https://www.georgetownlooprr.com/wp-content/uploads/2020/04/meet111-40-0001.jpg', 1);
+INSERT INTO `ride_photo` (`id`, `photo`, `train_ride_id`) VALUES (2, 'https://www.georgetownlooprr.com/wp-content/uploads/2020/05/lebanon0003.jpg', 1);
+INSERT INTO `ride_photo` (`id`, `photo`, `train_ride_id`) VALUES (3, 'https://www.georgetownlooprr.com/wp-content/uploads/2020/11/1934pg0003-11-04-20-2.jpg', 1);
 
 COMMIT;
 
@@ -447,7 +452,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `train_comment` (`id`, `content`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`) VALUES (1, NULL, NULL, 1, 1, NULL);
+INSERT INTO `train_comment` (`id`, `content`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`) VALUES (1, 'This train was GREAT!', '2019-10-24', 1, 1, NULL);
 
 COMMIT;
 
