@@ -36,3 +36,9 @@ body.dark-mode table.table thead th {
 body.dark-mode table.table tbody td {
   color: #fff;
 }
+
+@media only screen and (max-width: 500px) {
+    .modal {
+        position: relative;
+    }
+}

@@ -1,21 +1,23 @@
 package com.skilldistillery.choochoochooser.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.choochoochooser.entities.Train;
+import com.skilldistillery.choochoochooser.entities.TrainRide;
 import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
 public class UserDaoImpl implements UserDAO {
 
-	//NO transaction begin/commit
-	//NO em.close()
-	//emf and em are created already :)
-	
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -33,13 +35,32 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public User createUser(User user) {
-		
+	public User createUser(User user) {	
 		em.persist(user);
 		if(em.contains(user)) {
 			return user;
 		}	
 		return null ;
 	}
+
+	@Override
+	public TrainRide addRide(TrainRide userRide) {
+		em.persist(userRide);
+		return userRide;
+	}
+
+	@Override
+	public List<Train> viewWishlist(Train wishList) {
+		String jpql = "SELECT t FROM Train t "
+				+ "JOIN FETCH t.users "
+				+ "WHERE u.id = :userId";
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.getResultList();	
+		return trains;
+	}
+	
+	
+	
+	
 
 }
