@@ -20,31 +20,31 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		
 		String jpql = "SELECT t FROM Train t WHERE t.name LIKE :keyword";
-		
 		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("keyword",  keyword )
+				.setParameter("keyword", keyword)
 				.getResultList();
-		
 		return trains;
 	}
 
 	@Override
 	public List<Train> findTrainByName(String name) {
 		String jpql = "SELECT t FROM Train t WHERE t.name = :name";
-		
 		List<Train> trains = em.createQuery(jpql, Train.class)
 				.setParameter("name", name)
 				.getResultList();
-		
 		return trains;
 	}
-		
-	
-	
 
+	@Override
+	public List<Train> findTrainByRegion(String region) {
+		String jpql = "SELECT t FROM Train t WHERE t.region = :region";
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.setParameter("name", region)
+				.getResultList();
+		return trains;
+	}
 }

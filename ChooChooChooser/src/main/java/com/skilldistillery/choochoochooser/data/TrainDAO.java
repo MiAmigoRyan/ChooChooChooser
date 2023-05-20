@@ -14,6 +14,6 @@ public interface TrainDAO {
 	
 	List<Train> findTrainByKeyword(String keyword);
 	
-	//findtrainbyregion
+	List<Train> findTrainByRegion(String region);
 
 }
