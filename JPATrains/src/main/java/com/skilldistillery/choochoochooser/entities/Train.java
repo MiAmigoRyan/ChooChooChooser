@@ -17,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Train {
 
@@ -62,9 +65,11 @@ public class Train {
 	private Boolean yearRound;
 
 	@Column(name = "create_date")
+	@CreationTimestamp
 	private LocalDateTime createDate;
 
 	@Column(name = "last_update")
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 
 	private String description;
