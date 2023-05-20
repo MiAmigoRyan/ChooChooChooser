@@ -13,12 +13,12 @@ public interface UserDAO {
 	
 	TrainRide addRide (TrainRide userRide);
 	
+	void removeRide(TrainRide userRide);
+	
 	List<Train> viewWishlist(Train wishList);
 	
 	//User removeuser (this is an admin method!)
-	
-	//findtrainbyregion
 	//search comments by flags
 	//remove coments
-	//
+	
 }
