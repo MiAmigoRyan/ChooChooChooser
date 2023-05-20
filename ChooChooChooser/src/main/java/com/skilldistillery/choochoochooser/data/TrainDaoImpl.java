@@ -23,27 +23,18 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		String jpql = "SELECT t FROM Train t WHERE t.name LIKE :keyword";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("keyword", keyword)
-				.getResultList();
-		return trains;
-	}
+		String jpql = "SELECT t FROM Train t "
+				+ "JOIN t.route r "
+				+ "JOIN r.region reg"
+				+ "WHERE LOWER (t.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (reg.name) "
+				+ 	"LIKE LOWER (:keyword)";
 
-	@Override
-	public List<Train> findTrainByName(String name) {
-		String jpql = "SELECT t FROM Train t WHERE t.name = :name";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("name", name)
-				.getResultList();
-		return trains;
-	}
-
-	@Override
-	public List<Train> findTrainByRegion(String region) {
-		String jpql = "SELECT t FROM Train t WHERE t.region = :region";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("name", region)
+		
+		
+		
+		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return trains;
 	}
@@ -51,8 +42,7 @@ public class TrainDaoImpl implements TrainDAO {
 	@Override
 	public List<Train> listAllTrains() {
 		String jpql = "SELECT t FROM Train t";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.getResultList();
+		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
 		return trains;
 	}
 }
