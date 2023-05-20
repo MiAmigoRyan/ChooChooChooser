@@ -52,9 +52,8 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<Train> viewWishlist(Train wishList) {
 		String jpql = "SELECT t FROM Train t "
-				+ "JOIN t.wishlist wt "
-				+ "JOIN wt.user u "
-				+ "WHERE u.id = userId";
+				+ "JOIN FETCH t.users "
+				+ "WHERE u.id = :userId";
 		List<Train> trains = em.createQuery(jpql, Train.class)
 				.getResultList();	
 		return trains;
