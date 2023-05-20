@@ -1,21 +1,23 @@
 package com.skilldistillery.choochoochooser.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.choochoochooser.entities.Train;
+import com.skilldistillery.choochoochooser.entities.TrainRide;
 import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
 public class UserDaoImpl implements UserDAO {
 
-	//NO transaction begin/commit
-	//NO em.close()
-	//emf and em are created already :)
-	
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -33,13 +35,51 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public User createUser(User user) {
-		
+	public User createUser(User user) {	
 		em.persist(user);
 		if(em.contains(user)) {
 			return user;
 		}	
 		return null ;
 	}
+
+	@Override
+	public List<Train> findTrainByKeyword(String keyword) {
+		
+		String jpql = "SELECT t FROM Train t WHERE t.name LIKE :keyword";
+		
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.setParameter("keyword",  keyword )
+				.getResultList();
+		
+		return trains;
+	}
+
+	@Override
+	public List<Train> findTrainByName(String name) {
+		String jpql = "SELECT t FROM Train t WHERE t.name = :name";
+		
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.setParameter("name", name)
+				.getResultList();
+		
+		return trains;
+	}
+
+	@Override
+	public TrainRide addRide(TrainRide userRide) {
+		em.persist(userRide);
+		return userRide;
+	}
+
+//	@Override
+//	public List<TrainRide> viewWishlist(TrainRide wishList) {
+//		String jpql = "SELECT t FROM Train t JOIN    JOIN   WHERE u.id = userId";
+//		return null;
+//	}
+//	
+	
+	
+	
 
 }
