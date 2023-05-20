@@ -10,6 +10,8 @@
 							class='btn btn-outline-success'>Home</button></a></li>
 				<li><a href="logout.do"><button type='button'
 							class='btn btn-outline-success'>logout</button></a></li>
+				<li><a href="allTrains.do"><button type='button'
+							class='btn btn-outline-success'>List All Trains</button></a>
 			</c:when>
 
 			<c:otherwise>
@@ -88,8 +90,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h1 class="modal-title fs-5" id="LoginModalLabel">Sign
-										In</h1>
+									<h1 class="modal-title fs-5" id="LoginModalLabel">Sign In</h1>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
@@ -110,6 +111,8 @@
 							</div>
 						</div>
 					</div></li>
+				<li><a href="allTrains.do"><button type='button'
+							class='btn btn-outline-success'>List All Trains</button></a>
 			</c:otherwise>
 		</c:choose>
 	</ul>

@@ -47,4 +47,12 @@ public class TrainDaoImpl implements TrainDAO {
 				.getResultList();
 		return trains;
 	}
+
+	@Override
+	public List<Train> listAllTrains() {
+		String jpql = "SELECT t FROM Train t";
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.getResultList();
+		return trains;
+	}
 }
