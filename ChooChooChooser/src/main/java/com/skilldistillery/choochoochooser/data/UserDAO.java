@@ -11,16 +11,14 @@ public interface UserDAO {
 	User findByUsernameAndPassword(String username, String password);
 	User createUser(User user);
 	
-	
-	List<Train> findTrainByName(String name);
-	
-	List<Train> findTrainByKeyword(String keyword);
-	
 	TrainRide addRide (TrainRide userRide);
 	
-	//User addRideToWishList
-	//USER viewWishlist
-	//User removeRide
-	//User removeRide (this is an admin method!)
+	List<Train> viewWishlist(Train wishList);
 	
+	//User removeuser (this is an admin method!)
+	
+	//findtrainbyregion
+	//search comments by flags
+	//remove coments
+	//
 }

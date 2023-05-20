@@ -44,40 +44,22 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Train> findTrainByKeyword(String keyword) {
-		
-		String jpql = "SELECT t FROM Train t WHERE t.name LIKE :keyword";
-		
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("keyword",  keyword )
-				.getResultList();
-		
-		return trains;
-	}
-
-	@Override
-	public List<Train> findTrainByName(String name) {
-		String jpql = "SELECT t FROM Train t WHERE t.name = :name";
-		
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("name", name)
-				.getResultList();
-		
-		return trains;
-	}
-
-	@Override
 	public TrainRide addRide(TrainRide userRide) {
 		em.persist(userRide);
 		return userRide;
 	}
 
-//	@Override
-//	public List<TrainRide> viewWishlist(TrainRide wishList) {
-//		String jpql = "SELECT t FROM Train t JOIN    JOIN   WHERE u.id = userId";
-//		return null;
-//	}
-//	
+	@Override
+	public List<Train> viewWishlist(Train wishList) {
+		String jpql = "SELECT t FROM Train t "
+				+ "JOIN t.wishlist wt "
+				+ "JOIN wt.user u "
+				+ "WHERE u.id = userId";
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.getResultList();	
+		return trains;
+	}
+	
 	
 	
 	
