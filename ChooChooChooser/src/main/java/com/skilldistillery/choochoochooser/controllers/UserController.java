@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -14,7 +15,6 @@ import com.skilldistillery.choochoochooser.entities.User;
 
 @Controller
 public class UserController {
-
 	@Autowired
 	private UserDAO userDAO;
 
@@ -37,19 +37,38 @@ public class UserController {
 	}
 
 	// redirects an exsisting user to user page after login
-	@RequestMapping(path = "login.do")
-	private String userAccountPage(User user, Model model) {
-		model.addAttribute("loggedInUser", 
-				userDAO.findByUsernameAndPassword
-				(user.getUsername(), user.getPassword()));
-		return "UserPage";
-	}
+	@GetMapping(path = "login.do")
+	private String userAccountPage( HttpSession session) {
 
-	//LOGOUT CURRENT USER
+		if (session.getAttribute("loggedInUser") != null) {
+			return "UserPage";
+		}
+		return "home";
+
+			
+	}
+	
+	@PostMapping(path = "login.do")
+	private String loginCheck(User user, HttpSession session) {
+	    User loggedInUser = userDAO.findByUsernameAndPassword(
+	    		user.getUsername(), user.getPassword());
+	    
+	    if (loggedInUser != null) {
+	        session.setAttribute("loggedInUser", loggedInUser);
+	        return "UserPage";
+	    } 
+	    return "home";
+	    
+	}
+	
+
+// LOGOUT USER	
 	@GetMapping(path = "logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "login";
+		return "home";
 	}
-	
+
+
+
 }

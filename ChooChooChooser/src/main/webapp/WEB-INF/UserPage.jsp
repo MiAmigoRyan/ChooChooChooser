@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="nav.jsp"%>
 <a>USER PAGE</a>
 </body>
 </html>

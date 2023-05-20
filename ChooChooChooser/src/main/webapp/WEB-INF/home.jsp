@@ -11,18 +11,8 @@
 
 </head>
 <body class="dark-mode">
+<%@ include file="nav.jsp"%>
 
-	<form action="login.do" method="GET">
-		<div class='col-5 offset-1'>
-			<span class='input-group-text'>Username: </span> <input
-				class='form-control' type='text' name='username' />
-		</div>
-		<div class='col-5'>
-			<span class='input-group-text'>Password: </span> <input
-				class='form-control' type='password' name='password' />
-		</div>
-		<input type='submit' class='btn btn-success' name='login'>
-	</form>
 
 	<button type="button" class="btn btn-outline-success"
 		data-bs-toggle='modal' data-bs-target='#exampleModal'>
@@ -64,7 +54,7 @@
 							</div>
 							<div class='col-5 offset-1'>
 								<span class='input-group-text'>Upload A Profile Picture
-									(URL): </span> <input class='form-control' type='' name='profilePhoto' />
+									(URL): </span> <input class='form-control' type='text' name='profilePhoto' />
 							</div>
 							<div class='col-9 offset-1'>
 								<span class='input-group-text'>About Me : </span>
