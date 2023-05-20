@@ -1,5 +1,7 @@
 package com.skilldistillery.choochoochooser.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,4 +45,11 @@ public class UserController {
 		return "UserPage";
 	}
 
+	//LOGOUT CURRENT USER
+	@GetMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "login";
+	}
+	
 }
