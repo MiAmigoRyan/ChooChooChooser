@@ -18,6 +18,11 @@ public class TrainController {
 			return "home";	
 		}
 		
+		@RequestMapping(path= {"trainSearch.do"})
+		public String searchTrainByRegionAndName(String keyword, Model model) {
+			model.addAttribute("trains", trainDAO.findTrainByKeyword(keyword));
+			return "ShowTrains";
+		}
 		
 //		private String home(Model model) {
 //			return "home";
