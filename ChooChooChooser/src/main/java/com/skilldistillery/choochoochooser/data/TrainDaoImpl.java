@@ -39,29 +39,31 @@ public class TrainDaoImpl implements TrainDAO {
 	}
 
 	
-	@Override List<Object[]> findUsersAndTrainsByKeyword(String keyword){
-		String jpql = "SELECT DISTINCT t, u "
-				+ "FROM Train t "
-				+ "JOIN t.user u "
-				+ "JOIN t.route r "
-				+ "WHERE LOWER (r.region.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.train.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.startStation.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.endStation.name) "
-				+ 	"LIKE LOWER (:keyword)"
-				+ "OR LOWER(u.name) "
-				+ "	LIKE LOWER(:keyword)";
-		
-		List<Object[]> searchResult = em.createQuery(jpql, new Class<?>[]{User.class, Train.class})
-				.setParameter("keyword", "%" + keyword + "%")
-				.getResultList();
-		
-		return searchResult;
-
-	}
+//               S T R E T C H   G O A L  S E A R C H	
+//	@Override 
+//	public List<Object[]> findUsersAndTrainsByKeyword(String keyword){
+//		String jpql = "SELECT DISTINCT t, u "
+//				+ "FROM Train t "
+//				+ "JOIN t.user u "
+//				+ "JOIN t.route r "
+//				+ "WHERE LOWER (r.region.name) "
+//				+ 	"LIKE LOWER (:keyword) "
+//				+ "OR LOWER (r.train.name) "
+//				+ 	"LIKE LOWER (:keyword) "
+//				+ "OR LOWER (r.startStation.name) "
+//				+ 	"LIKE LOWER (:keyword) "
+//				+ "OR LOWER (r.endStation.name) "
+//				+ 	"LIKE LOWER (:keyword)"
+//				+ "OR LOWER(u.name) "
+//				+ "	LIKE LOWER(:keyword)";
+//		
+//		List<Object[]> searchResult = em.createQuery(jpql, new Class<?>[]{User.class, Train.class})
+//				.setParameter("keyword", "%" + keyword + "%")
+//				.getResultList();
+//		
+//		return searchResult;
+//
+//	}
 	
 	@Override
 	public List<Train> listAllTrains() {

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.choochoochooser.entities.RidePhoto;
 import com.skilldistillery.choochoochooser.entities.Train;
 import com.skilldistillery.choochoochooser.entities.TrainRide;
 import com.skilldistillery.choochoochooser.entities.User;
@@ -62,6 +63,18 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public void removeRide(TrainRide userRide) {
 		em.remove(userRide);
+	}
+
+	@Override
+	public RidePhoto removePhoto(RidePhoto photo) {
+		em.remove(photo);
+		return null;
+	}
+
+	@Override
+	public RidePhoto addPhoto(RidePhoto photo) {
+		em.persist(photo);
+		return null;
 	}
 	
 	
