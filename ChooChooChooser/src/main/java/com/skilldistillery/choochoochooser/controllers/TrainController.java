@@ -24,8 +24,4 @@ public class TrainController {
 			return "ShowTrains";
 		}
 		
-//		private String home(Model model) {
-//			return "home";
-//		}
-		
 }
