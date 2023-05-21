@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HOME PAGE</title>
+<title>Search Results</title>
 <jsp:include page="BootstrapHead.jsp"></jsp:include>
 
 <link rel="style" type="text/css" href="css/style.css">
@@ -12,8 +12,7 @@
 </head>
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
- 
-<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -23,7 +22,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="train" items="${trainList}">
+			<c:forEach var="train" items="${trains}">
 				<tr>
 					<td>${train.id}</td>
 					<td>${train.name}</td>
@@ -33,9 +32,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
-	
-
 </body>
 
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>

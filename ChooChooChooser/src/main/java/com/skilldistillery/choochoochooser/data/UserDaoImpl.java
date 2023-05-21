@@ -58,6 +58,11 @@ public class UserDaoImpl implements UserDAO {
 				.getResultList();	
 		return trains;
 	}
+
+	@Override
+	public void removeRide(TrainRide userRide) {
+		em.remove(userRide);
+	}
 	
 	
 	

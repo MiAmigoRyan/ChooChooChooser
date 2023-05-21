@@ -8,12 +8,11 @@ import com.skilldistillery.choochoochooser.entities.User;
 
 public interface TrainDAO {
 
-	
-	
-	List<Train> findTrainByName(String name);
-	
+	List<Train> listAllTrains();
+		
 	List<Train> findTrainByKeyword(String keyword);
 	
-	//findtrainbyregion
+
+	
 
 }
