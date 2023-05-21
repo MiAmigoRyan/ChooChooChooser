@@ -17,11 +17,11 @@
   <div class="carousel-inner">
 	    <c:forEach var="train" items="${trainList}" varStatus="status">
 	    <div class="carousel-item ${status.index == 0 ? 'active' : ' ' }">
-		<a href= "${train.website }">
 			<div class="carousel-item active">
+		<a href= "${train.website }">
     			<img src=${train.photo } class="d-block w-100" alt="train">
-    		</div>
 		</a>
+    		</div>
 	    </div>
 		</c:forEach>
   </div>
