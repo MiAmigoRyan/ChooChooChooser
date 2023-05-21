@@ -6,20 +6,37 @@
 	<ul>
 		<c:choose>
 			<c:when test="${! empty sessionScope.loggedInUser }">
-				<li><a href="home.do"><button type='button'
-							class='btn btn-outline-success'>Home</button></a></li>
-				<li><a href="logout.do"><button type='button'
-							class='btn btn-outline-success'>logout</button></a></li>
-				
+				<li>
+					<div class='col'>
+						<a href="home.do"><button type='button'
+								class='btn btn-outline-success'>Home</button></a>
+					</div>
+				</li>
+				<li>
+					<div class=col-2>
+						<a href="logout.do"><button type='button'
+								class='btn btn-outline-success'>logout</button></a>
+					</div>
+				</li>
+				<li>
+					<div class="col-9">
+						<form action="trainSearch.do" method="GET">
+							<input type="text" name="keyword" type="search"> <input
+								type="submit" class='btn btn-outline-success' value="Search">
+						</form>
+					</div>
+				</li>
 			</c:when>
 
 			<c:otherwise>
 
-				<li>search
-					<form action="trainSearch.do" method="GET">
-						<input type="text" name="keyword" type="search"> <input
-							type="submit">
-					</form>
+				<li>
+					<div class="col-9">
+						<form action="trainSearch.do" method="GET">
+							<input type="text" name="keyword" type="search"> <input
+								type="submit" class='btn btn-outline-success' value="Search">
+						</form>
+					</div>
 				</li>
 
 				<li><button type="button" class="btn btn-outline-success"
@@ -117,8 +134,6 @@
 							</div>
 						</div>
 					</div></li>
-				<li><a href="allTrains.do"><button type='button'
-							class='btn btn-outline-success'>List All Trains</button></a>
 			</c:otherwise>
 		</c:choose>
 	</ul>

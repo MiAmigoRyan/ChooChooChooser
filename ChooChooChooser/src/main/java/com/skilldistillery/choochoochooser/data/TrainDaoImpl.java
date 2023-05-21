@@ -23,7 +23,7 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		String jpql = "SELECT r.train FROM Route r "
+		String jpql = "SELECT DISTINCT r.train FROM Route r "
 				+ "WHERE LOWER (r.region.name) "
 				+ 	"LIKE LOWER (:keyword) "
 				+ "OR LOWER (r.train.name) "
