@@ -1,6 +1,7 @@
 package com.skilldistillery.choochoochooser.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,6 +43,7 @@ class RouteTest {
 	@Test
 	void test_Route_entity_mapping() {
 		assertNotNull(route);
+		assertEquals("Georgetown Loop", route.getDescription());
 	}
 
 	@Test

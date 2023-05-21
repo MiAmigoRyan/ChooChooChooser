@@ -10,54 +10,49 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	// ALL ABOARD!!!
-	//     (. '  )
-	//       . ')
-    //        . '
-	// ____    ,
+	// (. ' )
+	// . ')
+	// . '
+	// ____ ,
 	// |DD|____U_
 	// |_ |_____|<
-	//  @--@-@-oo\
-	
+	// @--@-@-oo\
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@OneToMany(mappedBy="user")
-	private List<TrainRide> rides;
-	
-	@OneToMany(mappedBy="user")
-	private List<TrainComment> trainComments;
-	
-	@ManyToMany(mappedBy="users")
-	private List<Train> wishList;
-	
-	@OneToMany(mappedBy="user")
-	private List<Train> trains;
-	
+
 	private String username;
-	
 	private String password;
-	
-	private Boolean enabled;
-	
-	private String role;
-	
-	@Column(name="first_name")
-	private String firstName;
-	
-	@Column(name="last_name")
-	private String lastName;
-	
 	private String description;
-	
-	@Column(name="profile_photo")
+	private Boolean enabled;
+	private String role;
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "profile_photo")
 	private String profilePhoto;
+
+	@OneToMany(mappedBy = "user")
+	private List<TrainRide> rides;
+
+	@OneToMany(mappedBy = "user")
+	private List<TrainComment> trainComments;
+
+	@ManyToMany(mappedBy = "users")
+	private List<Train> wishList;
+
+	@OneToMany(mappedBy = "user")
+	private List<Train> trains;
 
 	public User() {
 	}
@@ -68,46 +63,6 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<TrainRide> getRides() {
-		return rides;
-	}
-
-	public void setRides(List<TrainRide> rides) {
-		this.rides = rides;
-	}
-
-	public List<TrainComment> getTrainComments() {
-		return trainComments;
-	}
-
-	public void setTrainComments(List<TrainComment> trainComments) {
-		this.trainComments = trainComments;
-	}
-
-	public List<Train> getWishList() {
-		return wishList;
-	}
-
-	public void setWishList(List<Train> wishList) {
-		this.wishList = wishList;
-	}
-
-	public List<Train> getTrains() {
-		return trains;
-	}
-
-	public void setTrains(List<Train> trains) {
-		this.trains = trains;
-	}
-
-	public String getProfilePhoto() {
-		return profilePhoto;
-	}
-
-	public void setProfilePhoto(String profilePhoto) {
-		this.profilePhoto = profilePhoto;
 	}
 
 	public String getUsername() {
@@ -124,6 +79,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Boolean getEnabled() {
@@ -158,15 +121,46 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getProfilePhoto() {
+		return profilePhoto;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setProfilePhoto(String profilePhoto) {
+		this.profilePhoto = profilePhoto;
 	}
 
-	
+	public List<TrainRide> getRides() {
+		return rides;
+	}
+
+	public void setRides(List<TrainRide> rides) {
+		this.rides = rides;
+	}
+
+	public List<TrainComment> getTrainComments() {
+		return trainComments;
+	}
+
+	public void setTrainComments(List<TrainComment> trainComments) {
+		this.trainComments = trainComments;
+	}
+
+	public List<Train> getWishList() {
+		return wishList;
+	}
+
+	public void setWishList(List<Train> wishList) {
+		this.wishList = wishList;
+	}
+
+	public List<Train> getTrains() {
+		return trains;
+	}
+
+	public void setTrains(List<Train> trains) {
+		this.trains = trains;
+	}
+
 	public void addTrainRide(TrainRide ride) {
 		if (rides == null) {
 			rides = new ArrayList<>();
@@ -186,9 +180,7 @@ public class User {
 			ride.setUser(null);
 		}
 	}
-	
-	
-	
+
 	public void addTrainComment(TrainComment comment) {
 		if (trainComments == null) {
 			trainComments = new ArrayList<>();
@@ -208,7 +200,7 @@ public class User {
 			comment.setUser(null);
 		}
 	}
-	
+
 	public void addWishList(Train train) {
 		if (wishList == null) {
 			wishList = new ArrayList<>();
@@ -218,14 +210,13 @@ public class User {
 			train.addUser(this);
 		}
 	}
-	
+
 	public void removeWishList(Train train) {
 		if (wishList != null && wishList.contains(train)) {
 			wishList.remove(train);
 			train.removeUser(this);
 		}
 	}
-
 
 	public void addTrain(Train train) {
 		if (trains == null) {
@@ -246,7 +237,7 @@ public class User {
 			train.setUser(null);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -256,6 +247,8 @@ public class User {
 		builder.append(username);
 		builder.append(", password=");
 		builder.append(password);
+		builder.append(", description=");
+		builder.append(description);
 		builder.append(", enabled=");
 		builder.append(enabled);
 		builder.append(", role=");
@@ -264,18 +257,17 @@ public class User {
 		builder.append(firstName);
 		builder.append(", lastName=");
 		builder.append(lastName);
-		builder.append(", description=");
-		builder.append(description);
 		builder.append(", profilePhoto=");
 		builder.append(profilePhoto);
 		builder.append("]");
 		return builder.toString();
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -287,7 +279,5 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
-
-	
 
 }

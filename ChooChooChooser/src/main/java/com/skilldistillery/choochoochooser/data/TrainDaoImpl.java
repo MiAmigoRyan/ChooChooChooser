@@ -1,18 +1,14 @@
 package com.skilldistillery.choochoochooser.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.choochoochooser.entities.Train;
-import com.skilldistillery.choochoochooser.entities.TrainRide;
-import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional

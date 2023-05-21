@@ -27,6 +27,25 @@
 				<h2 class='fullName'><c:out value="${loggedInUser.firstName} "></c:out>
 				<c:out value="${loggedInUser.lastName}"></c:out></h2></div>
 				<div class="col-12"><blockquote><c:out value="${loggedInUser.description}"/></blockquote></div>
+				<span>Trains I've Ridden: </span>
+				<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Ride Photos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="train" items="${loggedInUser.rides}">
+					<tr>
+						<td>${train.id }</td>
+						<td>${train.train.name}</td>
+						<c:forEach var="photo" items="${train.photos}">
+							<td><img src="${photo.photo}" class="img-thumbnail" width="50%"/></td>
+						</c:forEach>
+				</c:forEach>
+				</table>						
 				<span>I Want to Ride: </span>
 				<table class="table table-striped table-hover">
 			<thead>

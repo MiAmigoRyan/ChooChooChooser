@@ -47,8 +47,9 @@ class RegionTest {
 	}
 
 	@Test
-	void test_Region_Route_OneToOne_mapping() {
+	void test_Region_Route_OneToMany_mapping() {
 		assertNotNull(region);
+		assertNotNull(region.getRoutes());
 		assertTrue(region.getRoutes().size() > 0);
 
 	}

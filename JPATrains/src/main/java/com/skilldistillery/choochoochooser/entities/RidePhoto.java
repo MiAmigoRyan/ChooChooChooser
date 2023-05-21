@@ -21,6 +21,8 @@ public class RidePhoto {
 	@ManyToOne
 	@JoinColumn(name="train_ride_id")
 	private TrainRide ride;
+
+	private String photo;
 	
 	public RidePhoto() {
 	}
@@ -39,6 +41,14 @@ public class RidePhoto {
 
 	public void setRide(TrainRide ride) {
 		this.ride = ride;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	@Override

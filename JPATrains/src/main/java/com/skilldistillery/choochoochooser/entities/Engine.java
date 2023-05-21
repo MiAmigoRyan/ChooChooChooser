@@ -17,19 +17,13 @@ public class Engine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String type;
-
-	public Engine() {
-	}
+	private String description;
+	private String photo;
 
 	@OneToMany(mappedBy = "engine")
 	private List<Train> trains;
 
-	public List<Train> getTrains() {
-		return trains;
-	}
-
-	public void setTrains(List<Train> trains) {
-		this.trains = trains;
+	public Engine() {
 	}
 
 	public int getId() {
@@ -46,6 +40,30 @@ public class Engine {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
+	public List<Train> getTrains() {
+		return trains;
+	}
+	
+	public void setTrains(List<Train> trains) {
+		this.trains = trains;
 	}
 
 	public void addTrain(Train train) {
@@ -75,6 +93,10 @@ public class Engine {
 		builder.append(id);
 		builder.append(", type=");
 		builder.append(type);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", photo=");
+		builder.append(photo);
 		builder.append("]");
 		return builder.toString();
 	}

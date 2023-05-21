@@ -8,15 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Route {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String description;
+	private String photo;
 	
 	@ManyToOne
 	@JoinColumn(name="start_station_id")
@@ -30,29 +30,36 @@ public class Route {
 	@JoinColumn(name="train_id")
 	private Train train;
 	
-	private String description;
-	
-	private String photo;
-	
 	@ManyToOne
 	@JoinColumn(name="region_id")
 	private Region region;
 	
 	public Route() {
-		
 	}
 	
-	public Region getRegion() {
-		return region;
+	public int getId() {
+		return id;
 	}
-
-
-
-	public void setRegion(Region region) {
-		this.region = region;
+	
+	public void setId(int id) {
+		this.id = id;
 	}
-
-
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	public Station getStartStation() {
 		return startStation;
@@ -69,14 +76,6 @@ public class Route {
 	public void setEndStation(Station endStation) {
 		this.endStation = endStation;
 	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Train getTrain() {
 		return train;
@@ -85,21 +84,13 @@ public class Route {
 	public void setTrain(Train train) {
 		this.train = train;
 	}
-
-	public String getDescription() {
-		return description;
+	
+	public Region getRegion() {
+		return region;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 	@Override
@@ -111,6 +102,14 @@ public class Route {
 		builder.append(description);
 		builder.append(", photo=");
 		builder.append(photo);
+		builder.append(", startStation=");
+		builder.append(startStation);
+		builder.append(", endStation=");
+		builder.append(endStation);
+		builder.append(", train=");
+		builder.append(train);
+		builder.append(", region=");
+		builder.append(region);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -1,5 +1,6 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,14 +16,12 @@ public class Region {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String name;
 	
 	@OneToMany(mappedBy= "region")	
 	private List<Route> routes;
-	
-	private String name;
-	
+
 	public Region() {
-		
 	}
 
 	public int getId() {
@@ -33,7 +32,13 @@ public class Region {
 		this.id = id;
 	}
 	
+	public String getName() {
+		return name;
+	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public List<Route> getRoutes() {
 		return routes;
@@ -42,13 +47,25 @@ public class Region {
 	public void setRoute(List<Route> routes) {
 		this.routes = routes;
 	}
-
-	public String getName() {
-		return name;
+	
+	public void addRoute(Route route) {
+		if (routes == null) {
+			routes = new ArrayList<>();
+		}
+		if (!routes.contains(route)) {
+			routes.add(route);
+			if (route.getRegion() != null) {
+				route.getRegion().removeRoute(route);
+			}
+			route.setRegion(this);
+		}
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void removeRoute(Route route) {
+		if (routes != null && routes.contains(route)) {
+			routes.remove(route);
+			route.setRegion(null);
+		}
 	}
 
 	@Override

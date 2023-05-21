@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +17,20 @@ public class Station {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String name;
+	private String photo;
+	private String features;
+	private String street;
+	private String city;
+	private String state;
+	@Column(name="zip_code")
+	private String zipCode;
 	
 	@OneToMany (mappedBy="startStation")
 	private List<Route> startRoutes;
 
 	@OneToMany (mappedBy="endStation")
 	private List<Route> endRoutes;
-
-	private String name;
 	
 	public Station() {	
 	}
@@ -34,6 +41,62 @@ public class Station {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(String features) {
+		this.features = features;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public List<Route> getStartRoutes() {
@@ -50,14 +113,6 @@ public class Station {
 
 	public void setEndRoutes(List<Route> endRoutes) {
 		this.endRoutes = endRoutes;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 
@@ -108,6 +163,14 @@ public class Station {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", street=");
+		builder.append(street);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", state=");
+		builder.append(state);
+		builder.append(", zipCCode=");
+		builder.append(zipCode);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -128,6 +191,5 @@ public class Station {
 		Station other = (Station) obj;
 		return id == other.id;
 	}
-	
 	
 }

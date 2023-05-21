@@ -1,9 +1,11 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,25 +16,43 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
-@Table(name ="train_ride")
+@Table(name = "train_ride")
 public class TrainRide {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToMany(mappedBy="ride")
-	private List<RidePhoto> photos;
-	
+	private String title;
+	private int rating;
+	private String content;
+
+	@Column(name = "ride_date")
+	private LocalDateTime rideDate;
+
+	@Column(name = "create_date")
+	@CreationTimestamp
+	private LocalDateTime createDate;
+
+	@Column(name = "last_update")
+	@UpdateTimestamp
+	private LocalDateTime lastUpdate;
+
 	@OneToOne
-	@JoinColumn(name ="train_id")
+	@JoinColumn(name = "train_id")
 	private Train train;
-	
+
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
+
+	@OneToMany(mappedBy = "ride")
+	private List<RidePhoto> photos;
+
 	public TrainRide() {
 	}
 
@@ -44,12 +64,52 @@ public class TrainRide {
 		this.id = id;
 	}
 
-	public List<RidePhoto> getPhotos() {
-		return photos;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setPhotos(List<RidePhoto> photos) {
-		this.photos = photos;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public LocalDateTime getRideDate() {
+		return rideDate;
+	}
+
+	public void setRideDate(LocalDateTime rideDate) {
+		this.rideDate = rideDate;
+	}
+
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public LocalDateTime getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(LocalDateTime lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
 	public Train getTrain() {
@@ -67,7 +127,15 @@ public class TrainRide {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public List<RidePhoto> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<RidePhoto> photos) {
+		this.photos = photos;
+	}
+
 	public void addRidePhoto(RidePhoto photo) {
 		if (photos == null) {
 			photos = new ArrayList<>();
@@ -93,6 +161,23 @@ public class TrainRide {
 		StringBuilder builder = new StringBuilder();
 		builder.append("TrainRide [id=");
 		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", rating=");
+		builder.append(rating);
+		builder.append(", content=");
+		builder.append(content);
+		builder.append(", rideDate=");
+		builder.append(rideDate);
+		builder.append(", createDate=");
+		builder.append(createDate);
+		builder.append(", lastUpdate=");
+		builder.append(lastUpdate);
+		builder.append(", train=");
+		builder.append(train);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append("]");
 		return builder.toString();
 	}
 

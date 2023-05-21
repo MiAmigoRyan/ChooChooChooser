@@ -20,7 +20,6 @@ public class RailGauge {
 	private String description;
 
 	public RailGauge() {
-		super();
 	}
 
 	public int getId() {
@@ -76,5 +75,5 @@ public class RailGauge {
 		RailGauge other = (RailGauge) obj;
 		return id == other.id;
 	}
-
+	
 }

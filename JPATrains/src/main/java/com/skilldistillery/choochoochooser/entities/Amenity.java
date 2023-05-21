@@ -17,10 +17,11 @@ public class Amenity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String type;
+	private String description;
 
-	@ManyToMany(mappedBy="amenities")
-	private List<Train>trains;
-	
+	@ManyToMany(mappedBy = "amenities")
+	private List<Train> trains;
+
 	public Amenity() {
 
 	}
@@ -33,6 +34,22 @@ public class Amenity {
 		this.id = id;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public List<Train> getTrains() {
 		return trains;
 	}
@@ -41,14 +58,6 @@ public class Amenity {
 		this.trains = trains;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
 	public void addTrain(Train train) {
 		if (trains == null) {
 			trains = new ArrayList<>();
@@ -73,6 +82,8 @@ public class Amenity {
 		builder.append(id);
 		builder.append(", type=");
 		builder.append(type);
+		builder.append(", description=");
+		builder.append(description);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -27,43 +27,13 @@ public class Train {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToMany(mappedBy="train")
-	private List<Route> routes;
-	
-	@OneToMany(mappedBy="train")
-	private List<TrainComment> trainComments;
-	
-	@ManyToMany
-	@JoinTable(name = "wishlist_train", 
-	joinColumns = @JoinColumn(name = "train_id"), 
-	inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private List<User> users;
-
-	@ManyToMany
-	@JoinTable(name = "train_has_amenities", 
-	joinColumns = @JoinColumn(name = "train_id"), 
-	inverseJoinColumns = @JoinColumn(name = "amenities_id"))
-	private List<Amenity> amenities;
-
-	@ManyToOne
-	@JoinColumn(name = "created_by_user_id")
-	private User user;
-
-	@ManyToOne
-	@JoinColumn(name = "engine_id")
-	private Engine engine;
-
-	@OneToOne
-	@JoinColumn(name = "rail_gauge_id")
-	private RailGauge railGauge;
-
 	private String name;
-
+	private String description;
 	private String photo;
+	private String website;
 
 	@Column(name = "year_round")
 	private Boolean yearRound;
-
 	@Column(name = "create_date")
 	@CreationTimestamp
 	private LocalDateTime createDate;
@@ -72,12 +42,33 @@ public class Train {
 	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 
-	private String description;
+	@OneToOne
+	@JoinColumn(name = "rail_gauge_id")
+	private RailGauge railGauge;
 
-	private String website;
+	@ManyToOne
+	@JoinColumn(name = "engine_id")
+	private Engine engine;
+
+	@ManyToOne
+	@JoinColumn(name = "created_by_user_id")
+	private User user;
+
+	@OneToMany(mappedBy = "train")
+	private List<Route> routes;
+
+	@OneToMany(mappedBy = "train")
+	private List<TrainComment> trainComments;
+
+	@ManyToMany
+	@JoinTable(name = "wishlist_train", joinColumns = @JoinColumn(name = "train_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
+
+	@ManyToMany
+	@JoinTable(name = "train_has_amenities", joinColumns = @JoinColumn(name = "train_id"), inverseJoinColumns = @JoinColumn(name = "amenities_id"))
+	private List<Amenity> amenities;
 
 	public Train() {
-		super();
 	}
 
 	public int getId() {
@@ -86,6 +77,86 @@ public class Train {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public Boolean getYearRound() {
+		return yearRound;
+	}
+
+	public void setYearRound(Boolean yearRound) {
+		this.yearRound = yearRound;
+	}
+
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public LocalDateTime getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(LocalDateTime lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public RailGauge getRailGauge() {
+		return railGauge;
+	}
+
+	public void setRailGauge(RailGauge railGauge) {
+		this.railGauge = railGauge;
+	}
+
+	public Engine getEngine() {
+		return engine;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public List<Route> getRoutes() {
@@ -120,84 +191,24 @@ public class Train {
 		this.amenities = amenities;
 	}
 
-	public User getUser() {
-		return user;
+	public void addRoute(Route route) {
+		if (routes == null) {
+			routes = new ArrayList<>();
+		}
+		if (!routes.contains(route)) {
+			routes.add(route);
+			if (route.getTrain() != null) {
+				route.getTrain().removeRoute(route);
+			}
+			route.setTrain(this);
+		}
 	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Engine getEngine() {
-		return engine;
-	}
-
-	public void setEngine(Engine engine) {
-		this.engine = engine;
-	}
-
-	public RailGauge getRailGauge() {
-		return railGauge;
-	}
-
-	public void setRailGauge(RailGauge railGauge) {
-		this.railGauge = railGauge;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	public Boolean getYearRound() {
-		return yearRound;
-	}
-
-	public void setYearRound(Boolean yearRound) {
-		this.yearRound = yearRound;
-	}
-
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
-
-	public LocalDateTime getLastUpdate() {
-		return lastUpdate;
-	}
-
-	public void setLastUpdate(LocalDateTime lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(String website) {
-		this.website = website;
+	public void removeRoute(Route route) {
+		if (routes != null && routes.contains(route)) {
+			routes.remove(route);
+			route.setTrain(null);
+		}
 	}
 
 	public void addTrainComment(TrainComment comment) {
@@ -219,8 +230,7 @@ public class Train {
 			comment.setTrain(null);
 		}
 	}
-	
-	
+
 	public void addUser(User user) {
 		if (users == null) {
 			users = new ArrayList<>();
@@ -230,7 +240,7 @@ public class Train {
 			user.addWishList(this);
 		}
 	}
-	
+
 	public void removeUser(User user) {
 		if (users != null && users.contains(user)) {
 			users.remove(user);
@@ -254,32 +264,30 @@ public class Train {
 			amenity.removeTrain(this);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Train [id=");
 		builder.append(id);
-		builder.append(", user=");
-		builder.append(user);
-		builder.append(", engine=");
-		builder.append(engine);
-		builder.append(", railGauge=");
-		builder.append(railGauge);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", photo=");
-		builder.append(photo);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", website=");
+		builder.append(website);
 		builder.append(", yearRound=");
 		builder.append(yearRound);
 		builder.append(", createDate=");
 		builder.append(createDate);
 		builder.append(", lastUpdate=");
 		builder.append(lastUpdate);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", website=");
-		builder.append(website);
+		builder.append(", railGauge=");
+		builder.append(railGauge);
+		builder.append(", engine=");
+		builder.append(engine);
+		builder.append(", user=");
+		builder.append(user);
 		builder.append("]");
 		return builder.toString();
 	}

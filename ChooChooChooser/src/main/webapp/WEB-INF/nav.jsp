@@ -15,12 +15,18 @@
 				</li>
 				<li>
 					<div class=col-2>
-						<a href="logout.do"><button type='button'
-								class='btn btn-outline-success'>logout</button></a>
+						<a href="login.do"><button type='button'
+								class='btn btn-outline-success'>Profile Page</button></a>
 					</div>
 				</li>
 				<li>
-					<div class="col-9">
+					<div class=col-2>
+						<a href="logout.do"><button type='button'
+								class='btn btn-outline-success'>Logout</button></a>
+					</div>
+				</li>
+				<li>
+					<div class="col-9 align-self-right">
 						<form action="trainSearch.do" method="GET">
 							<input type="text" name="keyword" type="search"> <input
 								type="submit" class='btn btn-outline-success' value="Search">
@@ -31,14 +37,6 @@
 
 			<c:otherwise>
 
-				<li>
-					<div class="col-9">
-						<form action="trainSearch.do" method="GET">
-							<input type="text" name="keyword" type="search"> <input
-								type="submit" class='btn btn-outline-success' value="Search">
-						</form>
-					</div>
-				</li>
 
 				<li><button type="button" class="btn btn-outline-success"
 						data-bs-toggle='modal' data-bs-target='#CreateUserModal'>
@@ -135,6 +133,14 @@
 							</div>
 						</div>
 					</div></li>
+				<li>
+					<div class="col-9 align-self-right">
+						<form action="trainSearch.do" method="GET">
+							<input type="text" name="keyword" type="search"> <input
+								type="submit" class='btn btn-outline-success' value="Search">
+						</form>
+					</div>
+				</li>
 			</c:otherwise>
 		</c:choose>
 	</ul>
