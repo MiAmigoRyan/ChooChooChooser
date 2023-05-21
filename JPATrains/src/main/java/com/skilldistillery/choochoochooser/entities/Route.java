@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Route {
@@ -28,7 +29,30 @@ public class Route {
 	@ManyToOne
 	@JoinColumn(name="train_id")
 	private Train train;
+	private String description;
+	private String photo;
+	@OneToOne
+	@JoinColumn(name="region_id")
+	private Region region;
 	
+	public Route() {
+		
+	}
+	
+	
+	
+	public Region getRegion() {
+		return region;
+	}
+
+
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+
+
 	public Station getStartStation() {
 		return startStation;
 	}
@@ -44,14 +68,7 @@ public class Route {
 	public void setEndStation(Station endStation) {
 		this.endStation = endStation;
 	}
-
-	private String description;
-	private String photo;
 	
-	public Route() {
-		
-	}
-
 	public int getId() {
 		return id;
 	}

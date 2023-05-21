@@ -45,5 +45,11 @@ class RegionTest {
 		assertNotNull(region);
 		assertEquals("Rocky Mountains", region.getName());
 	}
+	
+	@Test
+	void test_Region_Route_OneToOne_mapping() {
+		assertNotNull(region);
+		assertEquals(1, region.getRoute().getId());
+	}
 
 }

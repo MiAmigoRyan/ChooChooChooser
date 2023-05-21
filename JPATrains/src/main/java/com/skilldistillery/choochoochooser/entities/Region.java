@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Region {
@@ -13,6 +14,9 @@ public class Region {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToOne(mappedBy="region")	
+	private Route route;
 	
 	private String name;
 	
@@ -26,6 +30,16 @@ public class Region {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	
+	
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
 	}
 
 	public String getName() {
