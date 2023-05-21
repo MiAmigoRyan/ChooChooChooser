@@ -32,11 +32,37 @@ public class TrainDaoImpl implements TrainDAO {
 				+ 	"LIKE LOWER (:keyword) "
 				+ "OR LOWER (r.endStation.name) "
 				+ 	"LIKE LOWER (:keyword)";
-		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
+		List<Train> trains = em.createQuery(jpql, Train.class)
+				.setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return trains;
 	}
 
+	
+	@Override List<Object[]> findUsersAndTrainsByKeyword(String keyword){
+		String jpql = "SELECT DISTINCT t, u "
+				+ "FROM Train t "
+				+ "JOIN t.user u "
+				+ "JOIN t.route r "
+				+ "WHERE LOWER (r.region.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.train.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.startStation.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.endStation.name) "
+				+ 	"LIKE LOWER (:keyword)"
+				+ "OR LOWER(u.name) "
+				+ "	LIKE LOWER(:keyword)";
+		
+		List<Object[]> searchResult = em.createQuery(jpql, new Class<?>[]{User.class, Train.class})
+				.setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+		
+		return searchResult;
+
+	}
+	
 	@Override
 	public List<Train> listAllTrains() {
 		String jpql = "SELECT t FROM Train t";

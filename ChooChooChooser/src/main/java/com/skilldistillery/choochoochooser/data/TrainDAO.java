@@ -11,6 +11,8 @@ public interface TrainDAO {
 	List<Train> listAllTrains();
 		
 	List<Train> findTrainByKeyword(String keyword);
+
+	List<Object[]> findUsersAndTrainsByKeyword(String keyword);
 	
 
 	
