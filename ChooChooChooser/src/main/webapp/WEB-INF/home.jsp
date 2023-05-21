@@ -12,7 +12,6 @@
 </head>
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
- 
 <table class="table table-striped table-hover">
 		<thead>
 			<tr>
