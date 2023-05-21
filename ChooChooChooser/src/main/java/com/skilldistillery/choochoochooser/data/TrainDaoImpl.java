@@ -27,6 +27,10 @@ public class TrainDaoImpl implements TrainDAO {
 				+ "WHERE LOWER (r.region.name) "
 				+ 	"LIKE LOWER (:keyword) "
 				+ "OR LOWER (r.train.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.startStation.name) "
+				+ 	"LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.endStation.name) "
 				+ 	"LIKE LOWER (:keyword)";
 		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
