@@ -39,17 +39,17 @@ class RegionTest {
 		em.close();
 		region = null;
 	}
-	
+
 	@Test
 	void test_Region_entity_mapping() {
 		assertNotNull(region);
 		assertEquals("Rocky Mountains", region.getName());
 	}
-	
-	@Test
-	void test_Region_Route_OneToMany_mapping() {
-		assertNotNull(region);
-		assertTrue(region.getRoutes().size()>0);
-	}
 
+	@Test
+	void test_Region_Route_OneToOne_mapping() {
+		assertNotNull(region);
+		assertTrue(region.getRoutes().size() > 0);
+
+	}
 }
