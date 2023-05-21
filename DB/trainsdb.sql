@@ -336,6 +336,7 @@ START TRANSACTION;
 USE `trainsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 'Yosemite', 'Sam', 'World renowned gunslinger | Don\'t mess with his trains.', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Yosemite_Sam.svg/360px-Yosemite_Sam.svg.png', 1, 'ADMIN');
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (2, 'trainowner', 'trainowner', 'Train', 'Owner', NULL, NULL, 1, 'Owner');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (3, 'rider1', 'rider1', 'Calamity', 'Carl', NULL, NULL, 1, NULL);
 
 COMMIT;
 
@@ -476,6 +477,8 @@ USE `trainsdb`;
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 4);
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 6);
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 8);
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (3, 1);
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (3, 6);
 
 COMMIT;
 
