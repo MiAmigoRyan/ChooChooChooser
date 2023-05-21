@@ -13,6 +13,20 @@
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
  
+ <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+	    <c:forEach var="train" items="${trainList}" varStatus="status">
+	    <div class="carousel-item ${status.index == 0 ? 'active' : ' ' }">
+		<a href= "${train.website }">
+			<div class="carousel-item active">
+    			<img src=${train.photo } class="d-block w-100" alt="train">
+    		</div>
+		</a>
+	    </div>
+		</c:forEach>
+  </div>
+</div>
+ 
 <table class="table table-striped table-hover">
 		<thead>
 			<tr>

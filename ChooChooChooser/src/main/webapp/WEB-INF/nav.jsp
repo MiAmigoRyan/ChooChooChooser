@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav>
+<div class = "navbar ">
 	<ul>
 		<c:choose>
 			<c:when test="${! empty sessionScope.loggedInUser }">
@@ -137,4 +138,5 @@
 			</c:otherwise>
 		</c:choose>
 	</ul>
+</div>
 </nav>
