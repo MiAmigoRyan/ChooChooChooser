@@ -29,17 +29,18 @@ public class Route {
 	@ManyToOne
 	@JoinColumn(name="train_id")
 	private Train train;
+	
 	private String description;
+	
 	private String photo;
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(name="region_id")
 	private Region region;
 	
 	public Route() {
 		
 	}
-	
-	
 	
 	public Region getRegion() {
 		return region;

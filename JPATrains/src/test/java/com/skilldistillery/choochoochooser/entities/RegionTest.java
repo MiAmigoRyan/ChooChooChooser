@@ -49,7 +49,7 @@ class RegionTest {
 	@Test
 	void test_Region_Route_OneToOne_mapping() {
 		assertNotNull(region);
-		assertEquals(1, region.getRoute().getId());
+		assertTrue(region.getRoutes().size()>0);
 	}
 
 }

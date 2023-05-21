@@ -1,12 +1,13 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Region {
@@ -15,8 +16,8 @@ public class Region {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne(mappedBy="region")	
-	private Route route;
+	@OneToMany(mappedBy= "region")	
+	private List<Route> routes;
 	
 	private String name;
 	
@@ -34,12 +35,12 @@ public class Region {
 	
 	
 	
-	public Route getRoute() {
-		return route;
+	public List<Route> getRoutes() {
+		return routes;
 	}
 
-	public void setRoute(Route route) {
-		this.route = route;
+	public void setRoute(List<Route> routes) {
+		this.routes = routes;
 	}
 
 	public String getName() {
