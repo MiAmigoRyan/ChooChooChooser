@@ -11,6 +11,5 @@ public class AmenityController {
 	
 		@Autowired
 		private AmenityDAO AmenityDAO;
-		
-		
 }
+
