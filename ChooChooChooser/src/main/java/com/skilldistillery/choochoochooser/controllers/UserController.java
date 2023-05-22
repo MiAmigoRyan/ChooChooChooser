@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.choochoochooser.data.TrainDAO;
 import com.skilldistillery.choochoochooser.data.UserDAO;
 import com.skilldistillery.choochoochooser.entities.User;
 
@@ -16,6 +18,7 @@ import com.skilldistillery.choochoochooser.entities.User;
 public class UserController {
 	@Autowired
 	private UserDAO userDAO;
+	private TrainDAO trainDAO;
 
 //	@RequestMapping(path = { "/", "home.do" })
 //	private String home(Model model) {
@@ -64,5 +67,17 @@ public class UserController {
 		User userInSession = (User) session.getAttribute("loggedInUser");
 		User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
 		
+	}
+	
+	@PostMapping(path="addToWishlist.do")
+	public String addTrainToWishlist(HttpSession session, User user, @RequestParam("id") int trainId) {
+		User userInSession = (User) session.getAttribute("loggedInUser");
+		if (userInSession != null) {
+			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+			userDAO.addToWishlist(loggedInUser.getId(), trainId);
+			refreshUserInSession(session);
+			return "UserPage";
+		}
+		return "";
 	}
 }

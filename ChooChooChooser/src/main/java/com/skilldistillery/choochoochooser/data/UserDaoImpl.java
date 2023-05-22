@@ -1,11 +1,9 @@
 package com.skilldistillery.choochoochooser.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -63,6 +61,14 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	public void addToWishlist(int userId, int trainid) {
+		User user = em.find(User.class, userId);
+		Train train = em.find(Train.class, trainid);
+		user.addWishList(train);
+		em.persist(user);
+	}
+
+	@Override
 	public void removeRide(TrainRide userRide) {
 		em.remove(userRide);
 	}
@@ -78,6 +84,7 @@ public class UserDaoImpl implements UserDAO {
 		em.persist(photo);
 		return null;
 	}
+
 	
 	
 	

@@ -1,8 +1,9 @@
-body {
+body, html {
     /* background-image: url("https://i.ibb.co/HBnGSwZ/your-image.jpg"); 
      background-repeat: no-repeat;
     background-size: cover; */
   background-color: #333;
+  color: #fff;
 }
 dark-mode {
   background-color: #333;
