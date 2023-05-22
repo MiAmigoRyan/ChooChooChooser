@@ -29,8 +29,8 @@ public class TrainController {
 		}
 		
 		@RequestMapping(path = {"addTrain.do"})
-		public String addTrain(Train train, Model model) {
-			model.addAttribute("train", trainDAO.addTrain(train));
+		public String addTrain(Train train,int[] amenitiesSelection, Model model) {
+			model.addAttribute("train", trainDAO.addTrain(train, amenitiesSelection));
 			return "detailsPage";
 		}
 //		public void refreshUserInSession(HttpSession session) {

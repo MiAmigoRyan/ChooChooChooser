@@ -20,29 +20,21 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		String jpql = "SELECT DISTINCT r.train FROM Route r "
-				+ "WHERE LOWER (r.region.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.train.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.startStation.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.endStation.name) "
-				+ 	"LIKE LOWER (:keyword)";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("keyword", "%" + keyword + "%")
+		String jpql = "SELECT DISTINCT r.train FROM Route r " + "WHERE LOWER (r.region.name) "
+				+ "LIKE LOWER (:keyword) " + "OR LOWER (r.train.name) " + "LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.startStation.name) " + "LIKE LOWER (:keyword) " + "OR LOWER (r.endStation.name) "
+				+ "LIKE LOWER (:keyword)";
+		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return trains;
 	}
 
-	
 	@Override
 	public List<Train> listAllTrains() {
 		String jpql = "SELECT t FROM Train t";
 		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
 		return trains;
 	}
-
 
 	@Override
 	public Train removeTrain(Train train) {
@@ -52,13 +44,17 @@ public class TrainDaoImpl implements TrainDAO {
 		}
 		return managedTrain;
 	}
-	
+
 	@Override
-	public Train addTrain(Train train) {
+	public Train addTrain(Train train, int[] amenitiesSelection) {
+		for (int amenityId : amenitiesSelection) {
+			Amenity managedAmenity = em.find(Amenity.class, amenityId);
+			train.addAmenity(managedAmenity);
+		}
 		em.persist(train);
 		return train;
 	}
-	
+
 	public Train updateTrain(Train train) {
 		Train managedTrain = em.find(Train.class, train.getId());
 		if (managedTrain != null) {
@@ -76,7 +72,7 @@ public class TrainDaoImpl implements TrainDAO {
 		}
 		return managedTrain;
 	}
-	
+
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
