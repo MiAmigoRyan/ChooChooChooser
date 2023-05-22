@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.skilldistillery.choochoochooser.data.TrainDAO;
 import com.skilldistillery.choochoochooser.data.TrainRideDAO;
 import com.skilldistillery.choochoochooser.data.UserDAO;
-import com.skilldistillery.choochoochooser.entities.Train;
 import com.skilldistillery.choochoochooser.entities.TrainRide;
 import com.skilldistillery.choochoochooser.entities.User;
 @Controller
