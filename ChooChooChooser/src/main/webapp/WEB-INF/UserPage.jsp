@@ -10,7 +10,7 @@
 <link rel="style" type="text/css" href="css/style.css">
 
 </head>
-<body>
+<body class="dark-mode">
 	<%@ include file="nav.jsp"%>
 	<div class="container">
 		<h1>Lookup a train</h1>
@@ -41,7 +41,7 @@
 				</div>
 				<span>Trains I've Ridden: </span>
 				<table class="table table-striped table-hover">
-
+					<thead>
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
