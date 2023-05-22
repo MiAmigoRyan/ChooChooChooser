@@ -12,7 +12,6 @@
 </head>
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
- 
  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
 	    <c:forEach var="train" items="${trainList}" varStatus="status">
