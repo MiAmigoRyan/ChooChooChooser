@@ -44,7 +44,7 @@
 						<div class="col">
 							<c:choose>
 								<c:when test="${not empty train.trainComments}">
-									<c:forEach value="comment" items="train.trainComments">
+									<c:forEach var="comment" items="train.trainComments">
 										<h4>${comment.content}</h4>
 										<h4>${comment.commentDate}</h4>
 										<br><hr><br>

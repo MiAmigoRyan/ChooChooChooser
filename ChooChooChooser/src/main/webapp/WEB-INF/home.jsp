@@ -48,7 +48,6 @@
 
 	
 
-<%@ include file="AddTrain.jsp" %> 
 </body>
 
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>

@@ -9,7 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.choochoochooser.entities.Amenity;
+import com.skilldistillery.choochoochooser.entities.Engine;
+import com.skilldistillery.choochoochooser.entities.RailGauge;
 import com.skilldistillery.choochoochooser.entities.Train;
+import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
@@ -46,12 +49,17 @@ public class TrainDaoImpl implements TrainDAO {
 	}
 
 	@Override
-	public Train addTrain(Train train, int[] amenitiesSelection) {
+	public Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId) {
+		System.out.println(train + "***********************************************************************8");
 		for (int amenityId : amenitiesSelection) {
 			Amenity managedAmenity = em.find(Amenity.class, amenityId);
 			train.addAmenity(managedAmenity);
 		}
+		train.setEngine(em.find(Engine.class, engineSelection));
+		train.setRailGauge(em.find(RailGauge.class, railSelection));
+		train.setUser(em.find(User.class, userId));
 		em.persist(train);
+		System.out.println(train + "*************************************************************");
 		return train;
 	}
 

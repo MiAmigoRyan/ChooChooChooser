@@ -22,6 +22,7 @@
 				<input class="col btn btn-primary" type="submit" value="Search" />
 			</div>
 		</form>
+		<%@ include file="AddTrain.jsp"%>
 		<c:choose>
 			<c:when test="${! empty loggedInUser}">
 				<div class="col-2"><img src="${loggedInUser.profilePhoto}" alt="No Photo"></div>
@@ -41,12 +42,12 @@
 			<tbody>
 				<c:forEach var="train" items="${loggedInUser.rides}">
 					<tr>
-				<c:when test="${loggedInUser.role = 'ADMIN'}">
+				<%--  <c:when test="${loggedInUser.role = 'ADMIN'}">
 					<form action="removeTrain.do">
 					 <input type='hidden' name='id' value="${train.id}"/>
 					 <input type='submit' value='Delete Train'/>
-					</form>
-				</c:when>
+					</form> 
+				</c:when> --%>
 						<td>${train.id }</td>
 						<td>${train.train.name}</td>
 						<c:forEach var="photo" items="${train.photos}">
