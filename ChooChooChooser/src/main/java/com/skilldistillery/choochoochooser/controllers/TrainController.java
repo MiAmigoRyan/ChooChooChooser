@@ -40,11 +40,4 @@ public class TrainController {
 		}
 		
 		
-		
-//		public void refreshUserInSession(HttpSession session) {
-//			User userInSession = (User) session.getAttribute("loggedInUser");
-//			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
-//			session.setAttribute("loggedInUser", loggedInUser);
-//		}
-		
 }
