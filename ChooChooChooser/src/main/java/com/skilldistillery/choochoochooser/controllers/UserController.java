@@ -31,7 +31,7 @@ public class UserController {
 
 	// after create account redirects back to home page with user logged in
 	@GetMapping(path = "registered.do")
-	private String registered() {
+	private String registered() { 
 		return "UserPage";
 	}
 

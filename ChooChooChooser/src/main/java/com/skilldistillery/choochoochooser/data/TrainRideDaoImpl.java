@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.choochoochooser.entities.Train;
 import com.skilldistillery.choochoochooser.entities.TrainRide;
+import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
@@ -18,6 +20,7 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 	@PersistenceContext
 	private EntityManager em;
 
+	
 	@Override
 	public List<TrainRide> findRidesByUserId(int userId) {
 		String jpql = "SELECT tr FROM TrainRides tr WHERE tr.user = :id";
@@ -28,12 +31,11 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 	}
 	
 	@Override
-	public TrainRide addRide(Train train) {
-		TrainRide newRide = new TrainRide();
-		newRide.setTrain(train);
-		em.persist(newRide);
-		return newRide;
+	public void createTrainRide(User user, int trainId, TrainRide trainRide) {
+		Train train = em.find(Train.class, trainId);
+		trainRide.setTrain(train);
+		trainRide.setUser(user);
+		em.persist(trainRide);
 	}
-
-
+	
 }
