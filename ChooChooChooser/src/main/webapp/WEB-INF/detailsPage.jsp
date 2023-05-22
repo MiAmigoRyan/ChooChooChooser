@@ -7,6 +7,8 @@
 	<meta charset="UTF-8">
 	<title>Train Details</title>
 	<jsp:include page="BootstrapHead.jsp"/>
+	<link rel="style" type="text/css" href="css/style.css">
+	
 </head>
 <body class="dark-mode">
 <jsp:include page="nav.jsp"/>
@@ -33,7 +35,7 @@
 					<div class=row>
 						<div class="col map-container">
 							<iframe 
-								src="https://www.google.com/maps?q='${train.name} ${train.route.startStation.name}'&z=10&output=embed" 
+								src="https://www.google.com/maps?q='${train.name}'&z=10&output=embed" 
 								width="50%" 
 								height="50%" 
 								frameborder="0" 
@@ -44,8 +46,8 @@
 						<div class="col">
 							<c:choose>
 								<c:when test="${not empty train.trainComments}">
-									<c:forEach value="comment" items="train.trainComments">
-										<h4>${comment.content}</h4>
+									<c:forEach var="comment" items="${train.trainComments}">
+										<h4>${comment.comment}</h4>
 										<h4>${comment.commentDate}</h4>
 										<br><hr><br>
 									</c:forEach>
