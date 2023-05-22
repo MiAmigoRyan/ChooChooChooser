@@ -58,6 +58,25 @@ public class TrainDaoImpl implements TrainDAO {
 		em.persist(train);
 		return train;
 	}
+	
+	public Train updateTrain(Train train) {
+		Train managedTrain = em.find(Train.class, train.getId());
+		if (managedTrain != null) {
+			managedTrain.setName(train.getName());
+			managedTrain.setDescription(train.getDescription());
+			managedTrain.setYearRound(train.getYearRound());
+			managedTrain.setPhoto(train.getPhoto());
+			managedTrain.setWebsite(train.getWebsite());
+			managedTrain.setCreateDate(train.getCreateDate());
+			managedTrain.setLastUpdate(train.getLastUpdate());
+			managedTrain.setRailGauge(train.getRailGauge());
+			managedTrain.setEngine(train.getEngine());
+			managedTrain.setUser(train.getUser());
+			managedTrain.setRoutes(train.getRoutes());
+		}
+		return managedTrain;
+	}
+	
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
