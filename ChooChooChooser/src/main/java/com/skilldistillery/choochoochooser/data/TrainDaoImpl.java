@@ -8,7 +8,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+
+import com.skilldistillery.choochoochooser.entities.Amenity;
+import com.skilldistillery.choochoochooser.entities.Engine;
+import com.skilldistillery.choochoochooser.entities.RailGauge;
+
 import com.skilldistillery.choochoochooser.entities.Train;
+import com.skilldistillery.choochoochooser.entities.User;
 
 @Service
 @Transactional
@@ -19,29 +25,21 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		String jpql = "SELECT DISTINCT r.train FROM Route r "
-				+ "WHERE LOWER (r.region.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.train.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.startStation.name) "
-				+ 	"LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.endStation.name) "
-				+ 	"LIKE LOWER (:keyword)";
-		List<Train> trains = em.createQuery(jpql, Train.class)
-				.setParameter("keyword", "%" + keyword + "%")
+		String jpql = "SELECT DISTINCT r.train FROM Route r " + "WHERE LOWER (r.region.name) "
+				+ "LIKE LOWER (:keyword) " + "OR LOWER (r.train.name) " + "LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.startStation.name) " + "LIKE LOWER (:keyword) " + "OR LOWER (r.endStation.name) "
+				+ "LIKE LOWER (:keyword)";
+		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return trains;
 	}
 
-	
 	@Override
 	public List<Train> listAllTrains() {
 		String jpql = "SELECT t FROM Train t";
 		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
 		return trains;
 	}
-
 
 	@Override
 	public Train removeTrain(Train train) {
@@ -51,13 +49,22 @@ public class TrainDaoImpl implements TrainDAO {
 		}
 		return managedTrain;
 	}
-	
+
 	@Override
-	public Train addTrain(Train train) {
+	public Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId) {
+		System.out.println(train + "***********************************************************************8");
+		for (int amenityId : amenitiesSelection) {
+			Amenity managedAmenity = em.find(Amenity.class, amenityId);
+			train.addAmenity(managedAmenity);
+		}
+		train.setEngine(em.find(Engine.class, engineSelection));
+		train.setRailGauge(em.find(RailGauge.class, railSelection));
+		train.setUser(em.find(User.class, userId));
 		em.persist(train);
+		System.out.println(train + "*************************************************************");
 		return train;
 	}
-	
+
 	public Train updateTrain(Train train) {
 		Train managedTrain = em.find(Train.class, train.getId());
 		if (managedTrain != null) {
@@ -76,7 +83,6 @@ public class TrainDaoImpl implements TrainDAO {
 		return managedTrain;
 	}
 
-
 	@Override
 	public Train findTrainById(int id) {
 		String jpql = "SELECT t FROM Train t WHERE t.id = :id";
@@ -85,7 +91,6 @@ public class TrainDaoImpl implements TrainDAO {
 				.getSingleResult();
 		return train;
 	}
-	
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
