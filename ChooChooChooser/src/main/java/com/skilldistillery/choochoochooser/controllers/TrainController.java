@@ -50,13 +50,12 @@ public class TrainController {
 			model.addAttribute("train", trainDAO.findTrainById(id));
 			return "detailsPage";
 		}
-		
-		
-		
+			
 		public void refreshUserInSession(HttpSession session) {
 			User userInSession = (User) session.getAttribute("loggedInUser");
 			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
 			session.setAttribute("loggedInUser", loggedInUser);
 		}
 		
+
 }
