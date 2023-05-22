@@ -4,14 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.skilldistillery.choochoochooser.data.TrainDAO;
 import com.skilldistillery.choochoochooser.data.UserDAO;
 import com.skilldistillery.choochoochooser.entities.User;
 
@@ -19,7 +17,6 @@ import com.skilldistillery.choochoochooser.entities.User;
 public class UserController {
 	@Autowired
 	private UserDAO userDAO;
-	private TrainDAO trainDAO;
 
 //	@RequestMapping(path = { "/", "home.do" })
 //	private String home(Model model) {
@@ -44,7 +41,7 @@ public class UserController {
 		if (session.getAttribute("loggedInUser") != null) {
 			return "UserPage";
 		}
-		return "home";
+		return "redirect:home.do";
 	}
 
 	@PostMapping(path = "login.do")
@@ -54,14 +51,14 @@ public class UserController {
 			session.setAttribute("loggedInUser", loggedInUser);
 			return "UserPage";
 		}
-		return "home";
+		return "redirect:home.do";
 	}
 
 // LOGOUT USER	
 	@GetMapping(path = "logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "home";
+		return "redirect:home.do";
 	}
 
 	public void refreshUserInSession(HttpSession session) {
@@ -80,6 +77,6 @@ public class UserController {
 			refreshUserInSession(session);
 			return "UserPage";
 		}
-		return "home";
+		return "UserPage";
 	}
 }

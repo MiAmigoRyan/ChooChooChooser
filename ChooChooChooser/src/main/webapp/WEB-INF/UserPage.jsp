@@ -13,18 +13,18 @@
 <body class="dark-mode">
 	<%@ include file="nav.jsp"%>
 	<div class="container">
-		<h1>Lookup a train</h1>
-		<form action="#" method="GET">
-			<div class="row">
-				<div class="col-sm-8">
-					Search : <input class="form-control" type="text" name="keyword" />
-				</div>
-				<input class="col btn btn-primary" type="submit" value="Search" />
-			</div>
-		</form>
-		<%@ include file="AddTrain.jsp"%>
 		<c:choose>
 			<c:when test="${! empty loggedInUser}">
+				<h1>TBD</h1>
+				<form action="#" method="GET">
+					<div class="row">
+						<div class="col-sm-8">
+							Search : <input class="form-control" type="text" name="keyword" />
+						</div>
+						<input class="col btn btn-primary" type="submit" value="Search" />
+					</div>
+				</form>
+				<%@ include file="AddTrain.jsp"%>
 				<div class="col-2">
 					<img src="${loggedInUser.profilePhoto}" alt="No Photo">
 				</div>
