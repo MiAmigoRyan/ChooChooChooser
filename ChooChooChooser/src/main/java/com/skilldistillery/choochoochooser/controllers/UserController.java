@@ -28,6 +28,7 @@ public class UserController {
 		redir.addFlashAttribute("loggedInUser", userDAO.createUser(user));
 		return "redirect:registered.do";
 	}
+
 	// after create account redirects back to home page with user logged in
 	@GetMapping(path = "registered.do")
 	private String registered() {
@@ -36,22 +37,23 @@ public class UserController {
 
 	// redirects an existing user to user page after login
 	@GetMapping(path = "login.do")
-	private String userAccountPage( HttpSession session) {
+	private String userAccountPage(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
 			return "UserPage";
 		}
-		return "home";		
+		return "home";
 	}
+
 	@PostMapping(path = "login.do")
 	private String loginCheck(User user, HttpSession session) {
-	    User loggedInUser = userDAO.findByUsernameAndPassword(
-	    		user.getUsername(), user.getPassword());
-	    if (loggedInUser != null) {
-	        session.setAttribute("loggedInUser", loggedInUser);
-	        return "UserPage";
-	    } 
-	    return "home"; 
+		User loggedInUser = userDAO.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		if (loggedInUser != null) {
+			session.setAttribute("loggedInUser", loggedInUser);
+			return "UserPage";
+		}
+		return "home";
 	}
+
 // LOGOUT USER	
 	@GetMapping(path = "logout.do")
 	public String logout(HttpSession session) {
@@ -59,6 +61,9 @@ public class UserController {
 		return "home";
 	}
 
-
-
+	public void refreshUserInSession(HttpSession session) {
+		User userInSession = (User) session.getAttribute("loggedInUser");
+		User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+		session.setAttribute("loggedInUser", loggedInUser);
+	}
 }
