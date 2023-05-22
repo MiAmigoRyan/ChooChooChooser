@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.choochoochooser.entities.Amenity;
 import com.skilldistillery.choochoochooser.entities.Train;
 
 @Service
@@ -35,6 +36,26 @@ public class TrainDaoImpl implements TrainDAO {
 	}
 
 	
+	@Override
+	public List<Train> listAllTrains() {
+		String jpql = "SELECT t FROM Train t";
+		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
+		return trains;
+	}
+
+
+	@Override
+	public Train removeTrain(Train train) {
+		Train managedTrain = em.find(Train.class, train.getId());
+		if (managedTrain != null) {
+			em.remove(managedTrain);
+		}
+		return managedTrain;
+	}
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 //               S T R E T C H   G O A L  S E A R C H	
 //	@Override 
 //	public List<Object[]> findUsersAndTrainsByKeyword(String keyword){
@@ -60,11 +81,3 @@ public class TrainDaoImpl implements TrainDAO {
 //		return searchResult;
 //
 //	}
-	
-	@Override
-	public List<Train> listAllTrains() {
-		String jpql = "SELECT t FROM Train t";
-		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
-		return trains;
-	}
-}

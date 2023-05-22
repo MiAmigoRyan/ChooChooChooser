@@ -64,6 +64,10 @@ public class UserController {
 	public void refreshUserInSession(HttpSession session) {
 		User userInSession = (User) session.getAttribute("loggedInUser");
 		User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+<<<<<<< HEAD
 		session.setAttribute("loggedInUser", loggedInUser);
+=======
+		
+>>>>>>> 42b629e65566b65c6cc42865641102ee00e53d92
 	}
 }

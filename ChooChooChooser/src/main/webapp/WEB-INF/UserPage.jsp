@@ -41,6 +41,12 @@
 			<tbody>
 				<c:forEach var="train" items="${loggedInUser.rides}">
 					<tr>
+				<c:when test="${loggedInUser.role = 'ADMIN'}">
+					<form action="removeTrain.do">
+					 <input type='hidden' name='id' value="${train.id}"/>
+					 <input type='submit' value='Delete Train'/>
+					</form>
+				</c:when>
 						<td>${train.id }</td>
 						<td>${train.train.name}</td>
 						<c:forEach var="photo" items="${train.photos}">
