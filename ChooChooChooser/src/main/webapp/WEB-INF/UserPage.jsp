@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User Page</title>
 <jsp:include page="BootstrapHead.jsp"></jsp:include>
 <link rel="style" type="text/css" href="css/style.css">
 
@@ -13,7 +13,7 @@
 <body>
 <%@ include file="nav.jsp"%>
 <div class="container">
-		<h1>Lookup a train</h1>		
+		<h1>TBD</h1>		
 		<form action="#" method="GET">
 			<div class="row">
 				<div class="col-sm-8">
