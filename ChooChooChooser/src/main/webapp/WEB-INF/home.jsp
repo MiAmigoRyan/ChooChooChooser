@@ -25,11 +25,9 @@
 		</c:forEach>
   </div>
 </div>
- <a href="detailsPage.do"><button>Detail's Page</button></a>
 <table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Name</th>
 				<th>Engine Type</th>
 				<th>URL</th>
