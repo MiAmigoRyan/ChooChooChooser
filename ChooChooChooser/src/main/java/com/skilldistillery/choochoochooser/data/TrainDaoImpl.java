@@ -73,6 +73,12 @@ public class TrainDaoImpl implements TrainDAO {
 		return managedTrain;
 	}
 
+	@Override
+	public Train findTrainById(int id) {
+		String jpql = "SELECT t FROM Train t WHERE t.id = :id";
+		Train train = em.createQuery(jpql, Train.class).getSingleResult();
+		return train;
+	}
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

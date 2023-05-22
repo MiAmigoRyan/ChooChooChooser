@@ -42,28 +42,24 @@
 							<input type='checkbox' name='amenitiesSelection' value='6'>
 						</div>
 						<div class='col-5 offset-1'>
-							<span class='input-group-text'>Eid: </span> <select
-								class='form-control' type='number' name='engine' required>
+							<span class='input-group-text'>Engine Type: </span> <select
+								class='form-control' type='number' name='engineType' required>
 								<option value='1'>Steam Locomotive</option>
 								<option value='2'>Diesel Locomotive</option>
 								</select>
 								</div>
 						</div>
 						<div class='col-5'>
-							<span class='input-group-text'>#: </span> <select
-								class='form-select' id="#" name="#">
-								<option value="#">#</option>
-								<option value="#">#</option>
-								<option value="#">#</option>
-								<option value="#">#</option>
-								<option value="#">#</option>
-								<option value="#">#</option>
-								<option value="#">#</option>
+							<span class='input-group-text'>Rail Gauge: </span> <select
+								class='form-select' id="#" name="railType" required>
+								<option value="1">Narrow Gauge</option>
+								<option value="2">Standard Gauge</option>
+								<option value="3">Cog Railway</option>
 							</select>
 						</div>
 						<div class='col-5 offset-1'>
-							<span class='input-group-text'>#: </span> <input
-								class='form-control' name='#' type='#' />
+							<span class='input-group-text'>Website: </span> <input
+								class='form-control' name='website' type='text' />
 						</div>
 						<div class='col-5'>
 							<span class='input-group-text'>#: </span> <input

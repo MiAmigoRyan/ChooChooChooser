@@ -33,6 +33,15 @@ public class TrainController {
 			model.addAttribute("train", trainDAO.addTrain(train, amenitiesSelection));
 			return "detailsPage";
 		}
+		
+		@RequestMapping(path = "searchById.do")
+		public String findTrainById(int id, Model model) {
+			model.addAttribute("train", trainDAO.findTrainById(id));
+			return "detailsPage";
+		}
+		
+		
+		
 //		public void refreshUserInSession(HttpSession session) {
 //			User userInSession = (User) session.getAttribute("loggedInUser");
 //			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
