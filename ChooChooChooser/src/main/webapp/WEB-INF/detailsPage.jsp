@@ -89,10 +89,8 @@
 					<div class="row">
 					<!-- TODO addToRides.do in Controller -->
 						<!-- If not logged in user, pop up login or create account modal -->
-						<form action="addToRides.do" method=POST>
-							<input type="submit" value="Been on this train? Submit a review!"/>
-							<input type="hidden" name="id" value="${train.id}"/>
-						</form>
+						<%@include file= "AddTrainRide.jsp"%>
+									
 					</div>
 				</div>
 				

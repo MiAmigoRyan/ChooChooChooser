@@ -18,7 +18,7 @@
 					<h1>Review A Train Ride!</h1>
 				</div>
 				
-				<form action=".do" method="GET">
+				<form action="addToRides.do" method="GET">
 					<div class='row 3'>
 						<div class='col-5 offset-1'>
 							<span class='input-group-text'>Title: </span> <input
@@ -56,7 +56,7 @@
 						<span class='input-group-text'>What did you think of this trip?: </span>
 						<textarea class='form-control' rows='4' name='content'></textarea>
 					
-					<input type='hidden' name='trainId' value='${train.id}/'>
+					<input type='hidden' name='trainId' value='${train.id}'/>
 					<input type='hidden' name='createdById' value='${loggedInUser.id}' />
 					<input type='submit' class='btn btn-success' name='Add Train'>
 					</div>
