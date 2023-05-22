@@ -8,9 +8,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+
 import com.skilldistillery.choochoochooser.entities.Amenity;
 import com.skilldistillery.choochoochooser.entities.Engine;
 import com.skilldistillery.choochoochooser.entities.RailGauge;
+
 import com.skilldistillery.choochoochooser.entities.Train;
 import com.skilldistillery.choochoochooser.entities.User;
 
@@ -84,7 +86,9 @@ public class TrainDaoImpl implements TrainDAO {
 	@Override
 	public Train findTrainById(int id) {
 		String jpql = "SELECT t FROM Train t WHERE t.id = :id";
-		Train train = em.createQuery(jpql, Train.class).getSingleResult();
+		Train train = em.createQuery(jpql, Train.class)
+				.setParameter("id", id)
+				.getSingleResult();
 		return train;
 	}
 }
