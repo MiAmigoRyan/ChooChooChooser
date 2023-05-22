@@ -38,6 +38,9 @@ body.dark-mode table.table thead th {
 body.dark-mode table.table tbody td {
   color: #fff;
 }
+body.dark-mode table.table tbody td {
+  color: #fff;
+}
 
 @media only screen and (max-width: 500px) {
     .modal {
@@ -57,5 +60,9 @@ body.dark-mode table.table tbody td {
 }
 .row{
 	color: #fff;
+}
+.dark-mode .container{
+	color: #fff;
+	
 }
 
