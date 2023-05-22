@@ -12,6 +12,7 @@ public interface TrainDAO {
 
 	Train findTrainById(int id);
 
+	
 	Train removeTrain(Train train);
 
 	Train addTrain(Train train, int[] amenitiesSelection);

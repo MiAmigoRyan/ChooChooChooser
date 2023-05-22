@@ -28,12 +28,6 @@ public class TrainController {
 			return "ShowTrains";
 		}
 
-		@RequestMapping(path= {"trainSearch.do"})
-		public String showTrainDetails(Train trainId, Model model) {
-			model.addAttribute("train", trainDAO.findTrainById(trainId));
-			return "detailsPage";
-		}
-		
 		@RequestMapping(path = {"addTrain.do"})
 		public String addTrain(Train train,int[] amenitiesSelection, Model model) {
 			model.addAttribute("train", trainDAO.addTrain(train, amenitiesSelection));
