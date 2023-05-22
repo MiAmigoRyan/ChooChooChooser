@@ -11,6 +11,8 @@ public interface TrainDAO {
 	List<Train> listAllTrains();
 		
 	List<Train> findTrainByKeyword(String keyword);
+	
+	Train findTrainById(int id);
 
 	Train removeTrain(Train train);
 	
