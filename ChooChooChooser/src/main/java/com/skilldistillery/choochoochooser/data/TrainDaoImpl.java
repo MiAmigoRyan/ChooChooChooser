@@ -52,6 +52,12 @@ public class TrainDaoImpl implements TrainDAO {
 		}
 		return managedTrain;
 	}
+	
+	@Override
+	public Train addTrain(Train train) {
+		em.persist(train);
+		return train;
+	}
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
