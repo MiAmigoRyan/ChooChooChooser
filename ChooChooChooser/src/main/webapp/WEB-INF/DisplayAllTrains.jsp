@@ -20,10 +20,10 @@
 			<tr>
 				<th>Name</th>
 				<th>Engine Type</th>
-				<%-- <c:if test="${loggedInUser.role = 'ADMIN'}"> --%>
+				<c:if test="${loggedInUser.role == 'ADMIN'}">
 				<th>Remove Train</th>
 				<th>Update Train</th>
-				<%-- </c:if> --%>
+				</c:if>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,7 +32,7 @@
 					<td><a href='searchById.do?id=${train.id}'>${train.name}</a></td>
 					<td>${train.engine.type}</td>
 					
-						<%-- <c:if test="${loggedInUser.role = 'ADMIN'}"> --%>
+						<c:if test="${loggedInUser.role == 'ADMIN'}">
 					<td>
 								<form action="removeTrain.do">
 									<input type='hidden' name='id' value="${train.id}" /> <input
@@ -41,7 +41,7 @@
 							</form>
 					</td>
 						<td><%@ include file='UpdateTrain.jsp' %></td>
-						<%-- </c:if> --%>
+						</c:if> 
 											
 				</tr>
 			</c:forEach>

@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-
 import com.skilldistillery.choochoochooser.entities.Amenity;
 import com.skilldistillery.choochoochooser.entities.Engine;
 import com.skilldistillery.choochoochooser.entities.RailGauge;
@@ -62,8 +61,10 @@ public class TrainDaoImpl implements TrainDAO {
 		em.persist(train);
 		return train;
 	}
+
 	@Override
-	public Train updateTrain(Train train) {
+	public Train updateTrain(Train train, int engineSelection, int railSelection, int userId,
+			int[] amenitiesSelection) {
 		Train managedTrain = em.find(Train.class, train.getId());
 		if (managedTrain != null) {
 			managedTrain.setName(train.getName());
@@ -73,10 +74,17 @@ public class TrainDaoImpl implements TrainDAO {
 			managedTrain.setWebsite(train.getWebsite());
 			managedTrain.setCreateDate(train.getCreateDate());
 			managedTrain.setLastUpdate(train.getLastUpdate());
-			managedTrain.setRailGauge(train.getRailGauge());
-			managedTrain.setEngine(train.getEngine());
-			managedTrain.setUser(train.getUser());
+			managedTrain.setRailGauge(em.find(RailGauge.class, railSelection));
+			managedTrain.setEngine(em.find(Engine.class, engineSelection));
+			managedTrain.setUser(em.find(User.class, userId));
+			if (amenitiesSelection != null) {
+				for (int amenityId : amenitiesSelection) {
+					Amenity managedAmenity = em.find(Amenity.class, amenityId);
+					train.addAmenity(managedAmenity);
+				}
+			}
 			managedTrain.setRoutes(train.getRoutes());
+
 		}
 		return managedTrain;
 	}
@@ -84,9 +92,7 @@ public class TrainDaoImpl implements TrainDAO {
 	@Override
 	public Train findTrainById(int id) {
 		String jpql = "SELECT t FROM Train t WHERE t.id = :id";
-		Train train = em.createQuery(jpql, Train.class)
-				.setParameter("id", id)
-				.getSingleResult();
+		Train train = em.createQuery(jpql, Train.class).setParameter("id", id).getSingleResult();
 		return train;
 	}
 }

@@ -60,13 +60,19 @@ public class TrainController {
 		@RequestMapping(path="removeTrain.do")
 		public String removeTrain(Model model, Train train) {
 			trainDAO.removeTrain(train);
+			model.addAttribute("trainList", trainDAO.listAllTrains());
 			return "DisplayAllTrains";
 			
 		}
 		
 		@RequestMapping(path="updateTrain.do")
-		public String updateTrain(Model model, Train train) {
-			Train managedTrain = trainDAO.updateTrain(train);
+		public String updateTrain(HttpSession session ,Model model, Train train,
+					@RequestParam("engineSelection")int engineSelection,
+					@RequestParam("railSelection")int railSelection,
+					int[] amenitiesSlection) {
+			User userInSession = (User) session.getAttribute("loggedInUser");
+			trainDAO.updateTrain(train, engineSelection, railSelection, userInSession.getId(), amenitiesSlection);
+			model.addAttribute("trainList", trainDAO.listAllTrains());
 			return "DisplayAllTrains";
 		}
 		
