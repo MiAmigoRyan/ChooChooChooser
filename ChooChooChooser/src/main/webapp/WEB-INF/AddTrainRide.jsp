@@ -28,7 +28,7 @@
 							<span class='input-group-text'>Picture URL: </span> <input
 								class='form-control' type='text' name='photo' />
 						</div>
-						<div class='col-5 offset-1'>
+						<!-- <div class='col-5 offset-1'>
 							<label>Rating</label>
 					<input type="radio" name="rating" value="1">&#x2B50; 
 					<input type="radio" name="rating" value="2">&#x2B50; &#x2B50; 
@@ -36,7 +36,7 @@
 					<input type="radio" name="rating" value="4">&#x2B50; &#x2B50; &#x2B50; &#x2B50;
 					<input type="radio" name="rating" value="5">&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50;
 							
-						</div>
+						</div> -->
 						<div class='col-5'>
 							<span class='input-group-text'>When Was This Trip?: </span> 
 							<input type='date' name='rideDate'/>
@@ -54,18 +54,11 @@
 
 			</form>
 			 <script>
-				radiobutton = ${train.rating};
+				radiobutton = ${trainRide.rating};
 				radiobutton.checked = true;
 			</script>
 			</div>
 		</div>
 
-
-		<%-- <jsp:include page="bootstrapFoot.jsp" /> --%>
-
-		<!-- 	<div class="modal-footer"> -->
-
-		<!--   <button type="button" class="btn btn-primary">Save changes</button>
-							      </div> -->
 	</div>
 </div>
