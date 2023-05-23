@@ -1,5 +1,6 @@
 package com.skilldistillery.choochoochooser.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class TrainRide {
 	private String content;
 
 	@Column(name = "ride_date")
-	private LocalDateTime rideDate;
+	private LocalDate rideDate;
 
 	@Column(name = "create_date")
 	@CreationTimestamp
@@ -88,11 +89,11 @@ public class TrainRide {
 		this.content = content;
 	}
 
-	public LocalDateTime getRideDate() {
+	public LocalDate getRideDate() {
 		return rideDate;
 	}
 
-	public void setRideDate(LocalDateTime rideDate) {
+	public void setRideDate(LocalDate rideDate) {
 		this.rideDate = rideDate;
 	}
 

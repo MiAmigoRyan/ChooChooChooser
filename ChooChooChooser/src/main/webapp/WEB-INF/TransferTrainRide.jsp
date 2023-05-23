@@ -1,14 +1,14 @@
 <button type="button" class="btn btn-outline-success"
-	data-bs-toggle='modal' data-bs-target='#AddTrainRideModal'>Move from Wishlist & Review A Ride!
+	data-bs-toggle='modal' data-bs-target='#TransferWishToRideModal'>Move from Wishlist & Review A Ride!
 	</button>
 
 
-<div class="modal fade" id="AddTrainRideModal" tabindex="-1"
-	aria-labelledby="AddTrainRideModalLabel" aria-hidden="true">
+<div class="modal fade" id="TransferWishToRideModal" tabindex="-1"
+	aria-labelledby="TransferWishToRideModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="AddTrainRideModalLabel">Review A Ride!
+				<h1 class="modal-title fs-5" id="TransferWishToRideModalLabel">Review A Ride!
 					</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
@@ -18,7 +18,7 @@
 					<h1>Review A Train Ride!</h1>
 				</div>
 				
-				<form action="TransferToRides.do" method="GET">
+				<form action="transferToRides.do" method="GET">
 					<div class='row 3'>
 						<div class='col-5 offset-1'>
 							<span class='input-group-text'>Title: </span> <input
@@ -50,7 +50,7 @@
 						<div class='col-5'>
 							<span class='input-group-text'>When Was This Trip?: </span> 
 							<input type='date' name='rideDate'/>
-						</div>
+						</div> 
 					</div>
 					<div class='col-9 offset-1'>
 						<span class='input-group-text'>What did you think of this trip?: </span>

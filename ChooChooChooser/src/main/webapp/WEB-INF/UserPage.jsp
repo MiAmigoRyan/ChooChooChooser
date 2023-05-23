@@ -78,7 +78,7 @@
 							<tr>
 								<td>${train.id }</td>
 								<td>${train.name}</td>
-								<td><button action="removeFromWishlist.do">Remove this train</button></td>
+								<td><a href='removeFromWishlist.do?id=${train.id }'><button>Remove this train</button></a></td>
 								<td><%@ include file="TransferTrainRide.jsp"%></td>
 						</c:forEach>
 				</table>

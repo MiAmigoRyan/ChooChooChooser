@@ -1,10 +1,10 @@
 package com.skilldistillery.choochoochooser.data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -36,6 +36,7 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 		trainRide.setTrain(train);
 		trainRide.setUser(user);
 		em.persist(trainRide);
+		
 	}
 	
 	@Override
@@ -43,9 +44,11 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 		Train train = em.find(Train.class, trainId);
 		trainRide.setTrain(train);
 		trainRide.setUser(user);
+		
 		em.persist(trainRide);
 		
 		user.removeWishList(train);
-		em.persist(user);
+		
+		
 	}
 }
