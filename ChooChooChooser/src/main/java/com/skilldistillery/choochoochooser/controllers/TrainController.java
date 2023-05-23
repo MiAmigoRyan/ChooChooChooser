@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.choochoochooser.data.TrainDAO;
 import com.skilldistillery.choochoochooser.data.UserDAO;
@@ -57,23 +58,22 @@ public class TrainController {
 		}
 		
 		@RequestMapping(path="removeTrain.do")
-		public String removeTrain(Model model, Train train) {
-			trainDAO.removeTrain(train);
-			model.addAttribute("trainList", trainDAO.listAllTrains());
-			return "DisplayAllTrains";
+		public String removeTrain(Integer trainId, RedirectAttributes redirAtt) {
+			trainDAO.removeTrain(trainId);
+			redirAtt.addFlashAttribute("trainList", trainDAO.listAllTrains());
+			return "redirect:displayAllTrains.do";
+			
 		}
-			
-			
 		
 		@RequestMapping(path="updateTrain.do")
-		public String updateTrain(HttpSession session ,Model model, Train train,
+		public String updateTrain(HttpSession session ,RedirectAttributes redirAtt, Train train,
 					@RequestParam("engineSelection")int engineSelection,
 					@RequestParam("railSelection")int railSelection,
 					int[] amenitiesSlection) {
 			User userInSession = (User) session.getAttribute("loggedInUser");
 			trainDAO.updateTrain(train, engineSelection, railSelection, userInSession.getId(), amenitiesSlection);
-			model.addAttribute("trainList", trainDAO.listAllTrains());
-			return "DisplayAllTrains";
+			redirAtt.addFlashAttribute("trainList", trainDAO.listAllTrains());
+			return "redirect:displayAllTrains.do";
 		}
 		
 		@RequestMapping(path = { "displayAllTrains.do" })
