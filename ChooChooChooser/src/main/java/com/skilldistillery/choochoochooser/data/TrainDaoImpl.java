@@ -51,18 +51,19 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId) {
-		System.out.println(train + "***********************************************************************8");
-		for (int amenityId : amenitiesSelection) {
-			Amenity managedAmenity = em.find(Amenity.class, amenityId);
-			train.addAmenity(managedAmenity);
+		if (amenitiesSelection!=null) {
+			for (int amenityId : amenitiesSelection) {
+				Amenity managedAmenity = em.find(Amenity.class, amenityId);
+				train.addAmenity(managedAmenity);
+			} 
 		}
 		train.setEngine(em.find(Engine.class, engineSelection));
 		train.setRailGauge(em.find(RailGauge.class, railSelection));
 		train.setUser(em.find(User.class, userId));
 		em.persist(train);
-		System.out.println(train + "*************************************************************");
 		return train;
 	}
+	
 
 
 	@Override
