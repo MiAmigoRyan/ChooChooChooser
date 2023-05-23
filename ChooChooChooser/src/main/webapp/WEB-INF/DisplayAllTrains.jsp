@@ -34,8 +34,8 @@
 					
 						<c:if test="${loggedInUser.role == 'ADMIN'}">
 					<td>
-								<form action="removeTrain.do">
-									<input type='hidden' name='id' value="${train.id}" /> <input
+								<form action="removeTrain.do" method='GET'>
+									<input type='hidden' name='trainId' value="${train.id}"  /> <input
 										type='submit' value='Delete Train' />
 							
 							</form>

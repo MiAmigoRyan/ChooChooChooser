@@ -24,10 +24,10 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> findTrainByKeyword(String keyword) {
-		String jpql = "SELECT DISTINCT r.train FROM Route r " + "WHERE LOWER (r.region.name) "
-				+ "LIKE LOWER (:keyword) " + "OR LOWER (r.train.name) " + "LIKE LOWER (:keyword) "
-				+ "OR LOWER (r.startStation.name) " + "LIKE LOWER (:keyword) " + "OR LOWER (r.endStation.name) "
-				+ "LIKE LOWER (:keyword)";
+		String jpql = "SELECT DISTINCT r.train FROM Route r "
+				+ "WHERE r.train.enabled = true AND LOWER (r.region.name) " + "LIKE LOWER (:keyword) "
+				+ "OR LOWER (r.train.name) " + "LIKE LOWER (:keyword) " + "OR LOWER (r.startStation.name) "
+				+ "LIKE LOWER (:keyword) " + "OR LOWER (r.endStation.name) " + "LIKE LOWER (:keyword)";
 		List<Train> trains = em.createQuery(jpql, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return trains;
@@ -35,27 +35,50 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public List<Train> listAllTrains() {
-		String jpql = "SELECT t FROM Train t";
+		String jpql = "SELECT t FROM Train t WHERE t.enabled = true";
 		List<Train> trains = em.createQuery(jpql, Train.class).getResultList();
 		return trains;
 	}
 
 	@Override
-	public Train removeTrain(Train train) {
-		Train managedTrain = em.find(Train.class, train.getId());
+	public boolean removeTrain(int trainId) {
+		Train managedTrain = em.find(Train.class, trainId);
 		if (managedTrain != null) {
-			em.remove(managedTrain);
+			managedTrain.setEnabled(false);
+			return true;
 		}
-		return managedTrain;
+		return false;
 	}
+
+//	@Override
+//	public boolean removeTrain(Train train) {
+//		Train managedTrain = em.find(Train.class, train.getId());
+//		em.remove(managedTrain);
+//		for(Amenity amenity: managedTrain.getAmenities()) {
+//		managedTrain.removeAmenity(amenity);
+//		}
+//		for (Route route: managedTrain.getRoutes()) {
+//		managedTrain.removeRoute(route);
+//		}
+//		managedTrain.removeUser(train.getUser());
+//		for (TrainComment trainComment : managedTrain.getTrainComments())
+//		managedTrain.removeTrainComment(trainComment);
+//		
+//		
+//		if (managedTrain == null) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 
 	@Override
 	public Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId) {
-		if (amenitiesSelection!=null) {
+		if (amenitiesSelection != null) {
 			for (int amenityId : amenitiesSelection) {
 				Amenity managedAmenity = em.find(Amenity.class, amenityId);
 				train.addAmenity(managedAmenity);
-			} 
+			}
 		}
 		train.setEngine(em.find(Engine.class, engineSelection));
 		train.setRailGauge(em.find(RailGauge.class, railSelection));
@@ -93,7 +116,7 @@ public class TrainDaoImpl implements TrainDAO {
 
 	@Override
 	public Train findTrainById(int id) {
-		String jpql = "SELECT t FROM Train t WHERE t.id = :id";
+		String jpql = "SELECT t FROM Train t WHERE t.enabled = true AND t.id = :id";
 		Train train = em.createQuery(jpql, Train.class).setParameter("id", id).getSingleResult();
 		return train;
 	}
