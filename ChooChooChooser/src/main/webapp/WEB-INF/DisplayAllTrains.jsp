@@ -3,17 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>HOME PAGE</title>
-<jsp:include page="BootstrapHead.jsp"></jsp:include>
-
-<link rel="style" type="text/css" href="css/style.css">
-
+	<meta charset="UTF-8">
+	<title>All the trains</title>
+	<jsp:include page="BootstrapHead.jsp"></jsp:include>
+	<link rel="style" type="text/css" href="css/style.css">
 </head>
 <body class="dark-mode">
 	<%@ include file="nav.jsp"%>
-
-
 
 	<table class="table table-striped table-hover">
 		<thead>
@@ -31,27 +27,20 @@
 				<tr>
 					<td><a href='searchById.do?id=${train.id}'>${train.name}</a></td>
 					<td>${train.engine.type}</td>
-					
-						<c:if test="${loggedInUser.role == 'ADMIN'}">
-					<td>
-								<form action="removeTrain.do" method='GET'>
-									<input type='hidden' name='trainId' value="${train.id}"  /> <input
-										type='submit' value='Delete Train' />
-							
+					<c:if test="${loggedInUser.role == 'ADMIN'}">
+						<td>
+							<form action="removeTrain.do" method='GET'>
+								<input type='hidden' name='trainId' value="${train.id}"/>
+								<input type='submit' value='Delete Train' />
 							</form>
-					</td>
+						</td>
 						<td><%@ include file='UpdateTrain.jsp' %></td>
-						</c:if> 
-											
+					</c:if> 
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-
-
-
+	
 </body>
-
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
-
 </html>

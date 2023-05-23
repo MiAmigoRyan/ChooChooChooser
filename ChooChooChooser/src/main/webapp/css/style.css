@@ -42,10 +42,14 @@ body.dark-mode table.table tbody td {
   color: #fff;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1500px) {
     .modal {
         position: relative;
     }
+}
+
+.modal{
+		color: black;
 }
 
 .navbar ul {
@@ -55,9 +59,12 @@ body.dark-mode table.table tbody td {
 .navbar li {
 	margin-right: 3px;	
 }
-.carousel slide{
-	
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
 }
+
 .row{
 	color: #fff;
 }
@@ -68,4 +75,3 @@ body.dark-mode table.table tbody td {
 .col-9 align-self-right{
 	display: flex;
 }
-

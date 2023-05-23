@@ -33,17 +33,18 @@
 						</c:choose>
 						<blockquote>${train.description}</blockquote>
 					</div>
-					<div class="row">
-						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
-					</div>
+					
 					<br>
-					<div class="row">
-					<!-- TODO addToWishlist.do in Controller -->
-						<!-- If not logged in user, pop up login or create account modal -->
-						<form action="addToWishlist.do" method=POST>
-							<input type="submit" value="Add this train to your Wishlist"/>
-							<input type="hidden" name="id" value="${train.id}"/>
-						</form>
+					<div class="row align-self-center">
+						<div class="col-sm-auto">
+							<form action="addToWishlist.do" method=POST>
+								<button class='btn btn-success'>Add this train to your Wishlist</button>
+								<input type="hidden" name="id" value="${train.id}"/>
+							</form>
+						</div>
+						<div class="col-sm-auto">
+							<%@include file= "AddTrainRide.jsp"%>
+						</div>
 					</div>
 					<br>
 					<div class=row>
@@ -93,10 +94,9 @@
 							allowfullscreen>
 						</iframe>
 					</div>
-					<div class="row">
-					<!-- TODO addToRides.do in Controller -->
-						<!-- If not logged in user, pop up login or create account modal -->
-						<%@include file= "AddTrainRide.jsp"%>
+					<br>
+					<div class="row align-self-center">
+						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 				</div>
 				

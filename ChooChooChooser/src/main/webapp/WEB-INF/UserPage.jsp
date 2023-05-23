@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User Page</title>
 <jsp:include page="BootstrapHead.jsp"></jsp:include>
 <link rel="style" type="text/css" href="css/style.css">
 
