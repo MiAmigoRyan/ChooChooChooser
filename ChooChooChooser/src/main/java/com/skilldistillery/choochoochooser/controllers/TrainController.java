@@ -38,7 +38,6 @@ public class TrainController {
 				@RequestParam("engineSelection")int engineSelection,
 				@RequestParam("railSelection")int railSelection,
 				HttpSession session,
-//				@RequestParam("createdById")int userId, 
 				Model model) {
 			User userInSession = (User) session.getAttribute("loggedInUser");
 			model.addAttribute("train", trainDAO.addTrain(train, amenitiesSelection, engineSelection, railSelection, userInSession.getId()));
