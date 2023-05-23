@@ -72,7 +72,7 @@ public class Train {
 	public Train() {
 	}
 
-	public int getId() {
+	public int getId() { 
 		return id;
 	}
 
