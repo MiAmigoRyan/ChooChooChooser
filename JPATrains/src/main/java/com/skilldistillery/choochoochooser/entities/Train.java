@@ -31,6 +31,7 @@ public class Train {
 	private String description;
 	private String photo;
 	private String website;
+	private boolean enabled;
 
 	@Column(name = "year_round")
 	private Boolean yearRound;
@@ -109,6 +110,14 @@ public class Train {
 
 	public void setWebsite(String website) {
 		this.website = website;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public Boolean getYearRound() {
