@@ -17,7 +17,11 @@ public interface TrainDAO {
 
 	Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId);
 
-	Train updateTrain(Train train);
+	//Train updateTrain(Train train);
+
+
+
+	Train updateTrain(Train train, int engineSelection, int railSelection, int userId, int[] amenitiesSelection);
 
 }
 //          S T R E T C H  S E A R C H

@@ -69,9 +69,7 @@
 						<span class='input-group-text'>Description : </span>
 						<textarea class='form-control' rows='4' name='description' value='${train.description}'></textarea>
 					<input type='hidden' name='createdById' value='${loggedInUser.id}' />
-					<%-- <input type='hidden' name='id' value='${train.engine.id}' />
- --%>					<input type='hidden' name='id' value='${train.id}'/>
-					
+ 					<input type='hidden' name='id' value='${train.id}'/>
 					<input type='submit' class='btn btn-success' name='Update Train'>
 					</div>
 
@@ -88,13 +86,5 @@
 		</script>
 			</div>
 		</div>
-
-
-		<%-- <jsp:include page="bootstrapFoot.jsp" /> --%>
-
-		<!-- 	<div class="modal-footer"> -->
-
-		<!--   <button type="button" class="btn btn-primary">Save changes</button>
-							      </div> -->
 	</div>
 </div>
