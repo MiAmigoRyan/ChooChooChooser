@@ -31,6 +31,7 @@ public class TrainRide {
 	private String title;
 	private int rating;
 	private String content;
+	private boolean enabled;
 
 	@Column(name = "ride_date")
 	private LocalDate rideDate;
@@ -87,6 +88,14 @@ public class TrainRide {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public LocalDate getRideDate() {

@@ -24,6 +24,7 @@ public class TrainComment {
 	private int id;
 
 	private String comment;
+	private boolean enabled;
 
 	@Column(name = "comment_date")
 	private LocalDateTime commentDate;
@@ -56,6 +57,14 @@ public class TrainComment {
 
 	public String getComment() {
 		return comment;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public void setComment(String comment) {
