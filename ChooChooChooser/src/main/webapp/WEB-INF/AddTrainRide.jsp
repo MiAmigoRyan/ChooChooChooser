@@ -29,22 +29,12 @@
 								class='form-control' type='text' name='photo' />
 						</div>
 						<div class='col-5 offset-1'>
-							<span class='input-group-text'>How would you rate this trip?: </span>
-							 <label for='rating-button'>1</label>
-							 <input type='radio' id='rating-button' 
-							 	value='1' class='form-control' name='rating'>
-							 <label for='rating-button'>2</label>
-							 <input type='radio' id='rating-button' 
-							 	value='2'class='form-control' name='rating'>
-							 <label for='rating-button'>3</label>
-							 <input type='radio' id='rating-button' 
-							 	value='3'class='form-control' name='rating'>
-							 <label for='rating-button'>4</label>
-							 <input type='radio' id='rating-button' 
-							 	value='4' class='form-control' name='rating'>
-							 <label for='rating-button'>5</label>
-							 <input type='radio' id='rating-button'
-							 	value='5' class='form-control' name='rating'>
+							<label>Rating</label>
+					<input type="radio" name="rating" value="1">&#x2B50; 
+					<input type="radio" name="rating" value="2">&#x2B50; &#x2B50; 
+					<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;
+					<input type="radio" name="rating" value="4">&#x2B50; &#x2B50; &#x2B50; &#x2B50;
+					<input type="radio" name="rating" value="5">&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50;
 							
 						</div>
 						<div class='col-5'>
@@ -63,6 +53,10 @@
 
 
 			</form>
+			 <script>
+				radiobutton = ${train.rating};
+				radiobutton.checked = true;
+			</script>
 			</div>
 		</div>
 

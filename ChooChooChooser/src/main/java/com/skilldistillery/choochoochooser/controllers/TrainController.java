@@ -57,5 +57,23 @@ public class TrainController {
 			session.setAttribute("loggedInUser", loggedInUser);
 		}
 		
+		@RequestMapping(path="removeTrain.do")
+		public String removeTrain(Model model, Train train) {
+			trainDAO.removeTrain(train);
+			return "DisplayAllTrains";
+			
+		}
+		
+		@RequestMapping(path="updateTrain.do")
+		public String updateTrain(Model model, Train train) {
+			Train managedTrain = trainDAO.updateTrain(train);
+			return "DisplayAllTrains";
+		}
+		
+		@RequestMapping(path = { "displayAllTrains.do" })
+		public String listAllTrains(Model model) {
+			model.addAttribute("trainList", trainDAO.listAllTrains());
+			return "DisplayAllTrains";	
+		}
 
 }

@@ -17,6 +17,8 @@ public interface TrainDAO {
 
 	Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId);
 
+	Train updateTrain(Train train);
+
 }
 //          S T R E T C H  S E A R C H
 //	List<Object[]> findUsersAndTrainsByKeyword(String keyword);

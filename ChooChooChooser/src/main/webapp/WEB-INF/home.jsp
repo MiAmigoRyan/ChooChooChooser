@@ -25,24 +25,6 @@
 		</c:forEach>
   </div>
 </div>
-<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Engine Type</th>
-				<th>URL</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="train" items="${trainList}">
-				<tr>
-					<td><a href='searchById.do?id=${train.id}'>${train.name}</a></td>
-					<td>${train.engine.type}</td>
-					<td><a href='${train.website}'><button class='btn btn-success'>This Trains Website!</button></a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 
 	
 
