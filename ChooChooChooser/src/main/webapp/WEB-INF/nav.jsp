@@ -136,6 +136,9 @@
 							</div>
 						</div>
 					</div></li>
+					
+				<li><a href='displayAllTrains.do'><button type='button'
+								class='btn btn-outline-danger'>All Trains!!!!</button></a></li>
 				<li>
 					<div class="col-9 align-self-right">
 						<form action="trainSearch.do" method="GET">

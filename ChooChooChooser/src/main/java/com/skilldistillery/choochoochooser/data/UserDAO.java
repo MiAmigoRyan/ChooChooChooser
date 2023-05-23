@@ -14,11 +14,11 @@ public interface UserDAO {
 	
 	TrainRide addRide (TrainRide userRide);
 	
-	void removeRide(TrainRide userRide);
 	
 	List<Train> viewWishlist(Train wishList);
 	
 	void addToWishlist(int userId, int trainId);
+	
 	void removeFromWishlist(int userId, int trainid);
 	
 	RidePhoto removePhoto(RidePhoto photo);
