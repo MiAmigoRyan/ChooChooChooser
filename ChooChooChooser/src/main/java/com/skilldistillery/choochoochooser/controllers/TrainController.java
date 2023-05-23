@@ -60,13 +60,16 @@ public class TrainController {
 		@RequestMapping(path="removeTrain.do")
 		public String removeTrain(Model model, Train train) {
 			trainDAO.removeTrain(train);
+			model.addAttribute("trainList", trainDAO.listAllTrains());
 			return "DisplayAllTrains";
-			
 		}
+			
+			
 		
 		@RequestMapping(path="updateTrain.do")
 		public String updateTrain(Model model, Train train) {
 			Train managedTrain = trainDAO.updateTrain(train);
+			model.addAttribute("trainList", trainDAO.listAllTrains());
 			return "DisplayAllTrains";
 		}
 		
