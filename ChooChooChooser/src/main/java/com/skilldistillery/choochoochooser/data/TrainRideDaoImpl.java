@@ -49,6 +49,7 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 		Train train = em.find(Train.class, trainId);
 		trainRide.setTrain(train);
 		trainRide.setUser(user);
+		trainRide.setEnabled(true);
 		em.persist(trainRide);
 		
 	}
@@ -58,7 +59,7 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 		Train train = em.find(Train.class, trainId);
 		trainRide.setTrain(train);
 		trainRide.setUser(user);
-		
+		trainRide.setEnabled(true);
 		em.persist(trainRide);
 		
 		user.removeWishList(train);

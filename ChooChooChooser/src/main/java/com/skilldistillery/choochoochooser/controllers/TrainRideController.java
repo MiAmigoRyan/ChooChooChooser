@@ -45,14 +45,11 @@ public class TrainRideController {
 		@RequestMapping(path="removeFromRiddenList.do")
 		public String removeTrainFromRiddenlist(HttpSession session, @RequestParam("trainId") int trainId) {
 			TrainRide trainRide = trainRideDAO.findRideById(trainId);
-			System.out.println(trainRide+"**************************************************************************************************************************");
 			User userInSession = (User) session.getAttribute("loggedInUser");
 			if (userInSession != null) {
-				System.out.println(trainRide+"**************************************************************************************************************************");
 				User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
 				trainRideDAO.removeFromRiddenList(loggedInUser, trainId, trainRide);
 				refreshUserInSession(session);
-				System.out.println(trainRide+"**************************************************************************************************************************");
 				return "UserPage";
 			}
 			return "UserPage";

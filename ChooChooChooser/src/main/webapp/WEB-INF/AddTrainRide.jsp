@@ -47,6 +47,7 @@
 						<textarea class='form-control' rows='4' name='content'></textarea>
 					
 					<input type='hidden' name='trainId' value='${train.id}'/>
+					<input type='hidden' name='enabled' value='1'/>
 					<input type='hidden' name='createdById' value='${loggedInUser.id}' />
 					<input type='submit' class='btn btn-success' name='Add Train'>
 					</div>
