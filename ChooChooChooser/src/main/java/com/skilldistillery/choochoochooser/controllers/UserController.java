@@ -18,10 +18,6 @@ public class UserController {
 	@Autowired
 	private UserDAO userDAO;
 
-//	@RequestMapping(path = { "/", "home.do" })
-//	private String home(Model model) {
-//		return "home";
-//	}
 	// adds form from jsp modal register.do to createUser in DAO
 	@RequestMapping(path = "register.do")
 	private String register(User user, RedirectAttributes redir) {

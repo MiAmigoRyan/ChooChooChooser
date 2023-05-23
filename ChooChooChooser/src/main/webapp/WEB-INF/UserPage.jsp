@@ -24,7 +24,9 @@
 						<input class="col btn btn-primary" type="submit" value="Search" />
 					</div>
 				</form>
-				<%@ include file="AddTrain.jsp"%>
+				<c:if test="${loggedInUser.role == 'ADMIN'}">
+					<%@ include file="AddTrain.jsp"%>
+				</c:if>
 				<div class="col-2">
 					<img src="${loggedInUser.profilePhoto}" alt="No Photo">
 				</div>
@@ -42,23 +44,29 @@
 				<span>Trains I've Ridden: </span>
 				<table class="table table-striped table-hover">
 					<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Ride Photos</th>
-					</tr>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Ride Photos</th>
+						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="train" items="${loggedInUser.rides}">
-							<tr>
-							
-								<td>${train.id }</td>
-								<td>${train.train.name}</td>
-								<c:forEach var="photo" items="${train.photos}">
-									<td><img src="${photo.photo}" class="img-thumbnail"
-										width="50%" /></td>
-					</c:forEach>					
-					</c:forEach>
+						<c:forEach var="ride" items="${loggedInUser.rides}">
+							<c:if test="${ride.enabled }">
+								<tr>
+
+									<td>${ride.id }</td>
+									<td>${ride.train.name}</td>
+
+									<td><a href='removeFromRiddenList.do?trainId=${ride.id }'><button>Remove
+												this train</button></a></td>
+
+									<td><c:forEach var="photo" items="${ride.photos}">
+											<td><img src="${photo.photo}" class="img-thumbnail"
+												width="50%" /></td>
+										</c:forEach>
+							</c:if>
+						</c:forEach>
 				</table>
 				<span>I Want to Ride: </span>
 				<table class="table table-striped table-hover">
@@ -73,11 +81,12 @@
 							<tr>
 								<td>${train.id }</td>
 								<td>${train.name}</td>
-								<td><a href='removeFromWishlist.do?id=${train.id }'><button>Remove this train</button></a></td>
+								<td><a href='removeFromWishlist.do?id=${train.id }'><button>Remove
+											this train</button></a></td>
 								<td><%@ include file="TransferTrainRide.jsp"%></td>
 						</c:forEach>
 				</table>
-				
+
 			</c:when>
 			<c:otherwise>
 				<p>NOT LOGGED IN</p>
