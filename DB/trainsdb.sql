@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_name` VARCHAR(45) NULL,
   `description` TEXT(500) NULL,
   `profile_photo` VARCHAR(2000) NULL,
-  `enabled` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
+  `enabled` TINYINT NOT NULL DEFAULT 1,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'USER',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
@@ -333,8 +333,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `trainsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 'Yosemite', 'Sam', 'World renowned gunslinger | Don\'t mess with his trains.', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Yosemite_Sam.svg/360px-Yosemite_Sam.svg.png', 1, 'ADMIN');
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (2, 'trainowner', 'trainowner', 'Train', 'Owner', NULL, NULL, 1, 'Owner');
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (3, 'rider1', 'rider1', 'Calamity', 'Carl', NULL, NULL, 1, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (2, 'trainowner', 'trainowner', 'Train', 'Owner', 'I love trains!', 'https://w7.pngwing.com/pngs/974/54/png-transparent-train-conductor-world-rail-transport-railroad-engineer-train-conductor-s-game-hand-cartoon-thumbnail.png', 1, 'OWNER');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (3, 'rider1', 'rider1', 'Calamity', 'Carl', 'If there\'s an explosion, I\'m probably a part of it.', 'https://img.favpng.com/1/24/5/horse-cowboy-cartoon-equestrianism-png-favpng-MNSNYrQDCefcguuiqAFGY5wtM.jpg', 1, 'USER');
 
 COMMIT;
 
