@@ -32,6 +32,17 @@ public class TrainRideController {
 			return "UserPage";
 		}
 		
+		@RequestMapping(path="transferToRides.do")
+		public String transferTrainRide(HttpSession session, TrainRide ride,@RequestParam("trainId") int trainId) {
+			System.out.println("first line of remove in controller________________________________________________________");
+			User userInSession = (User) session.getAttribute("loggedInUser");
+			if (userInSession != null) {
+				trainRideDAO.fromWishlistToRiddenList(userInSession, trainId, ride);
+				refreshUserInSession(session);
+			}	
+			return "UserPage";
+		}
+		
 		public void refreshUserInSession(HttpSession session) {
 			User userInSession = (User) session.getAttribute("loggedInUser");
 			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());

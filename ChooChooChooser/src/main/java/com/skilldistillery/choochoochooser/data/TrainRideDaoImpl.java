@@ -38,4 +38,14 @@ public class TrainRideDaoImpl implements TrainRideDAO{
 		em.persist(trainRide);
 	}
 	
+	@Override
+	public void fromWishlistToRiddenList(User user, int trainId, TrainRide trainRide) {
+		Train train = em.find(Train.class, trainId);
+		trainRide.setTrain(train);
+		trainRide.setUser(user);
+		em.persist(trainRide);
+		
+		user.removeWishList(train);
+		em.persist(user);
+	}
 }

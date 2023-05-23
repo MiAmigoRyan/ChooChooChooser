@@ -79,4 +79,16 @@ public class UserController {
 		}
 		return "UserPage";
 	}
+	
+	@PostMapping(path="removeFromWishlist.do")
+	public String removeTrainFromWishlist(HttpSession session, User user, @RequestParam("id") int trainId) {
+		User userInSession = (User) session.getAttribute("loggedInUser");
+		if (userInSession != null) {
+			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+			userDAO.removeFromWishlist(loggedInUser.getId(), trainId);
+			refreshUserInSession(session);
+			return "UserPage";
+		}
+		return "UserPage";
+	}
 }

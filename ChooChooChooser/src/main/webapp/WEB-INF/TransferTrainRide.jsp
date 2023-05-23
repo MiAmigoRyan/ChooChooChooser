@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-outline-success"
-	data-bs-toggle='modal' data-bs-target='#AddTrainRideModal'>Review A Ride!
+	data-bs-toggle='modal' data-bs-target='#AddTrainRideModal'>Move from Wishlist & Review A Ride!
 	</button>
 
 
@@ -18,7 +18,7 @@
 					<h1>Review A Train Ride!</h1>
 				</div>
 				
-				<form action="addToRides.do" method="GET">
+				<form action="TransferToRides.do" method="GET">
 					<div class='row 3'>
 						<div class='col-5 offset-1'>
 							<span class='input-group-text'>Title: </span> <input

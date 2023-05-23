@@ -19,6 +19,7 @@ public interface UserDAO {
 	List<Train> viewWishlist(Train wishList);
 	
 	void addToWishlist(int userId, int trainId);
+	void removeFromWishlist(int userId, int trainid);
 	
 	RidePhoto removePhoto(RidePhoto photo);
 	RidePhoto addPhoto(RidePhoto photo);

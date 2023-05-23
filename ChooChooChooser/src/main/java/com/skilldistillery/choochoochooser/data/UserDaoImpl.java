@@ -69,6 +69,14 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	public void removeFromWishlist(int userId, int trainid) {
+		User user = em.find(User.class, userId);
+		Train train = em.find(Train.class, trainid);
+		user.removeWishList(train);
+		em.persist(user);
+	}
+
+	@Override
 	public void removeRide(TrainRide userRide) {
 		em.remove(userRide);
 	}

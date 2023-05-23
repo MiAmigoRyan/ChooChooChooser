@@ -11,4 +11,6 @@ public interface TrainRideDAO {
 
 	void createTrainRide(User user, int trainId, TrainRide trainRide);
 
+	void fromWishlistToRiddenList(User user, int trainId, TrainRide trainRide);
+
 }

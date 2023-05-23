@@ -78,6 +78,8 @@
 							<tr>
 								<td>${train.id }</td>
 								<td>${train.name}</td>
+								<td><button action="removeFromWishlist.do">Remove this train</button></td>
+								<td><%@ include file="TransferTrainRide.jsp"%></td>
 						</c:forEach>
 				</table>
 			</c:when>
