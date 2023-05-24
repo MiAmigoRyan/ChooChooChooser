@@ -38,33 +38,57 @@
 						<div class='col-12'>
 							<span class='input-group-text'>Amenities: </span> 
 						</div>
-							<div class='col-4'>
-								<span class='input-group-text'>Dining Car </span> 
-							</div>
-							<div class='col-4'>	
-								<input type='checkbox' name='amenitiesSelection' value='1'>
-							</div>
-							<div class='col-1'>
-								<span class='input-group-text'>Whistle Stops </span> 
-							</div>
-							<div class='col-4 offset-3'>
-								<input type='checkbox' name='amenitiesSelection' value='2'>
-							</div>	
-								<span class='input-group-text'>Orator </span> 
-								<input type='checkbox' name='amenitiesSelection' value='3'>
-							<span class='input-group-text'>Open-Air Gondola </span> 
+						
+						<div class='col-4'>
+							<span class='input-group-text'>Dining Car </span> 
+						</div>
+						<div class='col-1'>	
+							<input type='checkbox' name='amenitiesSelection' value='1'>
+						</div>
+						<div class='col-5 offset-1'>
+							<span class='input-group-text'>Whistle Stops </span> 
+						</div>
+						<div class='col-1'>
+							<input type='checkbox' name='amenitiesSelection' value='2'>
+						</div>	
+						<div class='col-3'>
+							<span class='input-group-text'>Orator </span>
+						</div>	
+						<div class='col-1'> 
+							<input type='checkbox' name='amenitiesSelection' value='3'>
+						</div>	
+						<div class='col-6'>
+							<span class='input-group-text'>Open-Air Gondola </span>
+						</div>	
+						<div class='col-1'> 
 							<input type='checkbox' name='amenitiesSelection' value='4'>
-							<span class='input-group-text'>Parlor Car </span> 
+						</div>	
+						<div class='col-4'>
+							<span class='input-group-text'>Parlor Car </span>
+						</div>	
+						<div class='col-1'> 
 							<input type='checkbox' name='amenitiesSelection' value='5'>
-							<span class='input-group-text'>Caboose </span> 
+						</div>
+						<div class='col-4'>
+							<span class='input-group-text'>Caboose </span>
+						</div>	
+						<div class='col-1'> 
 							<input type='checkbox' name='amenitiesSelection' value='6'>
+						</div>	
 						<div class='col-12'>
-							<span class='input-group-text'>Engine Type: </span> <select
-								class='form-control' name='engineSelection' required>
-								<option id='engineSelection' value='1'>Steam Locomotive</option>
-								<option id='engineSelection' value='2'>Diesel
-									Locomotive</option>
-							</select>
+							<span class='input-group-text'>Engine Type: </span> 
+						</div>
+						<div class='col-5'>
+							<span class='input-group-text'>Steam </span>
+						</div>	
+						<div class='col-1'> 
+							<input type='checkbox' name='engineSelection' value='1'>
+						</div>	
+						<div class='col-5'>
+							<span class='input-group-text'>Diesel </span>
+						</div>	
+						<div class='col-1'> 
+							<input type='checkbox' name='engineSelection' value='2'>
 						</div>
 					</div>
 					<div class='col-12'>
