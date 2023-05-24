@@ -23,14 +23,25 @@ dark-mode {
 	padding: 3px;
 }
 
-#trainPhoto, #routePhoto, .map-container, .carousel-item{
+#trainPhoto, #routePhoto, #ridePhoto, .map-container, .carousel-item{
 	width: 100%;
 	padding: 10px;
+<<<<<<< HEAD
+	border: gray solid 2px;
+}
+
+#userPhoto{
+	align-items: center;
+	width: 75%;
+	padding: 10px;
+	border: gray solid 2px;
+=======
 <<<<<<< HEAD
 	border: grey solid 1px;
 =======
 	border: gray solid 1px;
 >>>>>>> e641e136ba74b7a99b052fc68a9c604f073fb041
+>>>>>>> e7dafd86b885b4989d8c1ed4ceac4aa1b4bfa0ac
 }
 
 body.dark-mode table.table {
@@ -98,10 +109,10 @@ li{
 	align-items:center;
 	width: 100%;
 }
-.details-page, .carousel-container{
+.details-page, .carousel-container, .user-page{
 	width: 100vw;
 }
-#details-page-train-description, #details-page-individual-comment, #details-page-route-info {
+#details-page-train-description, #details-page-individual-comment, #details-page-route-info, #user-description {
 	background:rgba(255,255,255,0.1);
 	padding: 10px;
 }
@@ -129,12 +140,15 @@ li{
 .carousel-caption{
 background:rgba(0,0,0,0.5);	
 }
+<<<<<<< HEAD
+=======
 
 a {
 	text-decoration:none;
 	color:#fff;	
 	padding: 3px;
 }
+>>>>>>> e7dafd86b885b4989d8c1ed4ceac4aa1b4bfa0ac
 .carousel-href-tag{
 	text-decoration:none;
 	color: white;	
