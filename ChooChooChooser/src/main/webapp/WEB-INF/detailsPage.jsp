@@ -105,6 +105,7 @@
 						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 					<br>
+					<%@include file= "AddTrainComment.jsp"%>
 					<div class=row-sm-auto>
 						<c:choose>
 							<c:when test="${not empty train.trainComments}">
