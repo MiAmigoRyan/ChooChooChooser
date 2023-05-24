@@ -47,9 +47,11 @@ public class Train {
 	@JoinColumn(name = "rail_gauge_id")
 	private RailGauge railGauge;
 
-	@ManyToOne
-	@JoinColumn(name = "engine_id")
-	private Engine engine;
+	@ManyToMany
+	@JoinTable(name = "train_engine", 
+	joinColumns = @JoinColumn(name = "train_id"),
+	inverseJoinColumns = @JoinColumn(name = "engine_id"))
+	private List<Engine> engines;
 
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
@@ -152,12 +154,12 @@ public class Train {
 		this.railGauge = railGauge;
 	}
 
-	public Engine getEngine() {
-		return engine;
+	public List<Engine> getEngines() {
+		return engines;
 	}
 
-	public void setEngine(Engine engine) {
-		this.engine = engine;
+	public void setEngines(List<Engine> engines) {
+		this.engines = engines;
 	}
 
 	public User getUser() {
@@ -256,6 +258,23 @@ public class Train {
 			user.removeWishList(this);
 		}
 	}
+	
+	public void addEngine(Engine engine) {
+		if (engines == null) {
+			engines = new ArrayList<>();
+		}
+		if (!users.contains(engine)) {
+			engines.add(engine);
+			engine.addTrain(this);
+		}
+	}
+	
+	public void removeEngine(Engine engine) {
+		if (engines != null && engines.contains(engine)) {
+			engines.remove(engine);
+			engine.removeTrain(this);
+		}
+	}
 
 	public void addAmenity(Amenity amenity) {
 		if (amenities == null) {
@@ -294,7 +313,7 @@ public class Train {
 		builder.append(", railGauge=");
 		builder.append(railGauge);
 		builder.append(", engine=");
-		builder.append(engine);
+		builder.append(engines);
 		builder.append(", user=");
 		builder.append(user);
 		builder.append("]");

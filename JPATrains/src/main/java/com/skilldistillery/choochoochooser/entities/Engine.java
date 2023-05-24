@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,7 +21,7 @@ public class Engine {
 	private String description;
 	private String photo;
 
-	@OneToMany(mappedBy = "engine")
+	@ManyToMany(mappedBy = "engines")
 	private List<Train> trains;
 
 	public Engine() {
@@ -72,17 +73,14 @@ public class Engine {
 		}
 		if (!trains.contains(train)) {
 			trains.add(train);
-			if (train.getEngine() != null) {
-				train.getEngine().removeTrain(train);
+			train.addEngine(this);
 			}
-			train.setEngine(this);
 		}
-	}
 
 	public void removeTrain(Train train) {
 		if (trains != null && trains.contains(train)) {
 			trains.remove(train);
-			train.setEngine(null);
+			train.removeEngine(this);
 		}
 	}
 

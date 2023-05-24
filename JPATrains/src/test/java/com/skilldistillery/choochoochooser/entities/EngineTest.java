@@ -47,7 +47,7 @@ class EngineTest {
 	}
 
 	@Test
-	void test_Engine_to_Train_OneToMany_mapping() {
+	void test_Engine_to_Train_ManyToMany_mapping() {
 		assertNotNull(engine);
 		assertTrue(engine.getTrains().size() > 0);
 	}

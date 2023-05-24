@@ -12,9 +12,9 @@ public interface TrainDAO {
 
 	Train findTrainById(int id);
 	
-	Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId);
+	Train addTrain(Train train, int[] amenitiesSelection, int[] engineSelection, int railSelection, int userId);
 
-	Train updateTrain(Train train, int engineSelection, int railSelection, int userId, int[] amenitiesSelection);
+	Train updateTrain(Train train, int[] engineSelection, int railSelection, int userId, int[] amenitiesSelection);
 
 	boolean removeTrain(int trainId);
 }

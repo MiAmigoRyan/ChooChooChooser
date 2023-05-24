@@ -54,9 +54,9 @@ class TrainTest {
 	}
 
 	@Test
-	void test_Train_to_Engine_ManyToOne_Mapping() {
+	void test_Train_to_Engine_ManyToMany_Mapping() {
 		assertNotNull(train);
-		assertEquals("Steam Locomotive", train.getEngine().getType());
+		assertTrue(train.getEngines().size()>0);
 	}
 
 	@Test
@@ -72,7 +72,8 @@ class TrainTest {
 	}
 
 	@Test
-	void test_Train_to_User_ManyToMany_Mapping() {
+	void test_Train_to_User_ManyToMany_Mapping_WishList() {
+		train = em.find(Train.class, 3);
 		assertNotNull(train);
 		assertNotNull(train.getUsers());
 		assertTrue(train.getUsers().size() > 0);

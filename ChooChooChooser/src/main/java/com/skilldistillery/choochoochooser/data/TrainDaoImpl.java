@@ -50,47 +50,26 @@ public class TrainDaoImpl implements TrainDAO {
 		return false;
 	}
 
-//	@Override
-//	public boolean removeTrain(Train train) {
-//		Train managedTrain = em.find(Train.class, train.getId());
-//		em.remove(managedTrain);
-//		for(Amenity amenity: managedTrain.getAmenities()) {
-//		managedTrain.removeAmenity(amenity);
-//		}
-//		for (Route route: managedTrain.getRoutes()) {
-//		managedTrain.removeRoute(route);
-//		}
-//		managedTrain.removeUser(train.getUser());
-//		for (TrainComment trainComment : managedTrain.getTrainComments())
-//		managedTrain.removeTrainComment(trainComment);
-//		
-//		
-//		if (managedTrain == null) {
-//			return true;
-//		}
-//		
-//		return false;
-//	}
-
 	@Override
-	public Train addTrain(Train train, int[] amenitiesSelection, int engineSelection, int railSelection, int userId) {
+	public Train addTrain(Train train, int[] amenitiesSelection, int[] engineSelection, int railSelection, int userId) {
 		if (amenitiesSelection != null) {
 			for (int amenityId : amenitiesSelection) {
 				Amenity managedAmenity = em.find(Amenity.class, amenityId);
 				train.addAmenity(managedAmenity);
 			}
 		}
-		train.setEngine(em.find(Engine.class, engineSelection));
+		for (int engineId : engineSelection) {
+			Engine managedEngine = em.find(Engine.class, engineId);
+			train.addEngine(managedEngine);
+		}
 		train.setRailGauge(em.find(RailGauge.class, railSelection));
 		train.setUser(em.find(User.class, userId));
 		em.persist(train);
 		return train;
 	}
-	
-
 
 	@Override
-	public Train updateTrain(Train train, int engineSelection, int railSelection, int userId,
+	public Train updateTrain(Train train, int[] engineSelection, int railSelection, int userId,
 			int[] amenitiesSelection) {
 		Train managedTrain = em.find(Train.class, train.getId());
 		if (managedTrain != null) {
@@ -102,7 +81,12 @@ public class TrainDaoImpl implements TrainDAO {
 			managedTrain.setCreateDate(train.getCreateDate());
 			managedTrain.setLastUpdate(train.getLastUpdate());
 			managedTrain.setRailGauge(em.find(RailGauge.class, railSelection));
-			managedTrain.setEngine(em.find(Engine.class, engineSelection));
+			if (engineSelection != null) {
+				for (int engineId : engineSelection) {
+					Engine managedEngine = em.find(Engine.class, engineId);
+					train.addEngine(managedEngine);
+				}
+			}
 			managedTrain.setUser(em.find(User.class, userId));
 			if (amenitiesSelection != null) {
 				for (int amenityId : amenitiesSelection) {

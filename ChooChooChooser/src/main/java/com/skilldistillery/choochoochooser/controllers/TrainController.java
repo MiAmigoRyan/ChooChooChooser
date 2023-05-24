@@ -36,7 +36,7 @@ public class TrainController {
 
 		@RequestMapping(path = {"addTrain.do"})
 		public String addTrain(Train train,int[] amenitiesSelection,
-				@RequestParam("engineSelection")int engineSelection,
+				@RequestParam("engineSelection")int[] engineSelection,
 				@RequestParam("railSelection")int railSelection,
 				HttpSession session,
 				Model model) {
@@ -67,7 +67,7 @@ public class TrainController {
 		
 		@RequestMapping(path="updateTrain.do")
 		public String updateTrain(HttpSession session ,RedirectAttributes redirAtt, Train train,
-					@RequestParam("engineSelection")int engineSelection,
+					@RequestParam("engineSelection")int[] engineSelection,
 					@RequestParam("railSelection")int railSelection,
 					int[] amenitiesSlection) {
 			User userInSession = (User) session.getAttribute("loggedInUser");
