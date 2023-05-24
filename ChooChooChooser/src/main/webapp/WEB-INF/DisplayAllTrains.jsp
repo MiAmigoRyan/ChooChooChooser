@@ -39,7 +39,10 @@
 					<td>
 					
 					<c:choose>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e641e136ba74b7a99b052fc68a9c604f073fb041
 							<c:when test='${Double.isNaN(train.averageRating) }'>
 								<p>not rated</p>
 							</c:when>
@@ -63,8 +66,8 @@
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>
 							<form action="removeTrain.do" method='GET'>
-								<input type='hidden' name='trainId' value="${train.id}" /> <input
-									type='submit' value='Delete Train' />
+								<button class='btn btn-danger'>Delete Train</button>
+								<input type='hidden' name='trainId' value="${train.id}"/>
 							</form>
 						</td>
 						<td><%@ include file='UpdateTrain.jsp'%></td>

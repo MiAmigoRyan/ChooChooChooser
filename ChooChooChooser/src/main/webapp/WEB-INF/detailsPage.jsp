@@ -90,16 +90,15 @@
 						</iframe>
 					</div>
 					<br>
-					<div class="row wishlist-and-ride-buttons">
-						<div class="col-sm-auto">
-							<form action="addToWishlist.do" method=POST>
-								<button class='btn btn-success'>Add this train to your Wishlist</button>
-								<input type="hidden" name="id" value="${train.id}"/>
-							</form>
-						</div>
-						<div class="col-sm-auto">
-							<%@include file= "AddTrainRide.jsp"%>
-						</div>
+					<div class="row-sm-auto wishlist-button">
+						<form action="addToWishlist.do" method=POST>
+							<button class='btn btn-success'>Add this train to your Wishlist</button>
+							<input type="hidden" name="id" value="${train.id}"/>
+						</form>
+					</div>
+					<br>
+					<div class="row-sm-auto ride-button">
+						<%@include file= "AddTrainRide.jsp"%>
 					</div>
 					<br>
 					<div class="row-sm-auto website-button">

@@ -26,7 +26,11 @@ dark-mode {
 #trainPhoto, #routePhoto, .map-container, .carousel-item{
 	width: 100%;
 	padding: 10px;
+<<<<<<< HEAD
 	border: grey solid 1px;
+=======
+	border: gray solid 1px;
+>>>>>>> e641e136ba74b7a99b052fc68a9c604f073fb041
 }
 
 body.dark-mode table.table {
@@ -87,7 +91,7 @@ li{
 	width:100vw;
 	height:5em;
 }
-.navbar-container, .wishlist-and-ride-buttons, .website-button{
+.navbar-container, .wishlist-button, .ride-button, .website-button{
 	display:flex;
 	justify-content:space-around;
 	flex-direction:row;
