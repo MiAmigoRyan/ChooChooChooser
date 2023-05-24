@@ -70,9 +70,7 @@
 						<c:choose>
 							<c:when test="${not empty train.photo}">
 								<img id="trainPhoto" src="${train.photo}"
-									alt="Photo of ${train.name}"
-									width=100%
-									/>
+									alt="Photo of ${train.name}"/>
 							</c:when>
 							<c:otherwise>
 								Train photo not available at this time.
@@ -83,7 +81,6 @@
 					<div class="row-sm-auto map-container">
 						<iframe 
 							src="https://www.google.com/maps?q='${train.name}'&z=13&output=embed" 
-							width=100% 
 							frameborder="0" 
 							style="border:0" 
 							allowfullscreen>
