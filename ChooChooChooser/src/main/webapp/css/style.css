@@ -93,7 +93,9 @@ li{
 	align-items:center;
 	width: 100%;
 }
-
+.details-page{
+	width: 100vw;
+}
 .row {
 	color: #fff;
 }
@@ -115,7 +117,16 @@ li{
 .carousel-item img {
 	width: 1000px;
 }
-
-.details-page{
-	width: 100vw;
+.carousel-caption{
+background:rgba(0,0,0,0.5);	
+}
+a .carousel-href-tag{
+	text-decoration:none;
+	color:inherit;	
+}
+a .carousel-href-tag:hover{
+	color:green;
+}
+.table-hover-light tr:hover{
+	background-color:rgba(255,255,255,0.1);
 }

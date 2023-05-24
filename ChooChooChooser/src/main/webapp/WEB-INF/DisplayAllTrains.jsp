@@ -11,11 +11,14 @@
 <body class="dark-mode">
 	<%@ include file="nav.jsp"%>
 
-	<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover table-hover-light table-bordered">
 		<thead>
 			<tr>
+				
 				<th>Name</th>
-				<th>Engine Type</th>
+				
+				<th class='engine-th' colspan="2">Engine</th>
+				
 				<c:if test="${loggedInUser.role == 'ADMIN'}">
 				<th>Remove Train</th>
 				<th>Update Train</th>
