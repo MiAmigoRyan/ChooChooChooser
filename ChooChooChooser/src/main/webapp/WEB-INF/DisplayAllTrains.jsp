@@ -39,6 +39,10 @@
 					<td>
 					
 					<c:choose>
+<<<<<<< HEAD
+
+=======
+>>>>>>> e641e136ba74b7a99b052fc68a9c604f073fb041
 							<c:when test='${Double.isNaN(train.averageRating) }'>
 								<p>not rated</p>
 							</c:when>
