@@ -30,16 +30,14 @@
 							class='btn btn-outline-success'>Profile Page</button></a>
 				</li>
 				<li>
-							<div class="alert alert-success" role="alert">
 						<a href="logout.do"><button type='button'
 							class='btn btn-outline-danger'>Logout</button>
-
- 							 A simple success alert—check it out!
 							</a>
-							</div>
+							
 				</li>
 			</c:when>
-
+		</c:choose>
+		
 			<c:otherwise>
 				<li><button type="button" class="btn btn-outline-success"
 						data-bs-toggle='modal' data-bs-target='#CreateUserModal'>
@@ -99,35 +97,32 @@
 
 
 					<div class="modal fade" id="LoginModal" tabindex="-1"
-						aria-labelledby="LoginModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h1 class="modal-title fs-5" id="LoginModalLabel">Sign In</h1>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
+				aria-labelledby="LoginModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="LoginModalLabel">Sign In</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form action="login.do" method="POST">
+								<div class='col-5'>
+									<span class='input-group-text'>Username: </span> <input
+										class='form-control' type='text' name='username' />
 								</div>
-								<div class="modal-body">
-									<form action="login.do" method="POST">
-										<div class='col-5'>
-											<span class='input-group-text'>Username: </span>
-											<input class='form-control' type='text' name='username' />
-										</div>
-										<div class='col-5'>
-											<span class='input-group-text'>Password: </span>
-											<input class='form-control' type='password' name='password' />
-									
-										<input type='submit' class='btn btn-success' name='login'>
-										</div>
-									</form>
+								<div class='col-5'>
+									<span class='input-group-text'>Password: </span> <input
+										class='form-control' type='password' name='password' /> <input
+										type='submit' class='btn btn-success' name='login'>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
-				</li>
-				
+				</div>
+			</div>
+			</li>	
 			</c:otherwise>
-		</c:choose>
 	</ul>
 </div>
 </nav>

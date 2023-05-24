@@ -26,11 +26,8 @@ dark-mode {
 #trainPhoto, #routePhoto, .map-container, .carousel-item{
 	width: 100%;
 	padding: 10px;
-<<<<<<< HEAD
+	
 	border: grey solid 1px;
-=======
-	border: gray solid 1px;
->>>>>>> e641e136ba74b7a99b052fc68a9c604f073fb041
 }
 
 body.dark-mode table.table {
@@ -140,7 +137,7 @@ a {
 	color: white;	
 }
 .carousel-href-tag:hover{
-	color:green;
+	color:Dodger Blue;
 }
 .table-hover-light tr:hover{
 	background-color:rgba(255,255,255,0.1);
