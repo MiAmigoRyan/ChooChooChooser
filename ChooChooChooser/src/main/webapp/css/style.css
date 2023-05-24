@@ -1,77 +1,117 @@
 body, html {
-    /* background-image: url("https://i.ibb.co/HBnGSwZ/your-image.jpg"); 
-     background-repeat: no-repeat;
-    background-size: cover; */
-  background-color: #333;
-  color: #fff;
+	background-color: #333;
+	color: #fff;
 }
+
 dark-mode {
-  background-color: #333;
-  color: #fff;
+	background-color: #333;
+	color: #fff;
 }
 
 .dark-mode .navbar {
-  background-color: #222;
-  color: #fff;
+	background-color: #222;
+	color: #fff;
 }
 
 .dark-mode .btn {
-  background-color: #555;
-  color: #fff;
+	background-color: #555;
+	color: #fff;
 }
-.inner-container{
+
+.inner-container {
 	border: 1px solid #fff;
 	padding: 3px;
 }
 
-img {
-	max-height: 300px;
-	max-width: 300px;
+#trainPhoto{
+	height: 300px;
+	width: 400px;
 }
+
 body.dark-mode table.table {
-  color: #fff; 
+	color: #fff;
 }
+
 body.dark-mode table.table thead th {
-  color: #fff; 
+	color: #fff;
 }
 
 body.dark-mode table.table tbody td {
-  color: #fff;
+	color: #fff;
 }
+
 body.dark-mode table.table tbody td {
-  color: #fff;
+	color: #fff;
 }
 
 @media only screen and (max-width: 1500px) {
-    .modal {
-        position: relative;
-    }
+	.modal {
+		position: relative;
+	}
 }
 
-.modal{
-		color: black;
-}
-
-.navbar ul {
-	display: flex;
-	list-style-type:none;
-}
-.navbar li {
-	margin-right: 3px;	
-}
-
-.splide__slide img {
-  width: 100%;
-  height: auto;
-}
-
-.row{
+.modal {
+	background-color: #333;
 	color: #fff;
 }
-.dark-mode .container{
+
+.modal-content {
+	background-color: #333;
 	color: #fff;
-	
+	height: 400px;
+	width: 400px;
 }
-.col-9 align-self-right{
+
+.modal-header {
+	border-bottom: 1px solid #ddd;
+}
+
+.modal-title {
+	color: #fff;
+}
+
+ul{
+	width: 100%;
+	display:flex;
+	justify-content:space-around;	
+	gap: 3ev;
+	list-style:none;
+
+}
+li{
+	text-decoration:none;
+}
+
+.navbar{
+	width:100vw;
+	height:5em;
+}
+.navbar-container{
+	display:flex;
+	justify-content:space-around;
+	flex-direction:row;
+	align-items:center;
+	width: 100%;
+}
+
+.row {
+	color: #fff;
+}
+
+.dark-mode .container {
+	color: #fff;
+}
+
+.col-9 align-self-right {
 	display: flex;
+}
+
+.carousel-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.carousel-item img {
+	width: 1000px;
 }
