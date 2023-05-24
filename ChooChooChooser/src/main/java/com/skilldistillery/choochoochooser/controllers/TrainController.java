@@ -78,7 +78,8 @@ public class TrainController {
 		
 		@RequestMapping(path = { "displayAllTrains.do" })
 		public String listAllTrains(Model model) {
-			model.addAttribute("trainList", trainDAO.listAllTrains());
+			
+			model.addAttribute("trainList", trainDAO.listAllTrains());			
 			return "DisplayAllTrains";	
 		}
 

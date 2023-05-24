@@ -14,9 +14,6 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div class='col-12'>
-					<h1>Add a new Train</h1>
-				</div>
 				
 				<form action="addTrain.do" method="GET">
 					<div class='row 3'>

@@ -78,8 +78,6 @@
 			
 			const $select = document.querySelector('#railSelection-select');
 		 	$select.value = ${train.railGauge.id}
-			const $select = document.querySelector('#engineSelection-select');
-		 	$select.value = ${train.engine.id}
 			const $select = document.querySelector('#yearRound-select');
 		 	$select.value = ${train.yearRound}
 		 

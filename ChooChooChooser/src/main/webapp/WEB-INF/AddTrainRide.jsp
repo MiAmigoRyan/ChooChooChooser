@@ -20,27 +20,25 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div class='col-3 offset-2'>
-					<h1>Review A Train Ride!</h1>
-				</div>
 				
 				<form action="addToRides.do" method="GET">
 					<div class='row 3'>
-						<div class='col-5 offset-1'>
-							<span class='input-group-text'>Title: </span> <input
-								class='form-control' type="text" name="title" />
+						<div class='col-12'>
+							<span class='input-group-text'>Title: </span> 
+							<input class='form-control' type="text" name="title" />
 						</div>
-						<div class='col-5'>
+						<div class='col-12'>
 							<span class='input-group-text'>Picture URL: </span> <input
 								class='form-control' type='text' name='photo' />
 						</div>
-						<div class='col-5 offset-1'>
+						<div class='col-12'>
 							<label>Rating</label><br>
+						</div>
+						<div class='col-12'> 
 							<input type="radio" name="rating" value="1">&#x2B50; <br>
 							<input type="radio" name="rating" value="2">&#x2B50; &#x2B50;<br> 
 							<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;<br>
-							
-						</div> 
+						</div>	
 						<div class='col-5 offset-1'>
 							<span class='input-group-text'>When Was This Trip?: </span> 
 							<input type='date' name='rideDate'/>
