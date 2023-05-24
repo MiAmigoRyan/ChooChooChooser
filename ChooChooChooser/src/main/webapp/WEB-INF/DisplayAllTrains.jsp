@@ -26,7 +26,9 @@
 			<c:forEach var="train" items="${trainList}">
 				<tr>
 					<td><a href='searchById.do?id=${train.id}'>${train.name}</a></td>
-					<td>${train.engine.type}</td>
+					<c:forEach var="engine" items="${train.engines }">
+					<td>${engine.type}</td>
+					</c:forEach>
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>
 							<form action="removeTrain.do" method='GET'>
