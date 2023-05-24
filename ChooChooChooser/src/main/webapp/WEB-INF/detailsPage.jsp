@@ -12,30 +12,83 @@
 </head>
 <body class="dark-mode">
 <jsp:include page="nav.jsp"/>
-<div class="container">
+<div class="container details-page">
 	<c:choose>
 		<c:when test="${ not empty train }">
 			<div class="row">
 			
-			
-				<div class="col">
-					<div class=row>
-						<h1>${train.name}</h1><br>
-						<h3>Engine Type: ${train.engine.type}</h3><br>
-						<h3>Rail Gauge: ${train.railGauge.type}</h3><br>
+				<div class='col'>
+					<div class='row-sm-auto'>
+						<h1>${train.name}</h1>
+						<h3>Engines: 
+							<c:forEach var='engine' items='${train.engines}'>
+								${engine.type}, 
+							</c:forEach>
+						</h3>
+						<h3>Rail Gauge: ${train.railGauge.type}</h3>
 						<c:choose>
-							<c:when test="${train.yearRound = true}">
-								<h3>This train runs year round!</h3><br>
+							<c:when test="${train.yearRound == true}">
+								<h3>This train runs year round!</h3>
 							</c:when>
 							<c:otherwise>
-								<h3>This train does not run year round.</h3><br>
+								<h3>This train does not run year round.</h3>
 							</c:otherwise>
 						</c:choose>
 						<blockquote>${train.description}</blockquote>
 					</div>
-					
+					<h3>Routes:</h3>
+					<c:forEach var='route' items='${train.routes}'>
+						<div class='row'>
+							<div class='col-6 align-self-center align-items-center'>
+								<c:choose>
+									<c:when test="${not empty route.photo}">
+										<img id="routePhoto" src="${route.photo}"
+											alt="Photo of ${route.description}"
+											width=100%/>
+									</c:when>
+									<c:otherwise>
+										Route photo not available at this time.
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div class='col-6 align-self-center align-items-center'>
+								<h4>${route.description}</h4>
+								Region: ${route.region.name}<br>
+								Begins at ${route.startStation.name}<br>
+								Ends at ${route.endStation.name}<br>
+							</div>
+						</div>
+						<br>
+					</c:forEach>
+				</div>
+				
+				
+				<div class="col-5">
+					<div class="row-sm-auto">
+						<c:choose>
+							<c:when test="${not empty train.photo}">
+								<img id="trainPhoto" src="${train.photo}"
+									alt="Photo of ${train.name}"
+									width=100%
+									/>
+							</c:when>
+							<c:otherwise>
+								Train photo not available at this time.
+							</c:otherwise>
+						</c:choose>
+					</div>
 					<br>
-					<div class="row align-self-center">
+					<div class="row-sm-auto map-container">
+						<iframe 
+							src="https://www.google.com/maps?q='${train.name}'&z=13&output=embed" 
+							width=100% 
+							frameborder="0" 
+							style="border:0" 
+							allowfullscreen>
+						</iframe>
+					</div>
+					<br>
+					<div class="row-sm-auto align-self-center">
 						<div class="col-sm-auto">
 							<form action="addToWishlist.do" method=POST>
 								<button class='btn btn-success'>Add this train to your Wishlist</button>
@@ -47,7 +100,11 @@
 						</div>
 					</div>
 					<br>
-					<div class=row>
+					<div class="row-sm-auto align-self-center">
+						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
+					</div>
+					<br>
+					<div class=row-sm-auto>
 						<c:choose>
 							<c:when test="${not empty train.trainComments}">
 								<h4>Comments from riders</h4>
@@ -61,41 +118,9 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<h3>This train doesn't have any comments yet.</h3><br>
+								<h3>This train doesn't have any comments yet.</h3>
 							</c:otherwise>
 						</c:choose>
-					</div>
-				</div>
-				
-				
-				<div class="col-5">
-					<div class="row">
-						<c:choose>
-							<c:when test="${not empty train.photo}">
-								<img id="trainPhoto" src="${train.photo}"
-									alt="Photo of ${train.name}"
-									class="img-thumbnail"
-									/>
-							</c:when>
-							<c:otherwise>
-								Train photo not available at this time.
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<br>
-					<div class="row map-container">
-						<iframe 
-							src="https://www.google.com/maps?q='${train.name}'&z=13&output=embed" 
-							width="400" 
-							height="300" 
-							frameborder="0" 
-							style="border:0" 
-							allowfullscreen>
-						</iframe>
-					</div>
-					<br>
-					<div class="row align-self-center">
-						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 				</div>
 				
