@@ -39,23 +39,7 @@
 					<td>
 					
 					<c:choose>
-<<<<<<< HEAD
-					  
-					  <c:when test="${trainRide.getAverageRating == 1.0}">
-					    <p>&#11088;</p></c:when>    
-					  <c:when test="${trainRide.getAverageRating == 2.0}">
-					    <p>&#11088;&#11088;</p></c:when>
-					  <c:when test="${trainRide.getAverageRating == 3.0}">
-					    <p>&#11088;&#11088;&#11088;</p></c:when>
-					  
-					  <c:otherwise>
-					    <p>not rated</p>
-					  </c:otherwise>
 					
-					</c:choose>
-					</td>
-					
-=======
 							<c:when test='${Double.isNaN(train.averageRating) }'>
 								<p>not rated</p>
 							</c:when>
@@ -76,7 +60,6 @@
 						
 						</td>
 
->>>>>>> 5d57b86708e18f479bcc42f7c5f3ebc414bddeff
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>
 							<form action="removeTrain.do" method='GET'>
