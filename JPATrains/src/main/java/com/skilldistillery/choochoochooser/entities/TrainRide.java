@@ -24,9 +24,28 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "train_ride")
 public class TrainRide {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	private double averageRating() {
+		if (train == null || train.getUser().getRides().isEmpty()) {
+			return 0.0;
+		}
+
+		int totalRatings = 0;
+		int numberRides = 0;
+		for (TrainRide trainRide : train.getUser().getRides()) {
+			totalRatings += trainRide.getRating();
+			numberRides++;
+		}
+		return (double) totalRatings / numberRides;
+	}
+
+	public double getAverageRating() {
+		return averageRating();
+	}
 
 	private String title;
 	private int rating;
