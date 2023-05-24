@@ -75,8 +75,7 @@
 								<img id="trainPhoto" src="${train.photo}"
 									alt="Photo of ${train.name}"
 									class="img-thumbnail"
-									height="400"
-									width="300"/>
+									/>
 							</c:when>
 							<c:otherwise>
 								Train photo not available at this time.

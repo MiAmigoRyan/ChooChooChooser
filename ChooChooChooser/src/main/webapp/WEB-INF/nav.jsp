@@ -4,41 +4,34 @@
 <link rel="style" type="text/css" href="css/style.css">
 
 <nav>
-<div class = "navbar ">
-	<ul>
-		<li>
-			<div class='col'>
+
+
+<div class = "navbar">
+	<ul class = 'nav-container'>
+		<li class = 'nav-item'>
 				<a href="home.do"><button type='button'
 					class='btn btn-outline-success'>Home</button></a>
-			</div>
 		</li>
 		<li>
-			<div class='col'>
 				<a href='displayAllTrains.do'><button type='button'
-					class='btn btn-outline-success'>All Trains!!!!</button></a>
-			</div>
+					class='btn btn-outline-success'>Trains</button></a>
 		</li>
 		<li>
-			<div class='col'>
 				<form action="trainSearch.do" method="GET">
 					<input type="text" name="keyword" type="search">
 					<input type="submit" class='btn btn-outline-success' value="Search">
 				</form>
-			</div>
 		</li>
+		
 		<c:choose>
 			<c:when test="${! empty sessionScope.loggedInUser }">
 				<li>
-					<div class='col'>
 						<a href="login.do"><button type='button'
 							class='btn btn-outline-success'>Profile Page</button></a>
-					</div>
 				</li>
 				<li>
-					<div class='col'>
 						<a href="logout.do"><button type='button'
 							class='btn btn-outline-danger'>Logout</button></a>
-					</div>
 				</li>
 			</c:when>
 
@@ -99,6 +92,7 @@
 				<li><button type="button" class="btn btn-outline-success"
 						data-bs-toggle='modal' data-bs-target='#LoginModal'>Login</button>
 
+
 					<div class="modal fade" id="LoginModal" tabindex="-1"
 						aria-labelledby="LoginModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -125,6 +119,7 @@
 						</div>
 					</div>
 				</li>
+				
 			</c:otherwise>
 		</c:choose>
 	</ul>

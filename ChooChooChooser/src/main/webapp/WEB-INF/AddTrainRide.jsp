@@ -1,3 +1,9 @@
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<jsp:include page="BootstrapHead.jsp"></jsp:include>
+	<link rel="style" type="text/css" href="css/style.css">
+</head>
 <button type="button" class="btn btn-outline-success"
 	data-bs-toggle='modal' data-bs-target='#AddTrainRideModal'>Review A Ride!
 	</button>
@@ -28,16 +34,14 @@
 							<span class='input-group-text'>Picture URL: </span> <input
 								class='form-control' type='text' name='photo' />
 						</div>
-						<!-- <div class='col-5 offset-1'>
-							<label>Rating</label>
-					<input type="radio" name="rating" value="1">&#x2B50; 
-					<input type="radio" name="rating" value="2">&#x2B50; &#x2B50; 
-					<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;
-					<input type="radio" name="rating" value="4">&#x2B50; &#x2B50; &#x2B50; &#x2B50;
-					<input type="radio" name="rating" value="5">&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50;
+						<div class='col-5 offset-1'>
+							<label>Rating</label><br>
+							<input type="radio" name="rating" value="1">&#x2B50; <br>
+							<input type="radio" name="rating" value="2">&#x2B50; &#x2B50;<br> 
+							<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;<br>
 							
-						</div> -->
-						<div class='col-5'>
+						</div> 
+						<div class='col-5 offset-1'>
 							<span class='input-group-text'>When Was This Trip?: </span> 
 							<input type='date' name='rideDate'/>
 						</div>
