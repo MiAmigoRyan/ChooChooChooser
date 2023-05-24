@@ -35,16 +35,16 @@
 							<label>Rating</label><br>
 						</div>
 						<div class='col-12'> 
-							<input type="radio" name="rating" value="1">&#x2B50; <br>
-							<input type="radio" name="rating" value="2">&#x2B50; &#x2B50;<br> 
-							<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;<br>
+							<input type="radio" name="rating" value="1">&#x2B50;
+							<input type="radio" name="rating" value="2">&#x2B50; &#x2B50; 
+							<input type="radio" name="rating" value="3">&#x2B50; &#x2B50; &#x2B50;
 						</div>	
-						<div class='col-5 offset-1'>
+						<div class='col-12'>
 							<span class='input-group-text'>When Was This Trip?: </span> 
 							<input type='date' name='rideDate'/>
 						</div>
 					</div>
-					<div class='col-9 offset-1'>
+					<div class='col-12'>
 						<span class='input-group-text'>What did you think of this trip?: </span>
 						<textarea class='form-control' rows='4' name='content'></textarea>
 					
