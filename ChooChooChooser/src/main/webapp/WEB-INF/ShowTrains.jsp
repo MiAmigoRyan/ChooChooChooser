@@ -11,11 +11,11 @@
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
 	
-	<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover table-hover-light table-bordered">
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Engine Type</th>
+				<th class='engine-th' colspan="2">Engine</th>
 				<c:if test="${loggedInUser.role == 'ADMIN'}">
 				<th>Remove Train</th>
 				<th>Update Train</th>
@@ -24,9 +24,11 @@
 		</thead>
 		<tbody>
 			<c:forEach var="train" items="${trains}">
-				<tr>
+				<tr class='fluid'>
 					<td><a href='searchById.do?id=${train.id}'>${train.name}</a></td>
-					<td>${train.engine.type}</td>
+					<c:forEach var="engine" items="${train.engines }">
+					<td>${engine.type}</td>
+					</c:forEach>
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>
 							<form action="removeTrain.do" method='GET'>

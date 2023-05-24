@@ -11,7 +11,6 @@
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
 
-
 <div class="carousel-container">
 <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
@@ -25,6 +24,10 @@
     <c:forEach var="train" items="${trainList}" varStatus="status">
       <div class="carousel-item <c:if test="${status.first}">active</c:if>">
         <img src="${train.photo}" alt="train photo">
+		<div class="carousel-caption d-none d-md-block">
+      	<h5><a class='carousel-href-tag' href='searchById.do?id=${train.id }'>${train.name }</a></h5>
+      	<p>${train.description }</p>
+      	</div>
       </div>
     </c:forEach>	
   </div>
@@ -38,7 +41,6 @@
   </button>
 </div>
 </div>
-
 
 </body>
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
