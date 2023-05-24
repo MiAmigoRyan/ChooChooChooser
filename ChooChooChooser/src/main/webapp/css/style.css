@@ -23,9 +23,10 @@ dark-mode {
 	padding: 3px;
 }
 
-#trainPhoto{
-	height: 300px;
-	width: 400px;
+#trainPhoto, #routePhoto, .map-container, .carousel-item{
+	width: 100%;
+	padding: 10px;
+	border: white solid 5px;
 }
 
 body.dark-mode table.table {
@@ -86,15 +87,19 @@ li{
 	width:100vw;
 	height:5em;
 }
-.navbar-container{
+.navbar-container, .wishlist-and-ride-buttons, .website-button{
 	display:flex;
 	justify-content:space-around;
 	flex-direction:row;
 	align-items:center;
 	width: 100%;
 }
-.details-page{
+.details-page, .carousel-container{
 	width: 100vw;
+}
+#details-page-train-description, #details-page-individual-comment, #details-page-route-info {
+	background:rgba(255,255,255,0.1);
+	padding: 10px;
 }
 .row {
 	color: #fff;
@@ -120,11 +125,11 @@ li{
 .carousel-caption{
 background:rgba(0,0,0,0.5);	
 }
-a .carousel-href-tag{
+.carousel-href-tag{
 	text-decoration:none;
-	color:inherit;	
+	color: white;	
 }
-a .carousel-href-tag:hover{
+.carousel-href-tag:hover{
 	color:green;
 }
 .table-hover-light tr:hover{
