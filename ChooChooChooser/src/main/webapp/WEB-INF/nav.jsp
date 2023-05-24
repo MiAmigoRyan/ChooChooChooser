@@ -31,7 +31,11 @@
 				</li>
 				<li>
 						<a href="logout.do"><button type='button'
-							class='btn btn-outline-danger'>Logout</button></a>
+							class='btn btn-outline-danger'>Logout</button>
+							<div class="alert alert-success" role="alert">
+ 							 A simple success alert—check it out!
+							</div>
+							</a>
 				</li>
 			</c:when>
 
@@ -112,6 +116,9 @@
 											<span class='input-group-text'>Password: </span>
 											<input class='form-control' type='password' name='password' />
 										</div>
+										<div class="alert alert-success" role="alert">
+ 											 A simple success alert—check it out!
+											</div>
 										<input type='submit' class='btn btn-success' name='login'>
 									</form>
 								</div>

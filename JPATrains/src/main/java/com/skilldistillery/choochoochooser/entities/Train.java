@@ -35,6 +35,7 @@ public class Train {
 
 	@Column(name = "year_round")
 	private Boolean yearRound;
+	
 	@Column(name = "create_date")
 	@CreationTimestamp
 	private LocalDateTime createDate;

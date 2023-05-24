@@ -37,17 +37,16 @@
 					<c:choose>
 					  
 					  <c:when test="${trainRide.getAverageRating == 1.0}">
-					    <p>&#11088;</p>
-					  </c:when>    
+					    <p>&#11088;</p></c:when>    
 					  <c:when test="${trainRide.getAverageRating == 2.0}">
-					    <p>&#11088;&#11088;</p>
-					  </c:when>
+					    <p>&#11088;&#11088;</p></c:when>
 					  <c:when test="${trainRide.getAverageRating == 3.0}">
-					    <p>&#11088;&#11088;&#11088;</p>
-					  </c:when>
+					    <p>&#11088;&#11088;&#11088;</p></c:when>
+					  
 					  <c:otherwise>
 					    <p>not rated</p>
 					  </c:otherwise>
+					
 					</c:choose>
 					</td>
 					

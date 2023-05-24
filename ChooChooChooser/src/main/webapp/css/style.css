@@ -120,9 +120,11 @@ li{
 .carousel-caption{
 background:rgba(0,0,0,0.5);	
 }
-a .carousel-href-tag{
+a {
 	text-decoration:none;
-	color:inherit;	
+	color:#fff;	
+	padding: 3px;
+	
 }
 a .carousel-href-tag:hover{
 	color:green;
