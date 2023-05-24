@@ -34,7 +34,7 @@
 								<h3>This train does not run year round.</h3>
 							</c:otherwise>
 						</c:choose>
-						<blockquote>${train.description}</blockquote>
+						<blockquote id='details-page-train-description'>${train.description}</blockquote>
 					</div>
 					<h3>Routes:</h3>
 					<c:forEach var='route' items='${train.routes}'>
@@ -53,9 +53,11 @@
 							</div>
 							<div class='col-6 align-self-center align-items-center'>
 								<h4>${route.description}</h4>
-								Region: ${route.region.name}<br>
-								Begins at ${route.startStation.name}<br>
-								Ends at ${route.endStation.name}<br>
+								<blockquote id='details-page-route-info'>
+									Region: ${route.region.name}<br>
+									Begins at ${route.startStation.name}<br>
+									Ends at ${route.endStation.name}<br>
+								</blockquote>
 							</div>
 						</div>
 						<br>
@@ -88,7 +90,7 @@
 						</iframe>
 					</div>
 					<br>
-					<div class="row-sm-auto align-self-center">
+					<div class="row wishlist-and-ride-buttons">
 						<div class="col-sm-auto">
 							<form action="addToWishlist.do" method=POST>
 								<button class='btn btn-success'>Add this train to your Wishlist</button>
@@ -100,7 +102,7 @@
 						</div>
 					</div>
 					<br>
-					<div class="row-sm-auto align-self-center">
+					<div class="row-sm-auto website-button">
 						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 					<br>
@@ -109,12 +111,12 @@
 							<c:when test="${not empty train.trainComments}">
 								<h4>Comments from riders</h4>
 								<c:forEach var="comment" items="${train.trainComments}">
-									<blockquote>
+									<blockquote id='details-page-individual-comment'>
 										${comment.comment}
 										<br>
 										${comment.commentDate}
 									</blockquote>
-									<br><hr><br>
+									<hr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>

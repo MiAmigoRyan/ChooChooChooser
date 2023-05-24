@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -72,7 +73,34 @@ public class Train {
 	@JoinTable(name = "train_has_amenities", joinColumns = @JoinColumn(name = "train_id"), inverseJoinColumns = @JoinColumn(name = "amenities_id"))
 	private List<Amenity> amenities;
 
+	@OneToMany(mappedBy="train")
+	private List<TrainRide> trainRides;
+	
 	public Train() {
+	}
+	
+	private double averageRating() {
+
+		int totalRatings = 0;
+		int numberRides = 0;
+		for (TrainRide trainRide : this.getTrainRides()) {
+			totalRatings += trainRide.getRating();
+			numberRides++;
+		}
+		return (double) totalRatings / numberRides;
+	}
+	
+	@Transient
+	public double getAverageRating() {
+		return averageRating();
+	}
+
+	public List<TrainRide> getTrainRides() {
+		return trainRides;
+	}
+
+	public void setTrainRides(List<TrainRide> trainRides) {
+		this.trainRides = trainRides;
 	}
 
 	public int getId() { 
@@ -264,7 +292,7 @@ public class Train {
 		if (engines == null) {
 			engines = new ArrayList<>();
 		}
-		if (!users.contains(engine)) {
+		if (!engines.contains(engine)) {
 			engines.add(engine);
 			engine.addTrain(this);
 		}
