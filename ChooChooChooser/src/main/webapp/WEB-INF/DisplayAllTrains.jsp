@@ -16,9 +16,8 @@
 			<tr>
 				
 				<th>Name</th>
-				
 				<th class='engine-th' colspan="2">Engine</th>
-				
+				<th>Rating<th>
 				<c:if test="${loggedInUser.role == 'ADMIN'}">
 				<th>Remove Train</th>
 				<th>Update Train</th>
@@ -32,6 +31,26 @@
 					<c:forEach var="engine" items="${train.engines }">
 					<td>${engine.type}</td>
 					</c:forEach>
+					
+					<td>
+					
+					<c:choose>
+					  
+					  <c:when test="${trainRide.getAverageRating == 1.0}">
+					    <p>&#11088;</p>
+					  </c:when>    
+					  <c:when test="${trainRide.getAverageRating == 2.0}">
+					    <p>&#11088;&#11088;</p>
+					  </c:when>
+					  <c:when test="${trainRide.getAverageRating == 3.0}">
+					    <p>&#11088;&#11088;&#11088;</p>
+					  </c:when>
+					  <c:otherwise>
+					    <p>not rated</p>
+					  </c:otherwise>
+					</c:choose>
+					</td>
+					
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>
 							<form action="removeTrain.do" method='GET'>
