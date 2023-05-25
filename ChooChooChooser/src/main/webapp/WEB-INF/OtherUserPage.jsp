@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>User Page</title>
+	<title>Train Ride User</title>
 	<jsp:include page="BootstrapHead.jsp"></jsp:include>
 	<link rel="style" type="text/css" href="css/style.css">
 </head>
@@ -14,7 +14,7 @@
 <div class="container user-page">
 	<c:choose>
 	
-		<c:when test="${! empty loggedInUser}">
+		<c:when test="${! empty user}">
 			<div class='row'>
 					
 				<div class='row-sm-auto text-center'>
@@ -24,22 +24,19 @@
 					
 				<div class='col'>
 					<c:choose>
-						<c:when test="${not empty loggedInUser.profilePhoto}">
-							<img id='userPhoto' src="${loggedInUser.profilePhoto}"
-								alt="${loggedInUser.firstName} ${loggedInUser.lastName}'s profile photo">
+						<c:when test="${not empty user.profilePhoto}">
+							<img id='userPhoto' src="${user.profilePhoto}"
+								alt="${user.firstName} ${user.lastName}'s profile photo">
 						</c:when>
 						<c:otherwise>
 							User profile photo not available at this time.
 						</c:otherwise>
 					</c:choose>
-					<h2>${loggedInUser.firstName} ${loggedInUser.lastName}  |  ${loggedInUser.role}</h2>
+				
+					<h2>${user.firstName} ${user.lastName}  |  ${user.role}</h2>
 					<blockquote id='user-description'class="text-center">
-						${loggedInUser.description}
+						${user.description}
 					</blockquote>
-					<c:if test="${loggedInUser.role == 'ADMIN'}">
-						<a href="displayAllUsers.do"><button type='button'
-						class='btn btn-outline-success admin-users-button'>Edit Users</button></a>
-					</c:if>
 				</div>
 				
 				<div class='col-8'>
@@ -54,11 +51,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="ride" items="${loggedInUser.rides}">
+								<c:forEach var="ride" items="${user.rides}">
 									<c:if test="${ride.enabled }">
 										<tr>
 											<td>${ride.train.name}</td>
-											<td><a href='removeFromRiddenList.do?trainId=${ride.id }'><button class='btn btn-danger'>Remove this train</button></a></td>
 											<td><c:forEach var="photo" items="${ride.photos}">
 												<td><img id='ridePhoto' src="${photo.photo}" width="50%"/></td>
 											</c:forEach>
@@ -76,16 +72,12 @@
 							<thead>
 								<tr>
 								<th>Name</th>
-								<th>Remove</th>
-								<th>Move</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="train" items="${loggedInUser.wishList}">
+								<c:forEach var="train" items="${user.wishList}">
 									<tr>
 									<td>${train.name}</td>
-									<td><a href='removeFromWishlist.do?id=${train.id }'><button class='btn btn-danger'>Remove this train</button></a></td>
-									<td><%@ include file="TransferTrainRide.jsp"%></td>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -95,17 +87,7 @@
 		</c:when>
 		
 		<c:otherwise>
-			<form action="login.do" method="POST">
-								<div class='col-5'>
-									<span class='input-group-text'>Username: </span> <input
-										class='form-control' type='text' name='username' />
-								</div>
-								<div class='col-5'>
-									<span class='input-group-text'>Password: </span> <input
-										class='form-control' type='password' name='password' /> <input
-										type='submit' class='btn btn-success' name='login'>
-								</div>
-							</form>
+			<p>NOT LOGGED IN</p>
 		</c:otherwise>
 		
 	</c:choose>
