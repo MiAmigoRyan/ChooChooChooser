@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-outline-success"
-	data-bs-toggle='modal' data-bs-target='#ReplyTrainCommentModal'>Leave A Comment</button>
+	data-bs-toggle='modal' data-bs-target='#ReplyTrainCommentModal'>Reply</button>
 
 
 <div class="modal fade" id="ReplyTrainCommentModal" tabindex="-1"
@@ -7,7 +7,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="ReplyTrainCommentModalLabel">Leave A Comment
+				<h1 class="modal-title fs-5" id="ReplyTrainCommentModalLabel">Your reply:
 					</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
