@@ -69,7 +69,7 @@
 							</tbody>
 						</table>
 					</div>
-					
+					<br><hr><br>
 					<div class='row'>
 						<span><h3>Trains I Want to Ride: </h3></span>
 						<table class="table table-striped table-hover">

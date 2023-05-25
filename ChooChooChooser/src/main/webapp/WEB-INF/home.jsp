@@ -11,6 +11,11 @@
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
 
+<div class="row text-center">
+			<h1>Scenic Trains Across the US</h1>
+			<h3>A Train enthusiast Community</h3>
+		</div>
+
 <div class="carousel-container">
 <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
