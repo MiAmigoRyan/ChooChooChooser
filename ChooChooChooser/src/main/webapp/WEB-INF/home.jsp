@@ -17,7 +17,7 @@
 		</div>
 
 <div class="carousel-container">
-<div id="carouselExampleIndicators" class="carousel slide">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade">
   <div class="carousel-indicators">
     <c:forEach var="train" items="${trainList}" varStatus="status">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${status.index}" 

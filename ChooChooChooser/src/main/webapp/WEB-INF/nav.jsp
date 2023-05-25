@@ -34,10 +34,9 @@
 					<a href="login.do"><button type='button' class='btn btn-outline-success'>Profile Page</button></a>
 				</li>
 				<li>
-					<div class="alert alert-success" role="alert">
-						<a href="logout.do"><button type='button' class='btn btn-outline-danger'>Logout</button>
-							A simple success alert—check it out!</a>
-					</div>
+				
+						<a href="logout.do"><button type='button' class='btn btn-outline-danger'>Logout</button></a>
+				
 				</li>
 			</c:when>
 
