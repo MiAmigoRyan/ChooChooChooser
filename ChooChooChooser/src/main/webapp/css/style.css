@@ -42,6 +42,12 @@ dark-mode {
 	padding: 10px;
 	border: gray solid 1px;
 }
+#userList-photo{
+	width: 40%;
+	padding: 10px;
+	border: gray solid 1px;
+	
+}
 
 body.dark-mode table.table {
 	color: #fff;
@@ -101,7 +107,7 @@ li{
 	width:100vw;
 	height:5em;
 }
-.navbar-container, .wishlist-button, .ride-button, .website-button{
+.navbar-container, .wishlist-button, .ride-button, .website-button, .admin-users-button{
 	display:flex;
 	justify-content:space-around;
 	flex-direction:row;
