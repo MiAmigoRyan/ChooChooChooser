@@ -18,7 +18,7 @@
 				<form action="updateUser.do" method="GET">
 						<div class='col-12'>
 							<span class='input-group-text'>User Name: </span> <input
-								class='form-control' type="text" name="userName" value="${user.userName}"/>
+								class='form-control' type="text" name="userName" value="${user.username}"/>
 						</div>
 					<div class='col-12'>
 						<span class='input-group-text'>Password: </span> <input
@@ -40,15 +40,18 @@
 					<div class='col-12'>
 						<span class='input-group-text'>Description : </span>
 						<textarea class='form-control' rows='4' name='description' value='${user.description}'></textarea>
-					<input type='hidden' name='id' value='${user.id}' />
+					<input type='hidden' name='userId' value='${user.id}' />
 					</div>
 					<div class='col-12'>
 						<c:choose>
-							<c:if test="${loggedInUser.role == 'ADMIN'}">
+							<c:when test="${loggedInUser.role == 'ADMIN'}">
 							<span class='input-group-text'>Role: </span> <input
 								class='form-control' name='role' type='text' value='${user.role}'/>
-							</c:if>			
-						</c:choose>
+							</c:when>
+							<c:otherwise>
+								<input type='hidden' name='role' value='USER'/>
+							</c:otherwise>			
+						</c:choose>					
 							<input type='submit' class='btn btn-success' name='Update User'>
 					</div>
 			</form>
