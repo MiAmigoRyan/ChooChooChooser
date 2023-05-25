@@ -28,8 +28,8 @@
 			<c:forEach var="user" items="${userList}">
 				<c:if test= "${user.role != 'ADMIN'}">
 				<tr>
-					<td><img id="userList-photo" src='${user.profilePhoto }'></td> 
-					<td>${user.username}</td>
+					<td><a href="goToOtherUserPage.do?userId=${user.id}"><img id ="userList-photo" src='${user.profilePhoto }'></a></td> 
+					<td><a href="goToOtherUserPage.do?userId=${user.id}">${user.username}</a></td>
 					<td>${user.firstName}</td>
 					<td>${user.lastName}</td>
 					<td>${user.password}</td>

@@ -21,7 +21,12 @@ public class UserController {
 
 	// adds form from jsp modal register.do to createUser in DAO
 	@RequestMapping(path = "register.do")
-	private String register(User user, RedirectAttributes redir) {
+	private String register(HttpSession session, User user, RedirectAttributes redir) {
+		User loggedInUser = userDAO.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		if (loggedInUser != null) {
+			session.setAttribute("loggedInUser", loggedInUser);
+		
+		}
 		redir.addFlashAttribute("loggedInUser", userDAO.createUser(user));
 		return "redirect:registered.do";
 	}
@@ -29,7 +34,8 @@ public class UserController {
 	// after create account redirects back to home page with user logged in
 	@GetMapping(path = "registered.do")
 	private String registered() { 
-		return "UserPage";
+		
+		return "Login";
 	}
 
 	// redirects an existing user to user page after login
@@ -113,5 +119,14 @@ public class UserController {
 		}
 		return "UserPage";
 	}
+	
+	@RequestMapping(path="goToOtherUserPage.do")
+		public String goToOtherUserPage(int userId, Model model) {
+			
+			model.addAttribute("user", userDAO.getUserById(userId) );
+			
+			return "OtherUserPage";
+		}
+	
 	
 }
