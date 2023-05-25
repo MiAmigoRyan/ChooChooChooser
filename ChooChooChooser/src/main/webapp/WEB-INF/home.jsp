@@ -17,7 +17,7 @@
 	</div>
 
 <div class="carousel-container">
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+<div id="carouselExampleIndicators" class="carousel carousel-fade" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <c:forEach var="train" items="${trainList}" varStatus="status">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${status.index}" 
@@ -27,7 +27,7 @@
   </div>
   <div class="carousel-inner">
     <c:forEach var="train" items="${trainList}" varStatus="status">
-      <div class="carousel-item <c:if test="${status.first}">active</c:if>">
+      <div class="carousel-item <c:if test="${status.first}">active</c:if>" data-bs-interval="5000">
         <img src="${train.photo}" alt="train photo">
 		<div class="carousel-caption d-none d-md-block">
       	<h5><a class='carousel-href-tag' href='searchById.do?id=${train.id }'>${train.name }</a></h5>
@@ -48,5 +48,6 @@
 </div>
 </div>
 </body>
+<%@ include file="footerNav.jsp"%>
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
 </html>
