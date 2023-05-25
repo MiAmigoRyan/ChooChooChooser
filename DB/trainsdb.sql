@@ -353,8 +353,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `trainsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 'Yosemite', 'Sam', 'World renowned gunslinger | Don\'t mess with his trains.', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Yosemite_Sam.svg/360px-Yosemite_Sam.svg.png', 1, 'ADMIN');
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (2, 'trainowner', 'trainowner', 'Train', 'Owner', 'I love trains!', 'https://w7.pngwing.com/pngs/974/54/png-transparent-train-conductor-world-rail-transport-railroad-engineer-train-conductor-s-game-hand-cartoon-thumbnail.png', 1, 'OWNER');
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (3, 'rider1', 'rider1', 'Wile E', 'Coyote', 'If there\'s an explosion, I\'m probably a part of it.', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/58a89289-2132-4ee4-bead-7f2f68fc852a/dd2wjgs-8777fe58-2750-4b71-bfa9-2501c1e7dad2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU4YTg5Mjg5LTIxMzItNGVlNC1iZWFkLTdmMmY2OGZjODUyYVwvZGQyd2pncy04Nzc3ZmU1OC0yNzUwLTRiNzEtYmZhOS0yNTAxYzFlN2RhZDIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.xENB7eu2y6JU4zRLO1sgWB_6EhoSa39BtYsn8_7fN0o', 1, 'USER');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (2, 'rider1', 'rider1', 'Road', 'Runner', '. . . beep beep . . .', 'https://i.pinimg.com/originals/dd/cd/20/ddcd201da806b6583d1304b08eb69135.jpg', 1, 'USER');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `description`, `profile_photo`, `enabled`, `role`) VALUES (3, 'rider2', 'rider2', 'Wile E', 'Coyote', 'If there\'s an explosion, I\'m probably a part of it.', 'https://cdn.mos.cms.futurecdn.net/8Pg8feG8WfjNwNgbXbUfaT-1200-80.jpg', 1, 'USER');
 
 COMMIT;
 
@@ -467,8 +467,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `trainsdb`;
-INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (1, 'Risking it all at Devil\'s Gate', '2019-10-24', 3, NULL, NULL, NULL, 1, 1, 1);
-INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (2, 'Breathtaking views at Devils Tail Stop', '2020-06-15', 3, NULL, NULL, NULL, 1, 2, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (1, 'Risking it all at Devil\'s Gate', '2019-10-24', 3, 'awesome!', NULL, NULL, 1, 1, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (2, 'Breathtaking views at Devils Tail Stop', '2020-06-15', 3, 'Why does everything have a devil?', NULL, NULL, 1, 2, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (3, 'Beep Beep', '2023-05-20', 2, 'beep beep', NULL, NULL, 2, 1, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (4, 'Kaboom!', '2022-06-17', 3, 'Uh oh...', NULL, NULL, 3, 5, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (5, 'Beep beep beep', '2021-08-13', 2, 'More beep beep..', NULL, NULL, 2, 3, 1);
+INSERT INTO `train_ride` (`id`, `title`, `ride_date`, `rating`, `content`, `create_date`, `last_update`, `user_id`, `train_id`, `enabled`) VALUES (6, 'At it again!', '2020-09-07', 2, 'Acme help me!', NULL, NULL, 3, 4, 1);
 
 COMMIT;
 
@@ -482,7 +486,9 @@ INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 3);
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 4);
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (1, 5);
 INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (3, 3);
-INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (3, 5);
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (3, 2);
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (2, 5);
+INSERT INTO `wishlist_train` (`user_id`, `train_id`) VALUES (2, 2);
 
 COMMIT;
 
@@ -542,7 +548,13 @@ START TRANSACTION;
 USE `trainsdb`;
 INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (1, 'This train was GREAT!', '2019-10-24', 1, 1, NULL, 1);
 INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (2, 'Another wonderful train ride!', '2020-06-15', 3, 1, NULL, 1);
-INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (3, 'Thank you for riding!', '2019-11-10', 1, 2, 1, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (3, 'Beep beep!', '2019-11-10', 1, 2, 1, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (4, 'I\'ll get that darn bird!!!', '2023-05-12', 2, 3, NULL, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (5, 'Where\'s my dynamite?!', '2021-09-04', 4, 3, NULL, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (6, 'Beep beep!', '2023-05-13', 5, 2, NULL, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (7, 'Uh-oh...', '2020-06-18', 3, 3, 2, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (8, 'Rootenest tootenest train ride ever!', '2022-07-14', 5, 1, 5, 1);
+INSERT INTO `train_comment` (`id`, `comment`, `comment_date`, `train_id`, `user_id`, `reply_comment_id`, `enabled`) VALUES (9, 'Beep beep!', '2022-10-09', 4, 2, NULL, 1);
 
 COMMIT;
 

@@ -9,8 +9,9 @@
 <link rel="style" type="text/css" href="css/style.css">
 </head>
 <body class="dark-mode">
-	<%@ include file="nav.jsp"%>
-
+<%@ include file="nav.jsp"%>
+<div class='container display-all-users'>
+	<h1 class='text-center'>Users Currently in our Community</h1>
 	<table
 		class="table table-striped table-hover table-hover-light table-bordered">
 		<thead>
@@ -51,7 +52,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+</div>
 </body>
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
 </html>
