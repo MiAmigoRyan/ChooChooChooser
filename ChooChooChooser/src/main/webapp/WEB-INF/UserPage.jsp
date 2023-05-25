@@ -32,12 +32,12 @@
 							User profile photo not available at this time.
 						</c:otherwise>
 					</c:choose>
-								<%@ include file = 'UpdateUser.jsp' %>
 				
 					<h2>${loggedInUser.firstName} ${loggedInUser.lastName}  |  ${loggedInUser.role}</h2>
 					<blockquote id='user-description'class="text-center">
 						${loggedInUser.description}
 					</blockquote>
+					<%@ include file = 'UpdateUser.jsp' %>
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<a href="displayAllUsers.do"><button type='button'
 						class='btn btn-outline-success admin-users-button'>Edit Users</button></a>

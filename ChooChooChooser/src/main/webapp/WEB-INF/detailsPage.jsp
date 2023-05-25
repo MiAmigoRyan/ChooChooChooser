@@ -92,22 +92,22 @@
 						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 					<br>
-					<div class="row-sm-auto comment-button">
-						<c:if test="${! empty sessionScope.loggedInUser}">
-							<div class="row-sm-auto wishlist-button">
-								<form action="addToWishlist.do" method=POST>
-									<button class='btn btn-success'>Add this train to your Wishlist</button>
-									<input type="hidden" name="id" value="${train.id}"/>
-								</form>
-							</div>
-							<br>
-							<div class="row-sm-auto ride-button">
-								<%@include file= "AddTrainRide.jsp"%>
-							</div>
-							<br>
-							<%@include file= "AddTrainComment.jsp"%>
-						</c:if>
-					</div>
+					<c:if test="${! empty sessionScope.loggedInUser}">
+						<div class="row-sm-auto wishlist-button">
+							<form action="addToWishlist.do" method=POST>
+								<button class='btn btn-success'>Add this train to your Wishlist</button>
+								<input type="hidden" name="id" value="${train.id}"/>
+							</form>
+						</div>
+						<br>
+						<div class="row-sm-auto ride-button">
+							<%@include file= "AddTrainRide.jsp"%>
+						</div>
+						<br>
+						<div class="row-sm-auto comment-button">
+						<%@include file= "AddTrainComment.jsp"%>
+						</div>
+					</c:if>
 					<div class=row-sm-auto>
 						<c:choose>
 							<c:when test="${not empty train.trainComments}">
