@@ -7,6 +7,7 @@
 
 * **What is the End Goal?**
 <p>
+	ChooChooChooser is here To provide a space for the Train Community to blog about their Train Riding Experience.<br> 
 
 * **User Story 1 :**
 <p>
@@ -64,5 +65,5 @@
 * More Annotations and their functions
 * MySQL Workbench
 * Most Prominent BrainBlocks
-<br>- 
-<br>- 
+<br>- Determining when to inject Httpsession objects in the Controller to track Session data.
+<br>- Managing foreign Key relationships between tables
