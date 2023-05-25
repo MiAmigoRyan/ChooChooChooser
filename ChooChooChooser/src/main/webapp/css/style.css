@@ -16,7 +16,7 @@ dark-mode {
 	color: #fff;
 }
 
-.dark-mode .navbar {
+.dark-mode .navbar{
 	background-color: #222;
 	color: #fff;
 }
@@ -106,6 +106,7 @@ li{
 .navbar{
 	width:100vw;
 	height:5em;
+	align-items: flex-end;
 }
 .navbar-container, .wishlist-button, .ride-button, .website-button, .comment-button, .admin-users-button, .profile-update-button{
 	display:flex;
@@ -138,6 +139,7 @@ li{
 	justify-content: center;
 	align-items: flex-start;
 	height: 100%;
+	padding-bottom: 15px;
 }
 .carousel-item img {
 	width: 1000px;
