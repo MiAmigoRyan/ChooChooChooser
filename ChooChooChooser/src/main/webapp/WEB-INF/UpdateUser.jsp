@@ -40,23 +40,20 @@
 					<div class='col-12'>
 						<span class='input-group-text'>Description : </span>
 						<textarea class='form-control' rows='4' name='description' value='${user.description}'></textarea>
-					<input type='hidden' name='userId' value='${user.id}' />
 					</div>
 					<div class='col-12'>
 						<c:choose>
 							<c:when test="${loggedInUser.role == 'ADMIN'}">
-							<span class='input-group-text'>Role: </span> <input
-								class='form-control' name='role' type='text' value='${user.role}'/>
+								<input type='hidden' name='role' value='ADMIN'/>
 							</c:when>
 							<c:otherwise>
 								<input type='hidden' name='role' value='USER'/>
 							</c:otherwise>			
 						</c:choose>					
-							<input type='submit' class='btn btn-success' name='Update User'>
 					</div>
-			</form>
-			<script>
-		</script>
+					<input type='submit' class='btn btn-success' name='Update User'>
+					<input type='hidden' name='userId' value='${user.id}' />
+				</form>
 			</div>
 		</div>
 	</div>

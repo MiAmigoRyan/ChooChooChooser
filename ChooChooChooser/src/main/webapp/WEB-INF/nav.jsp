@@ -74,11 +74,11 @@
 												<span class='input-group-text'>Password: </span>
 												<input class='form-control' type='password' name='password' />
 											</div>
-											<div class='col-5 offset-1'>
+											<div class='col-10 offset-1'>
 												<span class='input-group-text'>Upload A Profile Picture (URL): </span> 
 												<input class='form-control' type='text' name='profilePhoto' />
 											</div>
-											<div class='col-9 offset-1'>
+											<div class='col-10 offset-1'>
 												<span class='input-group-text'>About Me : </span>
 												<textarea class='form-control' rows='4' name='description'></textarea>
 											</div>

@@ -21,7 +21,6 @@
 				<th>Last Name</th>
 				<th>Password</th>
 				<th>Access</th>
-				<th>Update User</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,8 +46,6 @@
 								</form>
 							</c:when>
 					</c:choose></td>
-		
-					<td><%@ include file='UpdateUser.jsp'%></td>
 				</tr>
 				</c:if>
 			</c:forEach>
