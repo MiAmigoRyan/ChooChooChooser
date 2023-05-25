@@ -40,25 +40,25 @@
 					
 					<c:choose>
 
-							<c:when test='${Double.isNaN(train.averageRating) }'>
-								<p>not rated</p>
-							</c:when>
-							<c:when test="${train.averageRating >= 3.0}">
-								<p>&#11088;&#11088;&#11088;</p>
-							</c:when>
-							<c:when test="${train.averageRating >= 2.0}">
-								<p>&#11088;&#11088;</p>
-							</c:when>
-							<c:when test="${train.averageRating >= 1.0}">
-								<p>&#11088;</p>
-							</c:when>
-							<c:otherwise>
-								<p>not rated</p>
-							</c:otherwise>
+						<c:when test='${Double.isNaN(train.averageRating) }'>
+							<p>not rated</p>
+						</c:when>
+						<c:when test="${train.averageRating >= 3.0}">
+							<p>&#11088;&#11088;&#11088;</p>
+						</c:when>
+						<c:when test="${train.averageRating >= 2.0}">
+							<p>&#11088;&#11088;</p>
+						</c:when>
+						<c:when test="${train.averageRating >= 1.0}">
+							<p>&#11088;</p>
+						</c:when>
+						<c:otherwise>
+							<p>not rated</p>
+						</c:otherwise>
 							
-						</c:choose>
+					</c:choose>
 						
-						</td>
+					</td>
 
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<td>

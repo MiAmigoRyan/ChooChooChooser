@@ -1,4 +1,12 @@
 body, html {
+	background-image: url("https://wallpapercave.com/wp/wp2355321.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-blend-mode: overlay;
+	padding-top:15px;
+	height: 100vw;
 	background-color: #333;
 	color: #fff;
 }
@@ -23,11 +31,16 @@ dark-mode {
 	padding: 3px;
 }
 
-#trainPhoto, #routePhoto, .map-container, .carousel-item{
+#trainPhoto, #routePhoto, #ridePhoto, .map-container, .carousel-item{
 	width: 100%;
 	padding: 10px;
-	
-	border: grey solid 1px;
+	border: gray solid 1px;
+}
+
+#userPhoto{
+	width: 75%;
+	padding: 10px;
+	border: gray solid 1px;
 }
 
 body.dark-mode table.table {
@@ -95,11 +108,11 @@ li{
 	align-items:center;
 	width: 100%;
 }
-.details-page, .carousel-container{
+.details-page, .carousel-container, .user-page{
 	width: 100vw;
 }
-#details-page-train-description, #details-page-individual-comment, #details-page-route-info {
-	background:rgba(255,255,255,0.1);
+#details-page-train-description, #details-page-individual-comment, #details-page-route-info, #user-description {
+	background:rgba(255,255,255,0.4);
 	padding: 10px;
 }
 .row {
@@ -117,7 +130,7 @@ li{
 .carousel-container {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	height: 100%;
 }
 .carousel-item img {
@@ -126,7 +139,6 @@ li{
 .carousel-caption{
 background:rgba(0,0,0,0.5);	
 }
-
 a {
 	text-decoration:none;
 	color:#fff;	

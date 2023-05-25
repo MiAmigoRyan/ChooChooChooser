@@ -11,8 +11,13 @@
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
 
+<div class="row text-center">
+			<h1>Scenic Trains Across the US</h1>
+			<h3>A Train enthusiast Community</h3>
+		</div>
+
 <div class="carousel-container">
-<div id="carouselExampleIndicators" class="carousel slide">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade">
   <div class="carousel-indicators">
     <c:forEach var="train" items="${trainList}" varStatus="status">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${status.index}" 

@@ -26,14 +26,17 @@
 		<c:choose>
 			<c:when test="${! empty sessionScope.loggedInUser }">
 				<li>
-						<a href="login.do"><button type='button'
-							class='btn btn-outline-success'>Profile Page</button></a>
+					<c:if test="${loggedInUser.role == 'ADMIN'}">
+							<%@ include file="AddTrain.jsp"%>
+					</c:if>
 				</li>
 				<li>
-						<a href="logout.do"><button type='button'
-							class='btn btn-outline-danger'>Logout</button>
-							</a>
-							
+					<a href="login.do"><button type='button' class='btn btn-outline-success'>
+					Profile Page</button></a>
+				</li>
+				<li><a href="logout.do"><button type='button' class='btn btn-outline-danger'>
+					Logout</button></a>
+				
 				</li>
 			</c:when>
 		

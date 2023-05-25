@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "train_comment")
 public class TrainComment {
@@ -27,6 +29,7 @@ public class TrainComment {
 	private boolean enabled;
 
 	@Column(name = "comment_date")
+	@CreationTimestamp
 	private LocalDateTime commentDate;
 
 	@ManyToOne
