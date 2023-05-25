@@ -43,7 +43,8 @@ dark-mode {
 	border: gray solid 1px;
 }
 #userList-photo{
-	width: 40%;
+	max-width: 150px;
+	max-height: 150px;
 	padding: 10px;
 	border: gray solid 1px;
 	
@@ -113,7 +114,7 @@ li{
 	align-items:center;
 	width: 100%;
 }
-.home-page, .details-page, .user-page, .display-all-trains, .train-search-result{
+.home-page, .details-page, .user-page, .display-all-trains, .train-search-result, .display-all-users{
 	padding-top: 15px;
 }
 #details-page-train-description, #details-page-individual-comment, #details-page-route-info, #user-description {
