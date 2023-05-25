@@ -100,5 +100,17 @@ public class UserController {
 		model.addAttribute("userList", userDAO.listAllUsers());
 		return "DisplayAllUsers";
 	}
+	
+	@RequestMapping(path="updateUser.do")
+	public String updateUser(HttpSession session, User userUpdate,@RequestParam("userId") int userId) {
+		User userInSession = (User) session.getAttribute("loggedInUser");
+		if(userInSession!=null) {
+			User loggedInUser = userDAO.getUserById(userInSession.getId());
+			userDAO.updateUser(userUpdate, loggedInUser.getId());
+		refreshUserInSession(session);
+		return "UserPage";
+		}
+		return "UserPage";
+	}
 
 }

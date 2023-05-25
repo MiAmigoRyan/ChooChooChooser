@@ -28,9 +28,6 @@ public interface UserDAO {
 	List<User> listAllUsers();
 	User getUserById(int userId);
 	User userEnableToggle(int userToDisableId);
-	
-	//User removeuser (this is an admin method!)
-	//search comments by flags
-	//remove coments
+	void updateUser(User userUpdate, int userId);
 	
 }

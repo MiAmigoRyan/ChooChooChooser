@@ -128,6 +128,16 @@ public class UserDaoImpl implements UserDAO {
 		em.persist(user);
 	}
 
+	public void updateUser(User userUpdate, int userId) {
+		User managedUser = em.find(User.class, userId);
+		managedUser.setFirstName(userUpdate.getFirstName());
+		managedUser.setLastName(userUpdate.getLastName());
+		managedUser.setPassword(userUpdate.getPassword());
+		managedUser.setDescription(userUpdate.getDescription());
+		managedUser.setProfilePhoto(userUpdate.getProfilePhoto());		
+		managedUser.setRole(userUpdate.getRole());
+	}
+	
 	@Override
 	public RidePhoto removePhoto(RidePhoto photo) {
 		em.remove(photo);
