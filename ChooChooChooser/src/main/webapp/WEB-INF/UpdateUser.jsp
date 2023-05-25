@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-outline-success"
+<button type="button" class="btn btn-outline-success profile-update-button"
 	data-bs-toggle='modal' data-bs-target='#updateUserModal'>Update
-	User</button>
+	Your Profile</button>
 
 
 <div class="modal fade" id="updateUserModal" tabindex="-1"
@@ -9,7 +9,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="updateUserModalLabel">Update
-					User</h1>
+					Your Profile</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>

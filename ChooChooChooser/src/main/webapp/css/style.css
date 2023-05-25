@@ -106,7 +106,7 @@ li{
 	width:100vw;
 	height:5em;
 }
-.navbar-container, .wishlist-button, .ride-button, .website-button, .comment-button, .admin-users-button{
+.navbar-container, .wishlist-button, .ride-button, .website-button, .comment-button, .admin-users-button, .profile-update-button{
 	display:flex;
 	justify-content:space-around;
 	flex-direction:row;
