@@ -3,10 +3,10 @@ package com.skilldistillery.choochoochooser.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.choochoochooser.data.TrainCommentDAO;
 import com.skilldistillery.choochoochooser.data.TrainDAO;
@@ -14,6 +14,7 @@ import com.skilldistillery.choochoochooser.data.UserDAO;
 import com.skilldistillery.choochoochooser.entities.TrainComment;
 import com.skilldistillery.choochoochooser.entities.User;
 
+@Controller
 public class TrainCommentController {
 	
 	@Autowired
@@ -33,14 +34,19 @@ public class TrainCommentController {
 	public String addComment(HttpSession session, 
 			TrainComment trainComment, 
 			@RequestParam("trainId")int trainId, 
-			RedirectAttributes redir) {
+			Model model) {
+		
 	User userInSession = (User) session.getAttribute("loggedInUser");
+	
 	System.out.println(session + "*************************");
+	
 	trainCommentDAO.addTrainComment(trainComment, userInSession.getId(), trainId);
 	refreshUserInSession(session);
+	
 	System.out.println(trainId + "****************************************");
-	redir.addFlashAttribute("train", trainDAO.findTrainById(trainId));
-		return "redirect:detailsPage";
+	
+	model.addAttribute("train", trainDAO.findTrainById(trainId));
+		return "detailsPage";
 		
 	}
 	

@@ -21,7 +21,7 @@
 						<input type='hidden' name='enabled' value='1'/>
 						<input type='hidden' name='trainId' value='${train.id}' /> 
 						<input type='hidden' name='userId' value='${loggedInUser.id}' /> 
-							<input type='submit' class='btn btn-success' name='Add Comment'>
+							<input type='submit' class='btn btn-success' name='Add Comment'/>
 					</div>
 				</form>
 			</div>
