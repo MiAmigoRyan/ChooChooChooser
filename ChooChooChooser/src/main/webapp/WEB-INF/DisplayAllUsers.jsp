@@ -15,38 +15,42 @@
 		class="table table-striped table-hover table-hover-light table-bordered">
 		<thead>
 			<tr>
-				<th class="userList-photo">Photo</th>
+				<th>Photo</th>
 				<th>Username</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Password</th>
-				<th>Enabled</th>
-				<th>Remove User</th>
+				<th>Access</th>
 				<th>Update User</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="user" items="${userList}">
+				<c:if test= "${user.role != 'ADMIN'}">
 				<tr>
-					<td><img src='${user.profilePhoto }'></td>
+					<td><img id ="userList-photo" src='${user.profilePhoto }'></td> 
 					<td>${user.username}</td>
 					<td>${user.firstName}</td>
 					<td>${user.lastName}</td>
 					<td>${user.password}</td>
 					<td><c:choose>
 							<c:when test="${user.enabled == true }">
-								<p>enabled</p></c:when>
+								<form action="userEnableToggle.do" method='GET'>
+								<button class='btn btn-danger'>Disable User</button>
+								<input type='hidden' name='userId' value="${user.id}"/>
+								</form>
+								</c:when>
 							<c:when test="${user.enabled == false }">
-								<p>disabled</p></c:when>
+									<form action="userEnableToggle.do" method='GET'>
+									<button class='btn btn-success'>Enable User</button>
+									<input type='hidden' name='userId' value="${user.id}"/>
+								</form>
+							</c:when>
 					</c:choose></td>
-					<td>
-						<form action="disableUser.do" method='GET'>
-							<button class='btn btn-danger'>Disable User</button>
-							<input type='hidden' name='userId' value="${user.id}"/>
-						</form>
-					</td>
+		
 					<td><%@ include file='UpdateUser.jsp'%></td>
 				</tr>
+				</c:if>
 			</c:forEach>
 		</tbody>
 	</table>

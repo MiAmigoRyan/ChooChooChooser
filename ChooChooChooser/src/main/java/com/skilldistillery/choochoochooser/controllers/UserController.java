@@ -89,18 +89,10 @@ public class UserController {
 		return "UserPage";
 	}
 	
-	@RequestMapping(path="disableUser.do")
+	@RequestMapping(path="userEnableToggle.do")
 	public String disableUser (@RequestParam("userId") int userId) {
-		
-		User managedUser = userDAO.getUserById(userId);
-		if(managedUser != null) {
-			if(managedUser.getEnabled()) {
-				managedUser.setEnabled(false);
-			}
-			return "DisplayAllUsers";
-		}
-		//add failure page and return to userpage
-		return "UserPage";
+		userDAO.userEnableToggle(userId);
+		return "redirect:displayAllUsers.do";
 	}
 	
 	@RequestMapping (path="displayAllUsers.do")

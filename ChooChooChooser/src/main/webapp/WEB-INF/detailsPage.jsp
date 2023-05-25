@@ -109,13 +109,32 @@
 							<c:when test="${not empty train.trainComments}">
 								<h4>Comments from riders</h4>
 								<c:forEach var="comment" items="${train.trainComments}">
-									<blockquote id='details-page-individual-comment'>
-										${comment.comment}
-										<br>
-										<%@include file= "ReplyTrainComment.jsp"%>
-										${comment.commentDate}
-									</blockquote>
-									<hr>
+									<c:if test="${comment.enabled }">
+									<h5>${comment.user.firstName} ${comment.user.lastName}</h5>
+										<blockquote id='details-page-individual-comment'>
+											${comment.comment}
+											<br>
+											<%@include file= "ReplyTrainComment.jsp"%>
+											${comment.commentDate}
+											<c:choose>
+												<c:when test="${loggedInUser.id == comment.user.id}">
+													<form action="removeComment.do" method='GET'>
+													<button class='btn btn-danger'>Delete Comment</button>
+													<input type='hidden' name='trainCommentId' value="${comment.id}"/>
+													</form>
+												</c:when>
+										
+											
+												<c:when test="${loggedInUser.role == 'ADMIN'}">
+													<form action="removeComment.do" method='GET'>
+													<button class='btn btn-danger'>Delete Comment</button>
+													<input type='hidden' name='trainCommentId' value="${comment.id}"/>
+													</form>
+												</c:when>
+											</c:choose>	
+										</blockquote>
+										<hr>
+									</c:if>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
