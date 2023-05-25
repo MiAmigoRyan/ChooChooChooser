@@ -9,5 +9,9 @@ public interface TrainCommentDAO {
 
 	TrainComment replyTrainComment(TrainComment replyComment, int trainCommentId, int userId);
 
+	boolean removeTrainComment(int trainCommentId);
+
+
+	TrainComment findTrainCommentById(int id);
 
 }
