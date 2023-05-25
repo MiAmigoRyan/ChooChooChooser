@@ -10,11 +10,11 @@
 </head>
 <body class="dark-mode">
 <%@ include file="nav.jsp"%>
-
-<div class="row text-center">
-			<h1>Scenic Trains Across the US</h1>
-			<h3>A Train enthusiast Community</h3>
-		</div>
+<div class='container home-page'>
+	<div class="row text-center">
+		<h1>Scenic Trains Across the US</h1>
+		<h3>A Train enthusiast Community</h3>
+	</div>
 
 <div class="carousel-container">
 <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
@@ -46,7 +46,7 @@
   </button>
 </div>
 </div>
-
+</div>
 </body>
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
 </html>

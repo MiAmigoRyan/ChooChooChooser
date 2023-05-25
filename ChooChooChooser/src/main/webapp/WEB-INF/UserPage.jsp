@@ -49,7 +49,6 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>ID</th>
 									<th>Name</th>
 									<th>Remove</th>
 									<th colspan="3">Ride Photos</th>
@@ -59,7 +58,6 @@
 								<c:forEach var="ride" items="${loggedInUser.rides}">
 									<c:if test="${ride.enabled }">
 										<tr>
-											<td>${ride.id }</td>
 											<td>${ride.train.name}</td>
 											<td><a href='removeFromRiddenList.do?trainId=${ride.id }'><button class='btn btn-danger'>Remove this train</button></a></td>
 											<td><c:forEach var="photo" items="${ride.photos}">
@@ -78,7 +76,6 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-								<th>ID</th>
 								<th>Name</th>
 								<th>Remove</th>
 								<th>Move</th>
@@ -87,7 +84,6 @@
 							<tbody>
 								<c:forEach var="train" items="${loggedInUser.wishList}">
 									<tr>
-									<td>${train.id }</td>
 									<td>${train.name}</td>
 									<td><a href='removeFromWishlist.do?id=${train.id }'><button class='btn btn-danger'>Remove this train</button></a></td>
 									<td><%@ include file="TransferTrainRide.jsp"%></td>
