@@ -123,8 +123,8 @@
 													<input type='hidden' name='trainCommentId' value="${comment.id}"/>
 													</form>
 												</c:when>
-											</c:choose>
-											<c:choose>
+										
+											
 												<c:when test="${loggedInUser.role == 'ADMIN'}">
 													<form action="removeComment.do" method='GET'>
 													<button class='btn btn-danger'>Delete Comment</button>

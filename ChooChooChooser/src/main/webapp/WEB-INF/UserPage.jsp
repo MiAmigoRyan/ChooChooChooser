@@ -10,29 +10,16 @@
 	<link rel="style" type="text/css" href="css/style.css">
 </head>
 <body class="dark-mode">
-
-	<%@ include file="nav.jsp"%>
-	<div class="container">
-		<c:choose>
-			<c:when test="${! empty loggedInUser}">
-				<h1>TBD</h1>
-				<form action="#" method="GET">
-					<div class="row">
-						<div class="col-sm-8">
-							Search : <input class="form-control" type="text" name="keyword" />
-						</div>
-						<input class="col btn btn-primary" type="submit" value="Search" />
-					</div>
-				</form>
-
-
-				<c:if test="${loggedInUser.role == 'ADMIN'}">
-					<a href="displayAllUsers.do"><button type='button'
-					class='btn btn-outline-success'>Users</button></a>
-					<%@ include file="AddTrain.jsp"%>
-				</c:if>
-				<div class="col-2">
-					<img src="${loggedInUser.profilePhoto}" alt="No Photo">
+<%@ include file="nav.jsp"%>
+<div class="container user-page">
+	<c:choose>
+	
+		<c:when test="${! empty loggedInUser}">
+			<div class='row'>
+					
+				<div class='row-sm-auto text-center'>
+					<h1>User Profile & Lists</h1>
+					<hr>
 				</div>
 					
 				<div class='col'>
@@ -46,10 +33,14 @@
 						</c:otherwise>
 					</c:choose>
 				
-					<h2>${loggedInUser.firstName} ${loggedInUser.lastName}</h2>
+					<h2>${loggedInUser.firstName} ${loggedInUser.lastName}  |  ${loggedInUser.role}</h2>
 					<blockquote id='user-description'class="text-center">
 						${loggedInUser.description}
 					</blockquote>
+					<c:if test="${loggedInUser.role == 'ADMIN'}">
+						<a href="displayAllUsers.do"><button type='button'
+						class='btn btn-outline-success admin-users-button'>Users</button></a>
+					</c:if>
 				</div>
 				
 				<div class='col-8'>
@@ -80,6 +71,7 @@
 							</tbody>
 						</table>
 					</div>
+
 					<br><hr><br>
 					<div class='row'>
 						<span><h3>Trains I Want to Ride: </h3></span>

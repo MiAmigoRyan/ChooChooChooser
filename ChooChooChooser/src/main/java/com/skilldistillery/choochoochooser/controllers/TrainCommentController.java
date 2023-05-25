@@ -50,7 +50,7 @@ public class TrainCommentController {
 			@RequestParam("trainCommentId")int trainCommentId, 
 			Model model) {
 		User userInSession = (User) session.getAttribute("loggedInUser");
-		trainCommentDAO.replyTrainComment(trainComment, userInSession.getId(), trainCommentId);
+		trainCommentDAO.replyTrainComment(trainComment, trainCommentId, userInSession.getId());
 		refreshUserInSession(session);
 		model.addAttribute("train", trainDAO.findTrainById(trainComment.getTrain().getId()));
 		return "detailsPage";
