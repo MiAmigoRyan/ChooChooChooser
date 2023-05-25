@@ -112,6 +112,7 @@
 									<blockquote id='details-page-individual-comment'>
 										${comment.comment}
 										<br>
+										<%@include file= "ReplyTrainComment.jsp"%>
 										${comment.commentDate}
 									</blockquote>
 									<hr>

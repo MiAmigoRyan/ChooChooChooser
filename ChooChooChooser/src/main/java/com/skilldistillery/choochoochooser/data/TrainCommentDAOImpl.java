@@ -33,6 +33,7 @@ public class TrainCommentDAOImpl implements TrainCommentDAO {
 		User managedReplyingUser = em.find(User.class, userId);
 		replyComment.setUser(managedReplyingUser);
 		replyComment.setTrain(managedTrainComment.getTrain());
+		replyComment.setReply(managedTrainComment);
 		managedTrainComment.addReply(replyComment);
 		em.persist(replyComment);
 		return replyComment;

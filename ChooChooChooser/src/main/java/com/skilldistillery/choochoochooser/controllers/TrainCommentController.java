@@ -35,17 +35,22 @@ public class TrainCommentController {
 			TrainComment trainComment, 
 			@RequestParam("trainId")int trainId, 
 			Model model) {
-		
 	User userInSession = (User) session.getAttribute("loggedInUser");
-	
-	System.out.println(session + "*************************");
-	
 	trainCommentDAO.addTrainComment(trainComment, userInSession.getId(), trainId);
 	refreshUserInSession(session);
-	
-	System.out.println(trainId + "****************************************");
-	
 	model.addAttribute("train", trainDAO.findTrainById(trainId));
+		return "detailsPage";
+		
+	}
+	@RequestMapping(path="replyComment.do")
+	public String replyComment(HttpSession session, 
+			TrainComment trainComment, 
+			@RequestParam("trainCommentId")int trainCommentId, 
+			Model model) {
+		User userInSession = (User) session.getAttribute("loggedInUser");
+		trainCommentDAO.replyTrainComment(trainComment, userInSession.getId(), trainCommentId);
+		refreshUserInSession(session);
+		model.addAttribute("train", trainDAO.findTrainById(trainComment.getTrain().getId()));
 		return "detailsPage";
 		
 	}
