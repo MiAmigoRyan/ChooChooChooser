@@ -65,7 +65,7 @@ body.dark-mode table.table tbody td {
 	color: #fff;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 800px) {
 	.modal {
 		position: relative;
 	}
@@ -107,15 +107,16 @@ li{
 	width:100vw;
 	height:5em;
 }
-.navbar-container, .wishlist-button, .ride-button, .website-button, .admin-users-button{
+.navbar-container, .wishlist-button, .ride-button, .website-button, .comment-button, .admin-users-button{
 	display:flex;
 	justify-content:space-around;
 	flex-direction:row;
 	align-items:center;
 	width: 100%;
 }
-.details-page, .carousel-container, .user-page{
-	width: 100vw;
+.home-page, .details-page, .user-page, .display-all-trains, .train-search-result{
+	padding-top: 15px;
+	/* width: 100vw; */
 }
 #details-page-train-description, #details-page-individual-comment, #details-page-route-info, #user-description {
 	background:rgba(255,255,255,0.4);
