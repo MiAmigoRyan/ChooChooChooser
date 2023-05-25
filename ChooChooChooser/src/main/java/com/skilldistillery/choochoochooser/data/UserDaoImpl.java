@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDAO {
 		User user = null;
 		String jpql = "SELECT u FROM User u "
 				+ "WHERE u.username = :un "
-				+ 	"AND u.password = :pw and u.enabled = true";
+				+ 	"AND u.password = :pw AND u.enabled = true";
 		try {
 			user = em.createQuery(jpql, User.class).setParameter("un", username)
 					.setParameter("pw", password).getSingleResult();
@@ -33,6 +33,43 @@ public class UserDaoImpl implements UserDAO {
 			System.err.println("Invalid Login");
 		}
 		return user;
+	}
+	
+	@Override
+	public User getUserById(int userId) {
+		User user = null;
+		String jpql = "SELECT u FROM User u "
+				+ "WHERE u.id = :userId"
+				+ "AND u.enabled = true ";
+		try {
+			user = (User) em.createQuery(jpql, User.class).setParameter("userId", userId);
+		} catch (Exception e) {
+			
+			System.err.println("no such user");
+		}
+		return user;
+	}
+	
+	@Override 
+	public User findByUsername(String username) {
+		User user = null;
+		String jpql = "SELECT u FROM User u "
+				+ "WHERE u.username = :un"
+				+ "AND u.enabled = true ";
+		
+		try {
+			user = (User) em.createQuery(jpql, User.class).setParameter("un", username);
+		} catch (Exception e) {
+			
+			System.err.println("no such user");
+		}
+		return user;
+	}
+	@Override
+	public List<User> listAllUsers(){
+		String jpql = "SELECT u FROM User u WHERE u.enabled = true";
+		List<User> users = em.createQuery(jpql, User.class).getResultList();
+		return users;
 	}
 
 	@Override

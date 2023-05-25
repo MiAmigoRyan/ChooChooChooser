@@ -24,6 +24,10 @@ public interface UserDAO {
 	RidePhoto removePhoto(RidePhoto photo);
 	RidePhoto addPhoto(RidePhoto photo);
 	
+	User findByUsername(String username);
+	List<User> listAllUsers();
+	User getUserById(int userId);
+	
 	//User removeuser (this is an admin method!)
 	//search comments by flags
 	//remove coments

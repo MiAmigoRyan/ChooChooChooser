@@ -24,7 +24,11 @@
 						<input class="col btn btn-primary" type="submit" value="Search" />
 					</div>
 				</form>
+
+
 				<c:if test="${loggedInUser.role == 'ADMIN'}">
+					<a href="displayAllUsers.do"><button type='button'
+					class='btn btn-outline-success'>Users</button></a>
 					<%@ include file="AddTrain.jsp"%>
 				</c:if>
 				<div class="col-2">

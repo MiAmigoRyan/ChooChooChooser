@@ -36,7 +36,6 @@
 							
 				</li>
 			</c:when>
-		</c:choose>
 		
 			<c:otherwise>
 				<li><button type="button" class="btn btn-outline-success"
@@ -123,6 +122,7 @@
 			</div>
 			</li>	
 			</c:otherwise>
+		</c:choose>
 	</ul>
 </div>
 </nav>
