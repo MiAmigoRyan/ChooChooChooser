@@ -10,18 +10,29 @@
 	<link rel="style" type="text/css" href="css/style.css">
 </head>
 <body class="dark-mode">
-<%@ include file="nav.jsp"%>
-<div class="container user-page">
-	<c:choose>
-	
-		<c:when test="${! empty loggedInUser}">
-			<div class='row'>
-					
-				<div class='row-sm-auto'>
-					<h1>TBD</h1>
-					<form action="#" method="GET"> Search : 
-						<input class="form-control" type="text" name="keyword"/> <button class='btn btn-success'>Search</button>
-					</form>
+
+	<%@ include file="nav.jsp"%>
+	<div class="container">
+		<c:choose>
+			<c:when test="${! empty loggedInUser}">
+				<h1>TBD</h1>
+				<form action="#" method="GET">
+					<div class="row">
+						<div class="col-sm-8">
+							Search : <input class="form-control" type="text" name="keyword" />
+						</div>
+						<input class="col btn btn-primary" type="submit" value="Search" />
+					</div>
+				</form>
+
+
+				<c:if test="${loggedInUser.role == 'ADMIN'}">
+					<a href="displayAllUsers.do"><button type='button'
+					class='btn btn-outline-success'>Users</button></a>
+					<%@ include file="AddTrain.jsp"%>
+				</c:if>
+				<div class="col-2">
+					<img src="${loggedInUser.profilePhoto}" alt="No Photo">
 				</div>
 					
 				<div class='col'>

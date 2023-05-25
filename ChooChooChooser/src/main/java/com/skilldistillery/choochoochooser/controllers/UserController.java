@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,4 +88,25 @@ public class UserController {
 		}
 		return "UserPage";
 	}
+	
+	@RequestMapping(path="disableUser.do")
+	public String disableUser (@RequestParam("userId") int userId) {
+		
+		User managedUser = userDAO.getUserById(userId);
+		if(managedUser != null) {
+			if(managedUser.getEnabled()) {
+				managedUser.setEnabled(false);
+			}
+			return "DisplayAllUsers";
+		}
+		//add failure page and return to userpage
+		return "UserPage";
+	}
+	
+	@RequestMapping (path="displayAllUsers.do")
+	public String listAllUsers(Model model) {
+		model.addAttribute("userList", userDAO.listAllUsers());
+		return "DisplayAllUsers";
+	}
+
 }

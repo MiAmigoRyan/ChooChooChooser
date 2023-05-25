@@ -39,7 +39,6 @@
 					<td>
 					
 					<c:choose>
-					
 
 						<c:when test='${Double.isNaN(train.averageRating) }'>
 							<p>not rated</p>
@@ -56,7 +55,6 @@
 						<c:otherwise>
 							<p>not rated</p>
 						</c:otherwise>
-
 							
 					</c:choose>
 						
