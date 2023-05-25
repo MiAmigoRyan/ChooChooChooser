@@ -17,7 +17,6 @@
 					<div class='col-12'>
 						<span class='input-group-text'>Leave A Comment! </span>
 						<textarea class='form-control' rows='4' name='comment'></textarea>
-						
 						<input type='hidden' name='enabled' value='1'/>
 						<input type='hidden' name='trainCommentId' value='${comment.id}' /> 
 						<input type='hidden' name='userId' value='${loggedInUser.id}' /> 
