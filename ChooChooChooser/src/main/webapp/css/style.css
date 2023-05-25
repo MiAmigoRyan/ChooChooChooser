@@ -72,15 +72,14 @@ body.dark-mode table.table tbody td {
 }
 
 .modal {
-	background-color: #333;
 	color: #fff;
 }
 
 .modal-content {
 	background-color: #333;
 	color: #fff;
-	height: 400px;
-	width: 400px;
+	height: 100%;
+	width: 100%;
 }
 
 .modal-header {
@@ -116,7 +115,6 @@ li{
 }
 .home-page, .details-page, .user-page, .display-all-trains, .train-search-result{
 	padding-top: 15px;
-	/* width: 100vw; */
 }
 #details-page-train-description, #details-page-individual-comment, #details-page-route-info, #user-description {
 	background:rgba(255,255,255,0.4);
