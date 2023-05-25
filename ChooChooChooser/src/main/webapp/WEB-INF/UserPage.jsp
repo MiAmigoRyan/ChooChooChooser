@@ -32,6 +32,7 @@
 							User profile photo not available at this time.
 						</c:otherwise>
 					</c:choose>
+								<%@ include file = 'UpdateUser.jsp' %>
 				
 					<h2>${loggedInUser.firstName} ${loggedInUser.lastName}  |  ${loggedInUser.role}</h2>
 					<blockquote id='user-description'class="text-center">

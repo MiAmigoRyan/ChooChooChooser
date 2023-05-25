@@ -127,7 +127,7 @@ public class UserDaoImpl implements UserDAO {
 		user.removeWishList(train);
 		em.persist(user);
 	}
-
+	@Override
 	public void updateUser(User userUpdate, int userId) {
 		User managedUser = em.find(User.class, userId);
 		managedUser.setFirstName(userUpdate.getFirstName());
