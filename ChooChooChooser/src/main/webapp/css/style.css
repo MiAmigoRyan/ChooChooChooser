@@ -160,3 +160,50 @@ a {
 .table-hover-light tr:hover{
 	background-color:rgba(255,255,255,0.1);
 }
+.about-us-photo{
+	border-radius: 50%;
+    width: 75%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 3px;
+}
+
+.about-us-containers {
+    border: 1px solid;
+    border-color: grey;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin: 3px;
+    padding:3px;
+    flex:1;
+}
+.about-us-photo-container{
+	display:flex;
+}   
+ .name-line {
+    text-align: center;
+  }
+
+  .name-line p {
+    display: inline-block;
+    border-top: 2px solid white;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .name-line p span {
+    font-style: italic;
+    font-weight: bold;
+  }   
+ .about-us-desc{
+  border: 1px solid;
+    border-color: grey;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 3px;
+    padding:3px;
+    flex:1;
+ }
+
+    
+    
+    

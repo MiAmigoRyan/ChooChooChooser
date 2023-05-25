@@ -7,4 +7,6 @@
 	integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 	crossorigin="anonymous">
 </script>
-<a href="aboutUs">ABOUT THE TEAM</a>
+<div class="text-center">
+<a href="goToAboutUsPage.do" class="d-inline-block" >ABOUT THE TEAM</a>
+</div>
