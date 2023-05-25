@@ -39,7 +39,7 @@
 					</blockquote>
 					<c:if test="${loggedInUser.role == 'ADMIN'}">
 						<a href="displayAllUsers.do"><button type='button'
-						class='btn btn-outline-success admin-users-button'>Users</button></a>
+						class='btn btn-outline-success admin-users-button'>Edit Users</button></a>
 					</c:if>
 				</div>
 				

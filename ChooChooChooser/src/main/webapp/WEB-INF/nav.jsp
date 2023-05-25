@@ -34,11 +34,9 @@
 					<a href="login.do"><button type='button' class='btn btn-outline-success'>
 					Profile Page</button></a>
 				</li>
-				
-				<li>
-						<a href="logout.do"><button type='button' class='btn btn-outline-danger'>Logout</button></a>
+				<li><a href="logout.do"><button type='button' class='btn btn-outline-danger'>
+					Logout</button></a>	
 				</li>
-				
 			</c:when>
 		
 			<c:otherwise>
