@@ -10,16 +10,17 @@
 	<link rel="style" type="text/css" href="css/style.css">
 </head>
 <body class="dark-mode">
-<%@ include file="nav.jsp"%>
-<form action="login.do" method="POST">
-								<div class='col-5'>
-									<span class='input-group-text'>Username: </span> <input
-										class='form-control' type='text' name='username' />
-								</div>
-								<div class='col-5'>
-									<span class='input-group-text'>Password: </span> <input
-										class='form-control' type='password' name='password' /> <input
-										type='submit' class='btn btn-success' name='login'>
-								</div>
-							</form>
+	<%@ include file="nav.jsp"%>
+	<form action="login.do" method="POST">
+		<div class='col-5'>
+			<span class='input-group-text'>Username: </span> 
+			<input class='form-control' type='text' name='username' />
+		</div>
+		<div class='col-5'>
+			<span class='input-group-text'>Password: </span> 
+			<input	class='form-control' type='password' name='password' /> 
+			<input type='submit' class='btn btn-success' name='login'>
+		</div>
+	</form>
 </body>
+</html>

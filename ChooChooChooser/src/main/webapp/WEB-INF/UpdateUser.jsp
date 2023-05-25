@@ -35,7 +35,6 @@
 						<div class='col-12'>
 							<span class='input-group-text'>Upload A Profile Picture: </span> <input
 								class='form-control' type='text' name='profilePhoto' value='${user.profilePhoto}'/>
-								<img src='${user.profilePhoto}' alt='profile picture' width='30%'>
 					</div>						
 					<div class='col-12'>
 						<span class='input-group-text'>Description : </span>
