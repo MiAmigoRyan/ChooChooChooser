@@ -8,6 +8,13 @@
 	crossorigin="anonymous">
 
 </script>
-<div class="text-center">
-<a href="goToAboutUsPage.do" class="d-inline-block" >ABOUT THE TEAM</a>
+<nav>
+<div class = "navbar">
+	<ul class = 'nav-container'>
+		<li class = 'nav-item'>
+				<a href="goToAboutUsPage.do"><button type='button'
+					class='btn btn-outline-success'>About The Development Team</button></a>
+		</li>
+	</ul>
 </div>
+</nav>

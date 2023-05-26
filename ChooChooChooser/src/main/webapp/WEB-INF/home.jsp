@@ -48,6 +48,6 @@
 </div>
 </div>
 </body>
-<%@ include file="footerNav.jsp"%>
+
 <jsp:include page="BootstrapFoot.jsp"></jsp:include>
 </html>
