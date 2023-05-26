@@ -89,7 +89,7 @@
 					</div>
 					<br>
 					<div class="row-sm-auto website-button">
-						<a href='${train.website}'><button class='btn btn-success'>This Train's Website!</button></a>
+						<a href='${train.website}' target='_blank'><button class='btn btn-success'>This Train's Website!</button></a>
 					</div>
 					<br>
 					<c:if test="${! empty sessionScope.loggedInUser}">
