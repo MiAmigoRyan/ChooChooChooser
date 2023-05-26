@@ -35,7 +35,7 @@ public class TrainDaoImpl implements TrainDAO {
 				+ "JOIN FETCH t.amenities a "
 				+ "WHERE LOWER (a.type) "
 				+ "LIKE LOWER (:keyword)";
-				List<Train> moreTrains = em.createQuery(jpql2, Train.class).setParameter("keyword", "%" + keyword + "%")
+		List<Train> moreTrains = em.createQuery(jpql2, Train.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 				
 		for(Train train: moreTrains) {
