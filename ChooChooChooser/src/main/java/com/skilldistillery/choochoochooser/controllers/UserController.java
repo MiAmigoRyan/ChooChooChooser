@@ -66,16 +66,21 @@ public class UserController {
 
 	public void refreshUserInSession(HttpSession session) {
 		User userInSession = (User) session.getAttribute("loggedInUser");
-		User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+		User loggedInUser = userDAO.findByUsernameAndPassword
+									(userInSession.getUsername(), 
+									userInSession.getPassword());
 		session.setAttribute("loggedInUser", loggedInUser);
 
 	}
 	
 	@PostMapping(path="addToWishlist.do")
-	public String addTrainToWishlist(HttpSession session, User user, @RequestParam("id") int trainId) {
+	public String addTrainToWishlist(HttpSession session,
+									User user,
+									@RequestParam("id") int trainId) {
 		User userInSession = (User) session.getAttribute("loggedInUser");
 		if (userInSession != null) {
-			User loggedInUser = userDAO.findByUsernameAndPassword(userInSession.getUsername(), userInSession.getPassword());
+			User loggedInUser = userDAO.findByUsernameAndPassword
+					(userInSession.getUsername(), userInSession.getPassword());
 			userDAO.addToWishlist(loggedInUser.getId(), trainId);
 			refreshUserInSession(session);
 			return "UserPage";
@@ -122,9 +127,7 @@ public class UserController {
 	
 	@RequestMapping(path="goToOtherUserPage.do")
 		public String goToOtherUserPage(int userId, Model model) {
-			
 			model.addAttribute("user", userDAO.getUserById(userId) );
-			
 			return "OtherUserPage";
 		}
 	

@@ -1,13 +1,13 @@
 ## Team Members
 * Patrick Hansen - Scrum Master
 * Ryan Arment - Repo Owner
-* Samantha Addington - DBA
+* Samantha Addington - Data Base Admin.
 
 ## Objectives
 
 * **What is the End Goal?**
 <p>
-	ChooChooChooser is here To provide a space for the Train Community to blog about their Train Riding Experience.<br> 
+	ChooChooChooser is here To provide a space for the Train Community to share experiences.<br> 
 
 * **User Story 1 :**
 <p>

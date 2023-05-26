@@ -11,7 +11,6 @@ public interface TrainCommentDAO {
 
 	boolean removeTrainComment(int trainCommentId);
 
-
 	TrainComment findTrainCommentById(int id);
 
 }
