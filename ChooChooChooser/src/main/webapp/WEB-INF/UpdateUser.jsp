@@ -18,27 +18,27 @@
 				<form action="updateUser.do" method="GET">
 						<div class='col-12'>
 							<span class='input-group-text'>User Name: </span> <input
-								class='form-control' type="text" name="userName" value="${user.username}"/>
+								class='form-control' type="text" name="userName" value="${loggedInUser.username}"/>
 						</div>
 					<div class='col-12'>
 						<span class='input-group-text'>Password: </span> <input
-							class='form-control' name='password' type='password' value='${user.password}'/>
+							class='form-control' name='password' type='password' value='${loggedInUser.password}'/>
 					</div>
 					<div class='col-12'>
 						<span class='input-group-text'>First Name: </span> <input
-							class='form-control' name='firstName' type='text' value='${user.lastName}'/>
+							class='form-control' name='firstName' type='text' value='${loggedInUser.lastName}'/>
 					</div>
 					<div class='col-12'>
 						<span class='input-group-text'>Last Name: </span> <input
-							class='form-control' name='lastName' type='text' value='${user.lastName}'/>
+							class='form-control' name='lastName' type='text' value='${loggedInUser.lastName}'/>
 					</div>
 						<div class='col-12'>
 							<span class='input-group-text'>Upload A Profile Picture: </span> <input
-								class='form-control' type='text' name='profilePhoto' value='${user.profilePhoto}'/>
+								class='form-control' type='text' name='profilePhoto' value='${loggedInUser.profilePhoto}'/>
 					</div>						
 					<div class='col-12'>
 						<span class='input-group-text'>Description : </span>
-						<textarea class='form-control' rows='4' name='description' value='${user.description}'></textarea>
+						<textarea class='form-control' rows='4' name='description' value='${loggedInUser.description}'></textarea>
 					</div>
 					<div class='col-12'>
 						<c:choose>
@@ -51,7 +51,7 @@
 						</c:choose>					
 					</div>
 					<input type='submit' class='btn btn-success' name='Update User'>
-					<input type='hidden' name='userId' value='${user.id}' />
+					<input type='hidden' name='userId' value='${loggedInUser.id}' />
 				</form>
 			</div>
 		</div>
