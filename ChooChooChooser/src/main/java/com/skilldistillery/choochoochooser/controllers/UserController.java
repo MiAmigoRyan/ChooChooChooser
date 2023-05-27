@@ -113,7 +113,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="updateUser.do")
-	public String updateUser(HttpSession session,RedirectAttributes redirAtt, User userUpdate,@RequestParam("userId") int userId) {
+	public String updateUser(HttpSession session,RedirectAttributes redirAtt, User userUpdate, @RequestParam("userId") int userId) {
 		User userInSession = (User) session.getAttribute("loggedInUser");
 		if(userInSession!=null) {
 			User loggedInUser = userDAO.getUserById(userInSession.getId());

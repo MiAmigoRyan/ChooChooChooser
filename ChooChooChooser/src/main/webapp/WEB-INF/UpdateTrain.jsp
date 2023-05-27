@@ -19,7 +19,7 @@
 					<div class='row 3'>
 						<div class='col-12'>
 							<span class='input-group-text'>Name: </span> <input
-								class='form-control' type="text" name="name" value="${train.name}"/>
+								class='form-control' type="text" name="name" value="${train.name}" required/>
 						</div>
 						<div class='col-12'>
 							<span class='input-group-text'>Picture URL: </span> <input
@@ -80,13 +80,13 @@
 							<span class='input-group-text'>Steam </span>
 						</div>	
 						<div class='col-1'> 
-							<input type='checkbox' name='engineSelection' value='1'>
+							<input type='checkbox' name='engineSelection' value='1' required>
 						</div>	
 						<div class='col-5'>
 							<span class='input-group-text'>Diesel </span>
 						</div>	
 						<div class='col-1'> 
-							<input type='checkbox' name='engineSelection' value='2'>
+							<input type='checkbox' name='engineSelection' value='2' required >
 						</div>
 					</div>
 					<div class='col-12'>
